@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time is money</title>
+  </head>
+  <body style="background-color: #f4f4f4">
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <h1 style="color: #2e6f40; margin-bottom: 40px">
+        How much money have I earned?
+      </h1>
+
+      <div style="flex-wrap: no-wrap; margin-bottom: 10px; ">
+        <input type="radio" name="salaryType" value="hourly" id="hourlyRadio" />
+        <label>Paid by the hour</label>
+
+        <input
+          type="radio"
+          name="salaryType"
+          value="monthly"
+          id="monthlyRadio"
+        />
+        <label>Paid monthly</label>
+      </div>
+      <input
+        type="number"
+        id="salary"
+        placeholder="Enter your salary"
+        style="margin-bottom: 10px"
+      />
+
+      <button id="startShiftButton">Start shift</button>
+      <h4>Money Earned:</h4>
+      <h1 id="shiftTime" style="color: #d3af37"></h1>
+
+      <button id="endShiftButton">End shift</button>
+    </div>
+
+    <div style="position: fixed; bottom: 20px; left: 20px">
+      <p id="timeDifference"></p>
+
+      <details>
+        <summary><strong>Visitor history:</strong></summary>
+        <ul id="visitHistory" style="max-height: 200px; overflow-y: auto"></ul>
+      </details>
+    </div>
+
+    <script>
+      const startShiftButton = document.getElementById("startShiftButton");
+      const endShiftButton = document.getElementById("endShiftButton");
+
+      let shiftInterval;
+
+      startShiftButton.addEventListener("click", () => {
+        const salary = document.getElementById("salary").value;
+        const hourlyRadioInput = document.getElementById("hourlyRadio");
+        const monthlyRadioInput = document.getElementById("monthlyRadio");
+
+        let salaryType;
+
+        if (hourlyRadioInput.checked) {
+          salaryType = hourlyRadioInput.value;
+        } else {
+          salaryType = monthlyRadioInput.value;
+        }
+
+        fetch("/api/shifts", {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify({ salaryType, salary }),
+        })
+          .then((response) => response.json())
+          .then((result) => {
+            shiftInterval = setInterval(() => {
+              fetch("/api/shifts")
+                .then((response) => response.json())
+                .then((result) => {
+                  const shiftTimeH1 = document.getElementById("shiftTime");
+                  shiftTimeH1.innerText = `${result.data.toFixed(2)} DKK`;
+                });
+            });
+          });
+      });
+      fetch("/api/visits", {
+        method: "POST",
+      })
+        .then((response) => response.json())
+        .then((result) => {
+          const timeDifferenceParagraph =
+            document.getElementById("timeDifference");
+          const visitHistoryList = document.getElementById("visitHistory");
+
+          timeDifferenceParagraph.innerText =
+            result.firstVisitorMessage !== null
+              ? result.firstVisitorMessage
+              : result.formattedTimeDifference;
+
+          const listTimestamps = result.data.map((timestamp) => {
+            const listTimestamp = document.createElement("li");
+            listTimestamp.innerText = `${timestamp}`;
+            return listTimestamp;
+          });
+          visitHistoryList.append(...listTimestamps);
+        });
+
+      endShiftButton.addEventListener("click", () => {
+        fetch("/api/shifts", {
+          method: "DELETE",
+        })
+          .then((response) => response.json())
+          .then((result) => {
+            clearInterval(shiftInterval);
+            document.getElementById("shiftTime").innerText =
+              `${result.data.toFixed(2)} DKK`;
+          });
+      });
+    </script>
+  </body>
+</html>
