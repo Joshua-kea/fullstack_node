@@ -18,7 +18,7 @@
         How much money have I earned?
       </h1>
 
-      <div style="flex-wrap: no-wrap; margin-bottom: 10px; ">
+      <div style="flex-wrap: no-wrap; margin-bottom: 15px">
         <input type="radio" name="salaryType" value="hourly" id="hourlyRadio" />
         <label>Paid by the hour</label>
 
@@ -34,14 +34,48 @@
         type="number"
         id="salary"
         placeholder="Enter your salary"
-        style="margin-bottom: 10px"
+        style="
+          margin-bottom: 15px;
+          border-radius: 10px 10px 10px 10px;
+          border: none;
+          padding: 10px;
+          font-size: 14px;
+          cursor: pointer;
+        "
       />
 
-      <button id="startShiftButton">Start shift</button>
+      <button
+        id="startShiftButton"
+        style="
+          border-radius: 10px 10px 10px 10px;
+          border: none;
+          padding: 10px;
+          background-color: #2e6f40;
+          color: white;
+          font-size: 14px;
+          cursor: pointer;
+        "
+      >
+        Start shift
+      </button>
+
       <h4>Money Earned:</h4>
       <h1 id="shiftTime" style="color: #d3af37"></h1>
 
-      <button id="endShiftButton">End shift</button>
+      <button
+        id="endShiftButton"
+        style="
+          border-radius: 10px 10px 10px 10px;
+          border: none;
+          padding: 10px;
+          background-color: #2e6f40;
+          color: white;
+          font-size: 14px;
+          cursor: pointer;
+        "
+      >
+        End shift
+      </button>
     </div>
 
     <div style="position: fixed; bottom: 20px; left: 20px">
