@@ -1,0 +1,27 @@
+{
+  "name": "mandatory",
+  "version": "0.0.1",
+  "description": "A website that shows everything I've learned in full-stack so far",
+  "keywords": [
+    "school",
+    "full",
+    "stack",
+    "coding",
+    "programming",
+    "node",
+    "javascript",
+    "html",
+    "backend",
+    "frontend"
+  ],
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

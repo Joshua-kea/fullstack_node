@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentals</title>
+  </head>
+  <body>
+    <h1>Introduction to learning the fundamentals of node.js</h1>
+
+    <h4>var, let, and const</h4>
+    <p>
+      it is never recommended to use var, as it bleeds out and can cause major
+      bugs. <br />
+      let can be used if you're creating a variable with a changing value.
+      <br />
+      The most commonly used way to declare a variable is with const. const
+      stands for constant, and, as the name suggest <br />
+      it is an variable that is not later changed.
+    </p>
+
+    <h4>Side effects, function scope, and block scope</h4>
+
+    <pre><code>
+        for (var i = 0; i <= 5; i++) {
+            setTimeout(() => {
+                console.log(i)
+            }, 1000);
+        }
+    </code></pre>
+    <p>
+      This code snippet uses var in a for-loop. var bleeds out into the
+      console.log(i) and therefor the result <br />
+      is unexpected. this specific piece of code will print 6 six times. <br>
+      This is because var is global.
+    </p>
+
+    <pre><code>
+        for (let i = 0; i <= 5; i++) {
+            setTimeout(() => {
+                console.log(i)
+            }, 1000);
+        }
+    </code></pre>
+
+    <p>
+      The solution is as above: to use let instead of var. Here we will see the
+      expected result of 0, 1, 2, 3, 4, 5. <br /> 
+      This is because let (and const) is block-scope, meaning it is contained in the block.
+    </p>
+
+    <h4>Loops</h4>
+  </body>
+</html>

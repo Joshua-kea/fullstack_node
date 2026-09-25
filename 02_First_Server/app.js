@@ -8,11 +8,11 @@ app.use(express.json());
 console.log(__dirname);
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + "/index.html");
 });
 
-app.get('/xss', (req, res) => {
-    res.sendFile(__dirname + '/xss.html');
+app.get("/xss", (req, res) => {
+  res.sendFile(__dirname + "/xss.html");
 });
 
 // callback function: a function reference provided as an argument with the posibility (perhaps of being called later)
@@ -41,14 +41,25 @@ app.get("/bars/forgottenItems", (req, res) => {
   res.send({ data: req.query });
 });
 
+app.get("/proxy", (req, res) => {
+  // fetch Google: https://www.google.com
+  // and serve it here
+  // This is called a proxy
+  fetch("https://www.google.com")
+    .then((response) => response.text())
+    .then((result) => res.send(result));
+});
+
 app.post("/dictators/", (req, res) => {
   console.log(req.body);
   res.send({});
 });
 
 // Task create a patch for dictators
-app.patch('/dictators/:name', (req, res) => {
-    res.send({ data: `You have turned the grat dictator - ${req.params.name} - dictator benevolent for life` });
+app.patch("/dictators/:name", (req, res) => {
+  res.send({
+    data: `You have turned the grat dictator - ${req.params.name} - dictator benevolent for life`,
+  });
 });
 
 app.listen(8080);

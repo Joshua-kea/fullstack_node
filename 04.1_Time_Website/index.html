@@ -119,10 +119,12 @@
               fetch("/api/shifts")
                 .then((response) => response.json())
                 .then((result) => {
-                  const shiftTimeH1 = document.getElementById("shiftTime");
-                  shiftTimeH1.innerText = `${result.data.toFixed(2)} DKK`;
+                  if (result.data !== undefined) {
+                    const shiftTimeH1 = document.getElementById("shiftTime");
+                    shiftTimeH1.innerText = `${result.data.toFixed(2)} DKK`;
+                  }
                 });
-            });
+            }, 100);
           });
       });
       fetch("/api/visits", {

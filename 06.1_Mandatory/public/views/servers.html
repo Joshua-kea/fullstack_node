@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Start a Server</title>
+  </head>
+  <body>
+    <h1>Introduction to starting a server</h1>
+
+    <h4>What is a Rest API?</h4>
+    <p></p>
+
+    <h4>Rest API conventions</h4>
+    <p>
+      First thing first, we'll need to understand the three HTTP conventions.
+      The conventions are as follows:
+    </p>
+    <ul>
+      <li>Using the correct HTTP verb (GET, POST, PUT, PATCH, DELETE)</li>
+      <li>Using the correct order, as shown in the table below.</li>
+      <li>
+        Using the correct naming conventions. It has to be a noun and it has to
+        be in plural.
+      </li>
+    </ul>
+    <br />
+    <p>Let's create an example for a website with flags.</p>
+    <table>
+      <tr>
+        <th>HTTP Method</th>
+        <th>Endpoint</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td><strong>GET</strong></td>
+        <td>/flags</td>
+        <td>Retrieves all flags</td>
+      </tr>
+      <tr>
+        <td><strong>GET</strong></td>
+        <td>/flags/:id</td>
+        <td>Retrieves a specific flag by id</td>
+      </tr>
+      <tr>
+        <td><strong>POST</strong></td>
+        <td>/flags</td>
+        <td>Creates a flag resource</td>
+      </tr>
+      <tr>
+        <td><strong>PUT</strong></td>
+        <td>/flags/:id</td>
+        <td>Replaces an entire flag resource</td>
+      </tr>
+      <tr>
+        <td><strong>PATCH</strong></td>
+        <td>/flags/:id</td>
+        <td>Replaces parts of the flag resource</td>
+      </tr>
+      <tr>
+        <td><strong>DELETE</strong></td>
+        <td>/flags/:id</td>
+        <td>Deletes a flag ressource.</td>
+      </tr>
+    </table>
+
+    <p>
+      Let's look at the order of it. We'll start with a GET, this makes a lot of
+      sense, since we'll start out <br />
+      with retrieving information, often some kind of frontpage which retrieves
+      a html file. <br />
+      The next method is also GET, once again we're retrieving information, this
+      time from a specific id. <br />
+      We then have POST, which makes sense to have after the GET methods, as
+      we'll need to retrieve something before we can <br />
+      add our own addition, such as adding a new flag to a list. <br />
+      PUT and PATCH are the next 2 methods. <br />
+      It is worth noting that the PUT method, is rarely used, as it is rarely
+      necessary to edit an entire resource. Keep in mind that PUT also gives the
+      resource a new ID. <br />
+      without simply deleting and creating a new resource. If editing a resource
+      it makes more sense to use PATCH. <br />
+      Again, however, it makes sense to have these methods after POST, as you'll
+      need a resource to edit. <br />
+      And last, but not least, we have DELETE which makes perfect sense to be
+      the very last method, as this is the one to remove the resource.
+      <br />
+      Note that every endpoint uses flags in plural instead of flag in singular.
+      <br />
+      This is part of the naming convention, as mentioned earlier.
+      <br />
+    </p>
+  </body>
+</html>
