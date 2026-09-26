@@ -31,7 +31,7 @@
     <p>
       This code snippet uses var in a for-loop. var bleeds out into the
       console.log(i) and therefor the result <br />
-      is unexpected. this specific piece of code will print 6 six times. <br>
+      is unexpected. this specific piece of code will print 6 six times. <br />
       This is because var is global.
     </p>
 
@@ -45,10 +45,306 @@
 
     <p>
       The solution is as above: to use let instead of var. Here we will see the
-      expected result of 0, 1, 2, 3, 4, 5. <br /> 
-      This is because let (and const) is block-scope, meaning it is contained in the block.
+      expected result of 0, 1, 2, 3, 4, 5. <br />
+      This is because let (and const) is block-scope, meaning it is contained in
+      the block.
+    </p>
+
+    <pre><code>
+      {
+        var someValue = 123;
+        {
+          var someValue = 456;
+        }
+        console.log(someValue)
+      }
+    </code></pre>
+
+    <p>
+      Here we use var again. As we just saw in the previous example, var is
+      global. Because of that, this example will be 456. the value is simply
+      changed from 123 to 456.
+    </p>
+
+    <pre><code>
+      {
+        let someOtherValue = true;
+        {
+          let someOtherValue = false;
+        }
+        console.log(someOtherValue)
+      }
+    </code></pre>
+
+    <p>
+      In this example where we use let, the nested object is outside of the
+      block-scope, and therefor the value will be true.
+    </p>
+
+    <h4>Use strict</h4>
+    <p>
+      With use strict, it is possible to catch errors that otherwise wouldn't be
+      caught, such as undefined variables.
+    </p>
+
+    <h4>Naming conventions</h4>
+
+    <p>
+      Make sure functions and variables have readable and clear names. It is not
+      recommended to use numbers in variable names. <br />
+      It is good practice to use the variable name first in a function or new
+      variable that is about the first variable. <br />
+      For example:
+    </p>
+
+    <pre><code>
+      const countries = [
+      { name: "Lesotho", gdp: 2.57 },
+      { name: "Papua New Guinea", gdp: 34.40 },
+      { name: "Saint Vincent and the Grenadines", gdp: 1.26 }
+      ]
+
+      const countriesWithGDPUpdated = ...
+    </code></pre>
+
+    <p>
+      Here the second const has countries as the first part of the name so it is
+      quickly clear, that we're updating countries (the first const).
     </p>
 
     <h4>Loops</h4>
+
+    <p><strong>The three rules of Loops:</strong></p>
+    <ul>
+      <li>Use loop methods in JavaScript.</li>
+      <li>Don't use for-loops, unless you're finger counting.</li>
+      <li>
+        Use .map if you need the data afterwards. Only use .forEach if you don't
+        need the data.
+      </li>
+    </ul>
+    <p>
+      Avoid using .forEach. Avoid side effects, as we do not wish to affect old
+      data. <br />
+      There are several different loop methods:
+    </p>
+
+    <table>
+      <tr>
+        <th>Loop method</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>.forEach</td>
+        <td>For every x, do x.</td>
+      </tr>
+      <tr>
+        <td>.map</td>
+        <td>returns a new list of the same size. It is 1:1.</td>
+      </tr>
+      <tr>
+        <td>.filter</td>
+        <td>
+          Works like a sieve. True goes through, false gets filtered away.
+          <br />
+          It is possible to change the values with .filter
+        </td>
+      </tr>
+      <tr>
+        <td>.reduce</td>
+        <td>
+          Takes two values (accumulator and current) and turns it into one
+          value. <br />
+          Can also be described as folding.
+        </td>
+      </tr>
+      <tr>
+        <td>.find</td>
+        <td>Finds the first element that matches. Returns -1 if it doesn't find anything.</td>
+      </tr>
+      <tr>
+        <td>.findIndex</td>
+        <td>Finds out which index the element is on.</td>
+      </tr>
+      <tr>
+        <td>.indexOf</td>
+        <td>Finds the element, even though you don't know the exact index.</td>
+      </tr>
+    </table>
+
+    <h4>Variables</h4>
+    <h4>Data types</h4>
+
+    <h4>Functions</h4>
+
+    <p>
+      Using ';' is not needed for JavaScript, but I choose to use it both
+      because I am used to it from Java, but also because I feel like the code
+      looks nicer and more readable when using ;. It is worth noting that
+      sometimes ; needs to be after }, so it becomes };. But this is only the
+      case for statements and not if it is a function.
+      <br />
+      Below there are 3 different examples of how to solve the same problem.
+    </p>
+
+    <pre><code>
+      function genericActionPerformer(name, action) {
+        return action(name);
+      }
+
+      function playingGuitarAction(name) {
+        return `${name} likes to play guitar`;
+      }
+
+      console.log(genericActionPerformer("Elias", playingGuitarAction));
+
+      const watchingMoviesAction(name) => {
+        return `${name} likes to watch movies`
+      };
+
+      console.log(genericActionPerformer("Magnus", watchingMoviesAction));
+
+      console.log(genericActionPerformer("Jacob", (name) => `${name} likes sailing`));
+    </code></pre>
+
+    <p>The last console.log is an example of a callback function.</p>
+
+    <pre><code>
+      const getRandomIntAnonymousFunction = function (min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      };
+
+      cont getRandomIntArrowFunction = (min, max) => {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      };
+    </code></pre>
+
+    <p>
+      En Anonymous function doesn't have a name. Neither does an arrow function.
+    </p>
+
+    <h4>Objects</h4>
+    <h4>CommonJS vs ES Modules</h4>
+
+    <h4>Error handling</h4>
+    <p>If you get an error such as:</p>
+
+    <pre><code>
+      Error: ENOENT: no such file or directory, stat 'C:\Users\you\fullstack_node\02_First_Serverindex.html'
+    </code></pre>
+
+    <p>You can write the following in the terminal: </p>
+    <pre><code>
+      C:\Users\you\fullstack_node\02_First_Serverindex.html
+    </code></pre>
+
+    <p>And see if you get the same error, then the file doesn't exist in that path. 
+      Maybe it's the wrong filename or path.</p>
+
+    <h4>Math() & hoisting</h4>
+    <p>Math.floor runder op, så en float bliver til en int.</p>
+
+    <pre><code>
+      getRandomInt(5, 10);
+
+      function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+    </code></pre>
+
+    <p>
+      To get a random int between 5 and 10, it is possible to use Math.random()
+      and * it with max - min + 1 and then + min. It is possible to call the
+      function before it has been declared, because of hoisting.
+    </p>
+
+    <h4>Callback functions</h4>
+
+    <p>
+      Callback can be compared to when you call customer service, and they offer
+      an option to press 1 and they'll call you back when it's your turn,
+      instead of you waiting on the line. That way you can do other things,
+      while waiting for customer service to call you. With a callback function,
+      JavaScript can do other things, while waiting on a response, instead of
+      stopping the program while waiting. Callback is a function reference that
+      can be called as an argument. A callback *can* be called, but it can also
+      for example be an error handling or an if/else statement, where it may
+      never be called, or only is called in specific scenarios.
+    </p>
+
+    <h4>Query String</h4>
+    <pre><code>
+      http://localhost:8080/bars/forgottenItems?wallet=200&keys=my_house&my_baby=Sam
+    </code></pre>
+
+    <p>
+      The end of the URL above is called the query string, which is a way to
+      save information.
+    </p>
+
+    <h4>Misc</h4>
+    <p>To avoid putting your exact path name, with your personal folders, in the program 
+      you should instead use __dirname.</p>
+      
+      <pre><code>
+        app.get('/', (req, res) => {
+          res.sendFile(__dirname + '/index.html');
+        });
+      </code></pre>
+
+      <p>The difference between ++value and value++</p>
+
+      <pre><code>
+        Let 1;
+
+        Value++;
+        value;
+        Value++;
+      </code></pre>
+
+      <p>This will give 1, 1, 2 because the ++ is added after. 
+        So it goes 1, then just reads the value without adding anything, so 1 again, and then it's 2 
+        because it added the value earlier.</p>
+
+        <pre><code>
+        Let 1;
+
+        ++Value;
+        value;
+        ++Value;
+      </code></pre>
+
+      <p>This will give 2, 2, 3. It adds the ++ first. So 2, then it read the value: 2 again. 
+        Then it adds the ++ again which becomes 3.
+      </p>
+
+      <pre><code>
+        const labrador = {
+          color: "brown",
+          color: "white",
+          color: "multi"
+          energyLevel: 9.4
+        };
+      </code></pre>
+      <p>In this example the color is multi, since it is overwritten and the first two colors are ignored.</p>
+
+      <pre><code>
+        const labrador = {
+          color: "brown",
+          color: "white",
+          color: "multi"
+          energyLevel: 9.4
+        };
+
+        const chihuahua = {
+          energyLevel: 10.0,
+          isScaredOfAnything: false
+        };
+
+        console.log({...labrador, ...chihuahua});
+      </code></pre>
+
+      <p>By using the spread operator, it becomes one object. 
+        Therefor the color is multi, but the enerygLevel would now be 10, as it overwrites the labrador's energyLevel.</p>
   </body>
 </html>

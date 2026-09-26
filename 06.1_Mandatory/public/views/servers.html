@@ -89,6 +89,81 @@
       <br />
       This is part of the naming convention, as mentioned earlier.
       <br />
+      Notice how in node.js we use /:id. In Java I am used to using /{id}, but
+      the pathvariable is a slightly different syntax in node.js
     </p>
+
+    <h4>Express</h4>
+    <h4>Client/Server and app.js</h4>
+    <p>
+      Client sends a request (shortened to req), server sends a response
+      (shortened to res). Use res.send(); to send a response back to the client.
+      We use a generic data-type to send data.
+    </p>
+
+    <pre><code>
+      app.get('/', (req, res) => {
+        res.send({ data: "Hello, how are you?" });
+      });
+    </code></pre>
+    <p>
+      The example above is called a route. '/' is the endpoint, it could also
+      have been '/flags' for example. (req, res) => {} is a an example of a
+      callback function.
+      <a href="/fundamentals">Learn more about callback functions here</a>
+      res.send() sends a JavaScript object, which is parsed into json by the
+      help of express. Without res.send(), the browser will load forever.
+    </p>
+
+    <h4>Status codes</h4>
+
+    <table>
+      <tr>
+        <th>Status Code</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>2xx</td>
+        <td>OK</td>
+      </tr>
+      <tr>
+        <td>3xx</td>
+        <td>Redirect</td>
+      </tr>
+      <tr>
+        <td>4xx</td>
+        <td>Client-side error</td>
+      </tr>
+      <tr>
+        <td>5xx</td>
+        <td>Server-side error</td>
+      </tr>
+    </table>
+
+    <pre><code>
+      if (!foundFlags) {
+        return res.status(404).send({ data: `No flag found by id ${providedID}` });
+      }
+        res.send({ data: foundFlag });
+    </code></pre>
+    
+    <h4>Misc</h4>
+    <p>To parse JSON, you must first enable the express JSON-parser like so:</p>
+
+    <pre><code>
+      app.use(express.json());
+    </code></pre>
+
+    <p>app.listen() must always be at the bottom of the app.js file.</p>
+
+    <pre><code>
+      const PORT = 8080;
+        app.listen(PORT, (error) => {
+            if (error) {
+                console.log("There was an error starting the server", error);
+            }
+            console.log("Server is running on port", PORT);
+        });
+    </code></pre>
   </body>
 </html>
