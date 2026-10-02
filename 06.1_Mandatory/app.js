@@ -42,8 +42,8 @@ app.get("/tools", (req, res) => {
 });
 
 app.get("/frameworks", (req, res) => {
-  res.sendFile(path.resolve("public/views/frameworks.html"))
-})
+  res.sendFile(path.resolve("public/views/frameworks.html"));
+});
 
 const PORT = process.env.PORT ?? 8080;
 
