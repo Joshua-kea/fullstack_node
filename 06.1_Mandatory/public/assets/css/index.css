@@ -2,7 +2,9 @@ body {
   min-height: 95vh;
   display: flex;
   flex-direction: column;
-  background-color: f4f4f4;
+  background-color: #f4f4f4;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
 }
 
 .content {
@@ -15,16 +17,22 @@ main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  padding: 3rem;
+  padding-right: 25rem;
+  border-left: 0.1rem solid black;
 }
 
 nav {
+  position: sticky;
+  top: 2vw;
+  align-self: flex-start;
+  overflow-y: auto;
+  flex: 0 0 10rem;
   display: flex;
   flex-direction: column;
   margin: 1vw;
   margin-top: 2vw;
   gap: 1vw;
-  border-right: 0.1rem solid black;
   padding-right: 2vw;
 }
 
@@ -35,6 +43,16 @@ nav a {
 
 nav a:hover {
   color: blue;
+}
+
+pre {
+  background-color: lightgrey;
+  padding: 1.5rem;
+  max-width: 60rem;
+}
+
+code {
+  font-family: monospace;
 }
 
 footer {
