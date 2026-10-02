@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/index.css" />
+    <title>Full-Stack | Arrays & Loops</title>
+</head>
+<body>
+    <div class="content">
+    <nav>
+      <a href="/">Home page</a>
+      <a href="/fundamentals">Fundamentals</a>
+      <a href="/functions">Functions</a>
+      <a href="/loops">Arrays & Loops</a>
+      <a href="/objects">Objecsts</a>
+      <a href="/modules">Modules</a>
+      <a href="/errors">Errors & Debugging</a>
+      <a href="/servers">Start a server</a>
+      <a href="/ssr">SSR</a>
+      <a href="/commands">Terminal commands</a>
+      <a href="/structures">Folder structure</a>
+      <a href="/dates">Dates</a>
+      <a href="/html">HTML</a>
+      <a href="/css">CSS</a>
+      <a href="/tools">Tools</a>
+      <a href="/frameworks">Frameworks</a>
+    </nav>
+
+    <main>
+        <h1>Arrays & Loops</h1>
+
+      <p><strong>The three rules of Loops:</strong></p>
+      <ul>
+        <li>Use loop methods in JavaScript.</li>
+        <li>Don't use for-loops, unless you're finger counting.</li>
+        <li>
+          Use .map if you need the data afterwards. Only use .forEach if you
+          don't need the data.
+        </li>
+      </ul>
+      <p>
+        Avoid using .forEach. Avoid side effects, as we do not wish to affect
+        old data. <br />
+        There are several different loop methods:
+      </p>
+
+      <table>
+        <tr>
+          <th>Loop method</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>.forEach</td>
+          <td>For every x, do x.</td>
+        </tr>
+        <tr>
+          <td>.map</td>
+          <td>returns a new list of the same size. It is 1:1.</td>
+        </tr>
+        <tr>
+          <td>.filter</td>
+          <td>
+            Works like a sieve. True goes through, false gets filtered away.
+            <br />
+            It is possible to change the values with .filter
+          </td>
+        </tr>
+        <tr>
+          <td>.reduce</td>
+          <td>
+            Takes two values (accumulator and current) and turns it into one
+            value. <br />
+            Can also be described as folding.
+          </td>
+        </tr>
+        <tr>
+          <td>.find</td>
+          <td>
+            Finds the first element that matches. Returns -1 if it doesn't find
+            anything.
+          </td>
+        </tr>
+        <tr>
+          <td>.findIndex</td>
+          <td>Finds out which index the element is on.</td>
+        </tr>
+        <tr>
+          <td>.indexOf</td>
+          <td>
+            Finds the element, even though you don't know the exact index.
+          </td>
+        </tr>
+      </table>
+    </main>
+    </div>
+
+    <footer>footer</footer>
+    
+</body>
+</html>

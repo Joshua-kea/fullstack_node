@@ -13,8 +13,32 @@ app.get("/fundamentals", (req, res) => {
   res.sendFile(path.resolve("public/views/fundamentals.html"));
 });
 
+app.get("/functions", (req, res) => {
+  res.sendFile(path.resolve("public/views/functions.html"));
+});
+
+app.get("/loops", (req, res) => {
+  res.sendFile(path.resolve("public/views/loops.html"));
+});
+
+app.get("/objects", (req, res) => {
+  res.sendFile(path.resolve("public/views/objects.html"));
+});
+
+app.get("/modules", (req, res) => {
+  res.sendFile(path.resolve("public/views/modules.html"));
+});
+
+app.get("/errors", (req, res) => {
+  res.sendFile(path.resolve("public/views/errors.html"));
+});
+
 app.get("/servers", (req, res) => {
   res.sendFile(path.resolve("public/views/servers.html"));
+});
+
+app.get("/ssr", (req, res) => {
+  res.sendFile(path.resolve("public/views/ssr.html"));
 });
 
 app.get("/commands", (req, res) => {

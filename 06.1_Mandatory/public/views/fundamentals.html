@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/assets/css/index.css" />
 
     <title>Full-Stack | Fundamentals</title>
   </head>
@@ -12,10 +12,16 @@
     <nav>
       <a href="/">Home page</a>
       <a href="/fundamentals">Fundamentals</a>
+      <a href="/functions">Functions</a>
+      <a href="/loops">Arrays & Loops</a>
+      <a href="/objects">Objecsts</a>
+      <a href="/modules">Modules</a>
+      <a href="/errors">Errors & Debugging</a>
       <a href="/servers">Start a server</a>
+      <a href="/ssr">SSR</a>
       <a href="/commands">Terminal commands</a>
       <a href="/structures">Folder structure</a>
-      <a href="/dates">Date()</a>
+      <a href="/dates">Dates</a>
       <a href="/html">HTML</a>
       <a href="/css">CSS</a>
       <a href="/tools">Tools</a>
@@ -35,7 +41,7 @@
         it is an variable that is not later changed.
       </p>
 
-      <h4>Side effects, function scope, and block scope</h4>
+      <h4>Side effects</h4>
 
       <pre><code>
         for (var i = 0; i <= 5; i++) {
@@ -129,159 +135,13 @@
         is quickly clear, that we're updating countries (the first const).
       </p>
 
-      <h4>Loops</h4>
 
-      <p><strong>The three rules of Loops:</strong></p>
-      <ul>
-        <li>Use loop methods in JavaScript.</li>
-        <li>Don't use for-loops, unless you're finger counting.</li>
-        <li>
-          Use .map if you need the data afterwards. Only use .forEach if you
-          don't need the data.
-        </li>
-      </ul>
-      <p>
-        Avoid using .forEach. Avoid side effects, as we do not wish to affect
-        old data. <br />
-        There are several different loop methods:
-      </p>
-
-      <table>
-        <tr>
-          <th>Loop method</th>
-          <th>Description</th>
-        </tr>
-        <tr>
-          <td>.forEach</td>
-          <td>For every x, do x.</td>
-        </tr>
-        <tr>
-          <td>.map</td>
-          <td>returns a new list of the same size. It is 1:1.</td>
-        </tr>
-        <tr>
-          <td>.filter</td>
-          <td>
-            Works like a sieve. True goes through, false gets filtered away.
-            <br />
-            It is possible to change the values with .filter
-          </td>
-        </tr>
-        <tr>
-          <td>.reduce</td>
-          <td>
-            Takes two values (accumulator and current) and turns it into one
-            value. <br />
-            Can also be described as folding.
-          </td>
-        </tr>
-        <tr>
-          <td>.find</td>
-          <td>
-            Finds the first element that matches. Returns -1 if it doesn't find
-            anything.
-          </td>
-        </tr>
-        <tr>
-          <td>.findIndex</td>
-          <td>Finds out which index the element is on.</td>
-        </tr>
-        <tr>
-          <td>.indexOf</td>
-          <td>
-            Finds the element, even though you don't know the exact index.
-          </td>
-        </tr>
-      </table>
 
       <h4>Variables</h4>
       <h4>Data types</h4>
 
-      <h4>Functions</h4>
 
-      <p>
-        Using ';' is not needed for JavaScript, but I choose to use it both
-        because I am used to it from Java, but also because I feel like the code
-        looks nicer and more readable when using ;. It is worth noting that
-        sometimes ; needs to be after }, so it becomes };. But this is only the
-        case for statements and not if it is a function.
-        <br />
-        Below there are 3 different examples of how to solve the same problem.
-      </p>
-
-      <pre><code>
-      function genericActionPerformer(name, action) {
-        return action(name);
-      }
-
-      function playingGuitarAction(name) {
-        return `${name} likes to play guitar`;
-      }
-
-      console.log(genericActionPerformer("Elias", playingGuitarAction));
-
-      const watchingMoviesAction(name) => {
-        return `${name} likes to watch movies`
-      };
-
-      console.log(genericActionPerformer("Magnus", watchingMoviesAction));
-
-      console.log(genericActionPerformer("Jacob", (name) => `${name} likes sailing`));
-    </code></pre>
-
-      <p>The last console.log is an example of a callback function.</p>
-
-      <pre><code>
-      const getRandomIntAnonymousFunction = function (min, max) {
-        return Math.floor(Math.random() * (max - min + 1) + min);
-      };
-
-      cont getRandomIntArrowFunction = (min, max) => {
-        return Math.floor(Math.random() * (max - min + 1) + min);
-      };
-    </code></pre>
-
-      <p>
-        En Anonymous function doesn't have a name. Neither does an arrow
-        function.
-      </p>
-
-      <h4>Objects</h4>
-      <h4>CommonJS vs ES Modules</h4>
-
-      <h4>Error handling</h4>
-
-      <p>
-        Error is undefined, if it isn't set. Meaning, it is a false-value. A
-        statement can not be shown if it is <br />
-        a false, it can only be shown if the statement is true. That is how a
-        case like this works:
-      </p>
-
-      <pre><code>
-      if (error) {
-        console.log("There was an error", error);
-        return;
-      }
-      console.log("Everything worked out as hoped.");
-    </code></pre>
-      <p>If you get an error such as:</p>
-
-      <pre><code>
-      Error: ENOENT: no such file or directory, stat 'C:\Users\you\fullstack_node\02_First_Serverindex.html'
-    </code></pre>
-
-      <p>You can write the following in the terminal:</p>
-      <pre><code>
-      C:\Users\you\fullstack_node\02_First_Serverindex.html
-    </code></pre>
-
-      <p>
-        And see if you get the same error, then the file doesn't exist in that
-        path. Maybe it's the wrong filename or path.
-      </p>
-
-      <h4>Math() & hoisting</h4>
+      <h4>Math()</h4>
       <p>Math.floor runder op, så en float bliver til en int.</p>
 
       <pre><code>
@@ -298,44 +158,7 @@
         to call the function before it has been declared, because of hoisting.
       </p>
 
-      <h4>Callback functions</h4>
-
-      <p>
-        Callback can be compared to when you call customer service, and they
-        offer an option to press 1 and they'll call you back when it's your
-        turn, instead of you waiting on the line. That way you can do other
-        things, while waiting for customer service to call you. With a callback
-        function, JavaScript can do other things, while waiting on a response,
-        instead of stopping the program while waiting. Callback is a function
-        reference that can be called as an argument. A callback *can* be called,
-        but it can also for example be an error handling or an if/else
-        statement, where it may never be called, or only is called in specific
-        scenarios.
-      </p>
-
-      <h4>Query String</h4>
-      <pre><code>
-      http://localhost:8080/bars/forgottenItems?wallet=200&keys=my_house&my_baby=Sam
-    </code></pre>
-
-      <p>
-        The end of the URL above is called the query string, which is a way to
-        save information.
-      </p>
-
-      <h4>Misc</h4>
-      <p>
-        To avoid putting your exact path name, with your personal folders, in
-        the program you should instead use __dirname.
-      </p>
-
-      <pre><code>
-        app.get('/', (req, res) => {
-          res.sendFile(__dirname + '/index.html');
-        });
-      </code></pre>
-
-      <p>The difference between ++value and value++</p>
+      <h4>The difference between ++value and value++</h4>
 
       <pre><code>
         Let 1;
@@ -362,41 +185,6 @@
       <p>
         This will give 2, 2, 3. It adds the ++ first. So 2, then it read the
         value: 2 again. Then it adds the ++ again which becomes 3.
-      </p>
-
-      <pre><code>
-        const labrador = {
-          color: "brown",
-          color: "white",
-          color: "multi"
-          energyLevel: 9.4
-        };
-      </code></pre>
-      <p>
-        In this example the color is multi, since it is overwritten and the
-        first two colors are ignored.
-      </p>
-
-      <pre><code>
-        const labrador = {
-          color: "brown",
-          color: "white",
-          color: "multi"
-          energyLevel: 9.4
-        };
-
-        const chihuahua = {
-          energyLevel: 10.0,
-          isScaredOfAnything: false
-        };
-
-        console.log({...labrador, ...chihuahua});
-      </code></pre>
-
-      <p>
-        By using the spread operator, it becomes one object. Therefor the color
-        is multi, but the enerygLevel would now be 10, as it overwrites the
-        labrador's energyLevel.
       </p>
     </main>
     </div>

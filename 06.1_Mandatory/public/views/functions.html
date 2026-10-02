@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/index.css" />
+    <title>Full-Stack | Functions</title>
+</head>
+<body>
+    <div class="content">
+    <nav>
+      <a href="/">Home page</a>
+      <a href="/fundamentals">Fundamentals</a>
+      <a href="/functions">Functions</a>
+      <a href="/loops">Arrays & Loops</a>
+      <a href="/objects">Objecsts</a>
+      <a href="/modules">Modules</a>
+      <a href="/errors">Errors & Debugging</a>
+      <a href="/servers">Start a server</a>
+      <a href="/ssr">SSR</a>
+      <a href="/commands">Terminal commands</a>
+      <a href="/structures">Folder structure</a>
+      <a href="/dates">Dates</a>
+      <a href="/html">HTML</a>
+      <a href="/css">CSS</a>
+      <a href="/tools">Tools</a>
+      <a href="/frameworks">Frameworks</a>
+    </nav>
+
+    <main>
+        <h1>Functions</h1>
+
+      <p>
+        Using ';' is not needed for JavaScript, but I choose to use it both
+        because I am used to it from Java, but also because I feel like the code
+        looks nicer and more readable when using ;. It is worth noting that
+        sometimes ; needs to be after }, so it becomes };. But this is only the
+        case for statements and not if it is a function.
+        <br />
+        Below there are 3 different examples of how to solve the same problem.
+      </p>
+
+      <pre><code>
+      function genericActionPerformer(name, action) {
+        return action(name);
+      }
+
+      function playingGuitarAction(name) {
+        return `${name} likes to play guitar`;
+      }
+
+      console.log(genericActionPerformer("Elias", playingGuitarAction));
+
+      const watchingMoviesAction(name) => {
+        return `${name} likes to watch movies`
+      };
+
+      console.log(genericActionPerformer("Magnus", watchingMoviesAction));
+
+      console.log(genericActionPerformer("Jacob", (name) => `${name} likes sailing`));
+    </code></pre>
+
+      <p>The last console.log is an example of a callback function.</p>
+
+      <pre><code>
+      const getRandomIntAnonymousFunction = function (min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      };
+
+      cont getRandomIntArrowFunction = (min, max) => {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      };
+    </code></pre>
+
+      <p>
+        En Anonymous function doesn't have a name. Neither does an arrow
+        function.
+      </p>
+
+            <h4>Callback functions</h4>
+
+      <p>
+        Callback can be compared to when you call customer service, and they
+        offer an option to press 1 and they'll call you back when it's your
+        turn, instead of you waiting on the line. That way you can do other
+        things, while waiting for customer service to call you. With a callback
+        function, JavaScript can do other things, while waiting on a response,
+        instead of stopping the program while waiting. Callback is a function
+        reference that can be called as an argument. A callback *can* be called,
+        but it can also for example be an error handling or an if/else
+        statement, where it may never be called, or only is called in specific
+        scenarios.
+      </p>
+
+      <h4>Hoisting</h4>
+    </main>
+    </div>
+
+    <footer>footer</footer>
+    
+</body>
+</html>

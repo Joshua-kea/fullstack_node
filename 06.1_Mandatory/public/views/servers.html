@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/assets/css/index.css" />
 
     <title>Full-Stack | Start a Server</title>
   </head>
@@ -13,10 +13,16 @@
     <nav>
       <a href="/">Home page</a>
       <a href="/fundamentals">Fundamentals</a>
+      <a href="/functions">Functions</a>
+      <a href="/loops">Arrays & Loops</a>
+      <a href="/objects">Objecsts</a>
+      <a href="/modules">Modules</a>
+      <a href="/errors">Errors & Debugging</a>
       <a href="/servers">Start a server</a>
+      <a href="/ssr">SSR</a>
       <a href="/commands">Terminal commands</a>
       <a href="/structures">Folder structure</a>
-      <a href="/dates">Date()</a>
+      <a href="/dates">Dates</a>
       <a href="/html">HTML</a>
       <a href="/css">CSS</a>
       <a href="/tools">Tools</a>
@@ -246,6 +252,28 @@
     <pre><code>
       app.use(express.json());
     </code></pre>
+
+          <h4>Query String</h4>
+      <pre><code>
+      http://localhost:8080/bars/forgottenItems?wallet=200&keys=my_house&my_baby=Sam
+    </code></pre>
+
+      <p>
+        The end of the URL above is called the query string, which is a way to
+        save information.
+      </p>
+
+            <h4>dirname</h4>
+      <p>
+        To avoid putting your exact path name, with your personal folders, in
+        the program you should instead use __dirname.
+      </p>
+
+      <pre><code>
+        app.get('/', (req, res) => {
+          res.sendFile(__dirname + '/index.html');
+        });
+      </code></pre>
 
     </main>
     </div>

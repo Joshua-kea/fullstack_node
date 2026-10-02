@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/index.css" />
+    <title>Full-Stack | Errors & Debugging</title>
+</head>
+<body>
+    <div class="content">
+    <nav>
+      <a href="/">Home page</a>
+      <a href="/fundamentals">Fundamentals</a>
+      <a href="/functions">Functions</a>
+      <a href="/loops">Arrays & Loops</a>
+      <a href="/objects">Objecsts</a>
+      <a href="/modules">Modules</a>
+      <a href="/errors">Errors & Debugging</a>
+      <a href="/servers">Start a server</a>
+      <a href="/ssr">SSR</a>
+      <a href="/commands">Terminal commands</a>
+      <a href="/structures">Folder structure</a>
+      <a href="/dates">Dates</a>
+      <a href="/html">HTML</a>
+      <a href="/css">CSS</a>
+      <a href="/tools">Tools</a>
+      <a href="/frameworks">Frameworks</a>
+    </nav>
+
+    <main>
+        <h1>Errors & Debugging</h1>
+
+              <p>
+        Error is undefined, if it isn't set. Meaning, it is a false-value. A
+        statement can not be shown if it is <br />
+        a false, it can only be shown if the statement is true. That is how a
+        case like this works:
+      </p>
+
+      <pre><code>
+      if (error) {
+        console.log("There was an error", error);
+        return;
+      }
+      console.log("Everything worked out as hoped.");
+    </code></pre>
+      <p>If you get an error such as:</p>
+
+      <pre><code>
+      Error: ENOENT: no such file or directory, stat 'C:\Users\you\fullstack_node\02_First_Serverindex.html'
+    </code></pre>
+
+      <p>You can write the following in the terminal:</p>
+      <pre><code>
+      C:\Users\you\fullstack_node\02_First_Serverindex.html
+    </code></pre>
+
+      <p>
+        And see if you get the same error, then the file doesn't exist in that
+        path. Maybe it's the wrong filename or path.
+      </p>
+    </main>
+    </div>
+
+    <footer>footer</footer>
+    
+</body>
+</html>
