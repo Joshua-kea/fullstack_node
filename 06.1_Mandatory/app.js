@@ -5,8 +5,6 @@ const app = express();
 
 app.use(express.static("public"));
 
-const PORT = 8080;
-
 app.get("/", (req, res) => {
   res.sendFile(path.resolve("public/frontpage/frontpage.html"));
 });
@@ -47,9 +45,11 @@ app.get("/frameworks", (req, res) => {
   res.sendFile(path.resolve("public/views/frameworks.html"))
 })
 
-app.listen(PORT, (error) => {
+const PORT = process.env.PORT ?? 8080;
+
+const server = app.listen(PORT, (error) => {
   if (error) {
     console.log("Error starting the server", error);
   }
-  console.log("server is running on port", PORT);
+  console.log("server is running on port", server.address().port);
 });
