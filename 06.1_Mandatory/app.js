@@ -1,51 +1,51 @@
 import express from "express";
-import { dirname, join } from "path";
-import { fileURLToPath } from "url";
+import path from "path";
 
 const app = express();
 
 app.use(express.static("public"));
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
 const PORT = 8080;
 
 app.get("/", (req, res) => {
-  res.sendFile(join(__dirname, "public", "/frontpage", "/frontpage.html"));
+  res.sendFile(path.resolve("public/frontpage/frontpage.html"));
 });
 
 app.get("/fundamentals", (req, res) => {
-  res.sendFile(join(__dirname, "public", "/views", "/fundamentals.html"));
+  res.sendFile(path.resolve("public/views/fundamentals.html"));
 });
 
 app.get("/servers", (req, res) => {
-  res.sendFile(join(__dirname, "public", "/views", "/servers.html"));
+  res.sendFile(path.resolve("public/views/servers.html"));
 });
 
 app.get("/commands", (req, res) => {
-  res.sendFile(join(__dirname, "public", "/views", "/commands.html"));
+  res.sendFile(path.resolve("public/views/commands.html"));
 });
 
 app.get("/structures", (req, res) => {
-  res.sendFile(join(__dirname, "public", "/views", "/structures.html"));
+  res.sendFile(path.resolve("public/views/structures.html"));
 });
 
 app.get("/dates", (req, res) => {
-  res.sendFile(join(__dirname, "public", "/views", "/dates.html"));
+  res.sendFile(path.resolve("public/views/dates.html"));
 });
 
 app.get("/html", (req, res) => {
-  res.sendFile(join(__dirname, "public", "/views", "/html.html"));
+  res.sendFile(path.resolve("public/views/html.html"));
 });
 
 app.get("/css", (req, res) => {
-  res.sendFile(join(__dirname, "public", "/views", "/css.html"));
+  res.sendFile(path.resolve("public/views/css.html"));
 });
 
 app.get("/tools", (req, res) => {
-  res.sendFile(join(__dirname, "public", "/views", "/tools.html"));
+  res.sendFile(path.resolve("public/views/tools.html"));
 });
+
+app.get("/frameworks", (req, res) => {
+  res.sendFile(path.resolve("public/views/frameworks.html"))
+})
 
 app.listen(PORT, (error) => {
   if (error) {

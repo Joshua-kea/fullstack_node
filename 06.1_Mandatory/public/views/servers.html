@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Start a Server</title>
+    <title>Full-Stack | Start a Server</title>
   </head>
   <body>
     <h1>Introduction to starting a server</h1>
@@ -146,12 +146,69 @@
       }
         res.send({ data: foundFlag });
     </code></pre>
-    
-    <h4>Misc</h4>
-    <p>To parse JSON, you must first enable the express JSON-parser like so:</p>
+
+    <h4>app.js</h4>
+
+    <p>Delete method example:</p>
+    <pre><code>
+      app.delete("/flags/:id", (req, res) => {
+        const providedId = Number(req.params.id);
+        const foundFlagIndex = flags.findIndex(
+          (flag) => flag.id === providedId,
+        );
+
+        if (foundFlagIndex === -1) {
+          return res.status(404).send({ errorMessage: `No flag found by id ${providedId}` });
+        }
+        
+        flags.splice(foundAnimalIndex, 1);
+        
+        res.status(204).send();
+      })
+    </code></pre>
+
+    <p>Patch method example:</p>
 
     <pre><code>
-      app.use(express.json());
+      app.patch('/flags/:id', (req, res) => {
+        const providedId = Number(req.params.id);
+        const foundFlagIndex = flags.findIndex(
+          (flag) => flag.id === providedId,
+        );
+
+        if (foundFlagIndex === -1) {
+          return res.status(404).send({ errorMessage: `No flag found by id ${providedId}`});
+        }
+        
+        const providedFlag = req.body;
+        const foundFlag = flags[foundFlagIndex];
+
+        const flagToCreate = {...providedFlag, ...foundFlag, id: providedId };
+
+        flags[foundFlagsIndex] = flagToCreate;
+
+        res.send({ data: flagToCreate });
+      });
+    </code></pre>
+
+    <p>
+      In a patch method it is important to put id: providedId at the end, to
+      make sure the id isn't lost in the process. If you put it as the first
+      thing, it might not stay the same id.
+    </p>
+
+    <p>Post method example:</p>
+
+    <pre><code>
+      app.post('/flags', (req, res) => {
+        const providedFlag = req.body;
+
+        providedFlag.id = nextId++;
+
+        flags.push(providedFlag);
+
+        res.send({ data: providedFlag });
+      });
     </code></pre>
 
     <p>app.listen() must always be at the bottom of the app.js file.</p>
@@ -164,6 +221,13 @@
             }
             console.log("Server is running on port", PORT);
         });
+    </code></pre>
+
+    <h4>Misc</h4>
+    <p>To parse JSON, you must first enable the express JSON-parser like so:</p>
+
+    <pre><code>
+      app.use(express.json());
     </code></pre>
   </body>
 </html>
