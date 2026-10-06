@@ -5,55 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/assets/images/nodelogo.webp">
     <link rel="stylesheet" href="/assets/css/index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/styles/stackoverflow-light.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 
     <title>Full-Stack | CSS</title>
+
   </head>
   <body>
 
     <div id="content">
-    <nav>
-      <a href="/">Home page</a>
-      <a href="/loops">Arrays & Loops</a>
-      <a href="/css">CSS</a>
-      <a href="/dates">Dates</a>
-      <a href="/environments">Environment Variables</a>
-      <a href="/errors">Errors & Debugging</a>
-      <a href="/structures">Folder structure</a>
-      <a href="/functions">Functions</a>
-      <a href="/fundamentals">Fundamentals</a>
-      <a href="/html">HTML</a>
-      <a href="/modules">Modules</a>
-      <a href="/objects">Objects</a>
-      <a href="/packages">Package.json</a>
-      <a href="/ssr">SSR</a>
-      <a href="/servers">Start a server</a>
-      <a href="/commands">Terminal commands</a>
-      <a href="/tools">Tools</a>
-    </nav>
+      
+      <nav>
+        <a href="/">Home page</a>
+        <a href="/loops">Arrays & Loops</a>
+        <a href="/css">CSS</a>
+        <a href="/dates">Dates</a>
+        <a href="/environments">Environment Variables</a>
+        <a href="/errors">Errors & Debugging</a>
+        <a href="/structures">Folder structure</a>
+        <a href="/functions">Functions</a>
+        <a href="/fundamentals">Fundamentals</a>
+        <a href="/html">HTML</a>
+        <a href="/modules">Modules</a>
+        <a href="/objects">Objects</a>
+        <a href="/packages">Package.json</a>
+        <a href="/ssr">SSR</a>
+        <a href="/servers">Start a server</a>
+        <a href="/commands">Terminal commands</a>
+        <a href="/tools">Tools</a>
+      </nav>
 
-    <main>
-      <h1>Introduction to learning CSS</h1>
+      <main>
 
-      <p>A fun way to learn CSS is with the different website listed below:</p>
+        <h1>Introduction to learning CSS</h1>
 
-      <ul>
-        <li><a href="https://cssgridgarden.com/">CSS Grid Garden</a></li>
-        <li><a href="https://flexboxfroggy.com/">Flexbox Froggy</a></li>
-        <li>
-          <a href="https://codingfantasy.com/games/flexboxadventure"
-            >Coding Fantasy (Flexbox advendture)</a
-          >
-        </li>
-        <li>
-          <a href="https://codingfantasy.com/games/css-grid-attack"
-            >Coding Fantasy (CSS Grid Attack)</a
-          >
-        </li>
-        <li><a href="https://flukeout.github.io/">CSS Diner</a></li>
-        <li><a href="https://codepip.com/games/">codepip</a></li>
-      </ul>
-    </main>
+        <p>CSS is how we style our website and stands for Cascading Style Sheets</p>
+
+        <h2>Inline CSS</h2>
+
+        <p>Inline CSS is when the styling is done directly in the HTML file, on the specific element.</p>
+
+<pre><code>&lt;p style="background-color: lightblue; color: red;"&gt;A website about flags&lt;/p&gt;
+</code></pre>
+
+        <p>This will give you the following output:</p>
+        <p style="background-color: lightblue; color: red;">A website about flags</p>
+
+        <p>For inline styling, you can easily style a specific element, but you can't easily re-use that styling.
+          If all &lt;p&gt; elements have the same styling, you'll have to rewrite it for each paragraph.
+        </p>
+
+        <h2>External CSS</h2>
+
+        <p>For external CSS you create a .css file, and keep the styling contained there.</p>
+
+        <p>External CSS is useful for several reasons. First of all, it makes the code re-usable. 
+          You can have your styling defined in one css file, and link it to several html files, instead of repeating the code.
+          It also makes the code more readable, as you won't have styling on every element in your html file.
+        </p>
+
+        <p>To connect the css style and the html file, you'll simply add a link in the html file.</p>
+
+<pre><code>&lt;link rel="stylesheet" href="index.css"&gt;</code></pre>
+
+        <p>Add the link inside of the header. You can name your css file as you wish. In this example I named it index. 
+          Remember to link to the correct path. If it is placed inside a css folder, remember to add that to the href path.
+        </p>
+
+        <h2>CSS examples</h2>
+
+        <h2>CSS websites</h2>
+
+        <p>A fun way to learn CSS is with the different websites listed below:</p>
+
+        <ul>
+          <li><a href="https://cssgridgarden.com/">CSS Grid Garden</a></li>
+          <li><a href="https://flexboxfroggy.com/">Flexbox Froggy</a></li>
+          <li>
+            <a href="https://codingfantasy.com/games/flexboxadventure"
+             >Coding Fantasy (Flexbox advendture)</a
+            >
+          </li>
+          <li>
+            <a href="https://codingfantasy.com/games/css-grid-attack"
+              >Coding Fantasy (CSS Grid Attack)</a
+            >
+          </li>
+          <li><a href="https://flukeout.github.io/">CSS Diner</a></li>
+          <li><a href="https://codepip.com/games/">codepip</a></li>
+        </ul>
+
+        <p>I also use <a href="https://www.w3schools.com/css/default.asp">W3Schools</a> a lot for CSS</p>
+
+      </main>
     </div>
+
     <footer><a href="https://github.com/Joshua-kea"><img src="/assets/images/github.png"></a></footer>
+
   </body>
 </html>

@@ -46,13 +46,12 @@ nav a:hover {
 }
 
 pre {
-  background-color: lightgrey;
   padding: 1.5rem;
   max-width: 60rem;
 }
 
-code {
-  font-family: monospace;
+pre code.hljs {
+  background: none;
 }
 
 li code {
