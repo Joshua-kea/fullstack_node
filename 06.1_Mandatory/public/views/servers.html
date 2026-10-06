@@ -39,7 +39,7 @@
     <main>
     <h1>Introduction to starting a server</h1>
 
-    <h4>Rest API conventions</h4>
+    <h2>Rest API conventions</h2>
     <p>
       First thing first, we'll need to understand the three HTTP conventions.
       The conventions are as follows:
@@ -121,8 +121,8 @@
       the pathvariable is a slightly different syntax in Node.js
     </p>
 
-    <h4>Express</h4>
-    <h4>Client/Server and app.js</h4>
+    <h2>Express</h2>
+    <h2>Client/Server and app.js</h2>
     <p>
       Client sends a request (shortened to req), server sends a response
       (shortened to res). Use res.send(); to send a response back to the client.
@@ -143,7 +143,7 @@
       help of express. Without res.send(), the browser will load forever.
     </p>
 
-    <h4>Status codes</h4>
+    <h2>Status codes</h2>
 
     <table>
       <tr>
@@ -175,7 +175,7 @@
         res.send({ data: foundFlag });
     </code></pre>
 
-    <h4>app.js</h4>
+    <h2>app.js</h2>
 
     <p>Delete method example:</p>
     <pre><code>
@@ -251,14 +251,14 @@
         });
     </code></pre>
 
-    <h4>Misc</h4>
+    <h2>Misc</h2>
     <p>To parse JSON, you must first enable the express JSON-parser like so:</p>
 
     <pre><code>
       app.use(express.json());
     </code></pre>
 
-          <h4>Query String</h4>
+          <h2>Query String</h2>
       <pre><code>
       http://localhost:8080/bars/forgottenItems?wallet=200&keys=my_house&my_baby=Sam
     </code></pre>
@@ -268,7 +268,7 @@
         save information.
       </p>
 
-            <h4>dirname</h4>
+            <h2>dirname</h2>
       <p>
         To avoid putting your exact path name, with your personal folders, in
         the program you should instead use __dirname.
