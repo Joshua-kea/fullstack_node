@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/assets/images/nodelogo.webp">
     <link rel="stylesheet" href="/assets/css/index.css" />
 
     <title>Full-Stack | Commands</title>
@@ -10,70 +11,79 @@
   <body>
 
     <div class="content">
+
     <nav>
       <a href="/">Home page</a>
       <a href="/loops">Arrays & Loops</a>
       <a href="/css">CSS</a>
       <a href="/dates">Dates</a>
+      <a href="/environments">Environment Variables</a>
       <a href="/errors">Errors & Debugging</a>
       <a href="/structures">Folder structure</a>
-      <a href="/frameworks">Frameworks</a>
       <a href="/functions">Functions</a>
       <a href="/fundamentals">Fundamentals</a>
       <a href="/html">HTML</a>
       <a href="/modules">Modules</a>
-      <a href="/objects">Objecsts</a>
+      <a href="/objects">Objects</a>
+      <a href="/packages">Package.json</a>
       <a href="/ssr">SSR</a>
       <a href="/servers">Start a server</a>
       <a href="/commands">Terminal commands</a>
       <a href="/tools">Tools</a>
     </nav>
 
-    <main>
+     <main>
+
       <h1>Terminal commands</h1>
 
-      <p>
-        Terminal commands can be run in any terminal, but personally I always
-        use the powershell terminal in VS Code. <br />
-        If we say there is a folder called Flags_Project which has a file called
-        app.js inside, we could do the following:
-      </p>
-      <pre><code>
-        cd Flags_Project
-        node app.js
-    </code></pre>
+      <h2>Shells</h2>
 
-      <p>
-        This would run app.js, but whenever a change is made in the file, <br />
-        it is needed to stop the server with ^C and run it again.
-        <br />Luckily there is a faster way to run the server.
-      </p>
+      <p>The shell is used to run commands.</p>
 
-      <pre><code>
-        cd Flags_Project
-        nodemon app.js
-    </code></pre>
+      <p>The default shell on Linux and macOS is Bash. On Windows the default is powershell. 
+        The commands can differ slightly between shells.</p>
 
-      <p>
-        The command "cd Flags_Project" is simply to change directory to the
-        specific folder, and is only needed to be done if you're not actively in
-        the correct directory. <br />
-        The important part of the above command is nodemon, which makes it
-        possible to run the server without having to constantly re-run it.
-        <br />
-        Note that nodemon needs to be installed to work.
-        <a href="https://www.npmjs.com/package/nodemon"
-          >Nodemon can be installed here</a
-        >
-      </p>
+      <h2>Common Bash commands</h2>
 
-      <p>
-        npm install, cd .., git add ., git add -A, git branch, git commit -m "",
-        git push, git branch -b "", ls
-      </p>
-    </main>
+      <ul>
+        <li><code>ls</code> lists directory contents</li>
+        <li><code>cd</code> change current directory</li>
+        <li><code>cd ..</code> return to the parent directory</li>
+        <li><code>cd -</code> return to the previous directory</li>
+        <li><code>rm</code> delete a file</li>
+        <li><code>rm -r</code> delete a folder</li>
+        <li><code>mv</code> move or rename a file</li>
+        <li><code>touch</code> create a new file</li>
+        <li><code>mkdir</code> create a new folder</li>
+      </ul>
+
+      <h2>Git commands</h2>
+
+      <ul>
+        <li><code>git add .</code> stages all the files in the current directory</li>
+        <li><code>git add -A</code> stages all the files in the whole repository</li>
+        <li><code>git commit -m "message"</code> creates a commit with a message</li>
+        <li><code>git branch</code> shows all local branches, and marks the current branch with *</li>
+        <li><code>git checkout -b "branch-name"</code> creates a new branch</li>
+        <li><code>git push</code> pushes to the remote repository</li>
+      </ul>
+
+      <h2>Node.js commands</h2>
+
+      <ul>
+        <li><code>node -v</code> shows the installed Node.js version</li>
+        <li><code>npm init</code> creates a package.json file</li>
+        <li><code>npm install &lt;package-name&gt;</code> installs a package from npm</li>
+        <li><code>npm run &lt;script-name&gt;</code> runs a package.json script</li>
+        <li><code>node app.js</code> runs app.js once</li>
+        <li><code>nodemon app.js</code> runs app.js and restarts it after file changes</li>
+      </ul>
+
+     </main>
+
     </div>
 
-    <footer>footer</footer>
+    <footer><a href="https://github.com/Joshua-kea"><img src="/assets/images/github.png" alt="Github profile"></a></footer>
+
   </body>
 </html>

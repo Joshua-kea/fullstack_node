@@ -55,6 +55,17 @@ code {
   font-family: monospace;
 }
 
+li code {
+  font-family: monospace;
+  background-color: lightgrey;
+  padding: 0.2rem;
+}
+
+img {
+  width: 1.5vw;
+  height: 1.5vw;
+}
+
 footer {
   display: flex;
   justify-content: center;

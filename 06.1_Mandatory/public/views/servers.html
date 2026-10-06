@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/assets/images/nodelogo.webp">
     <link rel="stylesheet" href="/assets/css/index.css" />
 
     <title>Full-Stack | Start a Server</title>
@@ -15,19 +16,21 @@
       <a href="/loops">Arrays & Loops</a>
       <a href="/css">CSS</a>
       <a href="/dates">Dates</a>
+      <a href="/environments">Environment Variables</a>
       <a href="/errors">Errors & Debugging</a>
       <a href="/structures">Folder structure</a>
-      <a href="/frameworks">Frameworks</a>
       <a href="/functions">Functions</a>
       <a href="/fundamentals">Fundamentals</a>
       <a href="/html">HTML</a>
       <a href="/modules">Modules</a>
-      <a href="/objects">Objecsts</a>
+      <a href="/objects">Objects</a>
+      <a href="/packages">Package.json</a>
       <a href="/ssr">SSR</a>
       <a href="/servers">Start a server</a>
       <a href="/commands">Terminal commands</a>
       <a href="/tools">Tools</a>
     </nav>
+
     <main>
     <h1>Introduction to starting a server</h1>
 
@@ -272,10 +275,45 @@
         });
       </code></pre>
 
+       <h2>Example of usage</h2>
+
+      <p>
+        If we say there is a folder called Flags_Project which has a file called
+        app.js inside, we could do the following:
+      </p>
+<pre><code>cd Flags_Project
+node app.js</code></pre>
+
+      <p>
+        This would run app.js, but whenever a change is made in the file,
+        it is needed to stop the server with ^C and run it again.</p>
+
+        <p>Luckily there is a faster way to run the server.</p>
+
+<pre><code>cd Flags_Project
+nodemon app.js</code></pre>
+
+      <p>
+        The command "cd Flags_Project" is simply to change directory to the
+        specific folder, and is only needed to be done if you're not actively in
+        the correct directory. </p>
+
+        <p>The important part of the above command is nodemon, which makes it
+        possible to run the server without having to constantly re-run it.</p>
+
+        <p>Note that nodemon needs to be installed to work.
+        <a href="https://www.npmjs.com/package/nodemon"
+          >Install nodemon from npm</a
+        >
+      </p>
+
+<pre><code>npm install -g nodemon
+</code></pre>
+
     </main>
     </div>
 
-    <footer>footer</footer>
+    <footer><a href="https://github.com/Joshua-kea"><img src="/assets/images/github.png"></a></footer>
     
   </body>
 </html>

@@ -65,8 +65,12 @@ app.get("/tools", (req, res) => {
   res.sendFile(path.resolve("public/views/tools.html"));
 });
 
-app.get("/frameworks", (req, res) => {
-  res.sendFile(path.resolve("public/views/frameworks.html"));
+app.get("/packages", (req, res) => {
+  res.sendFile(path.resolve("public/views/packages.html"));
+});
+
+app.get("/environments", (req, res) => {
+  res.sendFile(path.resolve("public/views/environments.html"));
 });
 
 const PORT = process.env.PORT ?? 8080;
