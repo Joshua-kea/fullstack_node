@@ -40,8 +40,9 @@
       <h1>Date()</h1>
 
       <p>
-        New Date() gives UTC Date() gives local time Date.now() gives Unix Epoch
-        Time (seconds since jan 1st 1970) ISO 8601 is the standard for dates.
+        New Date() returns a Date object for the current time and date. 
+        Date.now() returns the milliseconds since the Unix Epoch Time AKA the milliseconds since jan 1st 1970.
+        The standard format for date and time is ISO 8601.
       </p>
 
       <h2>Static methods</h2>
@@ -53,8 +54,8 @@
     </code></pre>
 
       <p>
-        This will give you the current time in Unix Epoch Time (seconds since
-        January 1st 2970).
+        This will give you the current time in Unix Epoch Time (milliseconds since
+        January 1st 1970).
       </p>
 
       <pre><code>
@@ -69,24 +70,24 @@
     </code></pre>
 
       <p>
-        This will take a date string and give you the number of miliseconds
+        This will take a date string and give you the number of milliseconds
         since the Unix Epoch time
       </p>
 
       <pre><code>
-      Date.parse(1970, 0, 1);
+      new Date(1970, 0, 1);
 
       // This exact example gives 0 as output
 
-      Date.parse(2026, 0, 1);
+      new Date(2026, 0, 1);
 
       // Gives 1767225600000 as output
 
     </code></pre>
 
       <p>
-        This method takes numbers as parameters and give you the number of
-        miliseconds since the Unix Epoch time. <br />
+        This method takes numbers as parameters and gives you the number of
+        milliseconds since the Unix Epoch time. <br />
         Note that January is indexed at 0, not at 1.
       </p>
 
@@ -116,7 +117,7 @@
 
     </code></pre>
 
-      <p>There are lot more examples of .get and .set methods</p>
+      <p>There are a lot more examples of .get and .set methods</p>
 
       <pre><code>
         birthday.toLocaleDateString();
