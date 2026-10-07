@@ -45,8 +45,8 @@ app.get("/commands", (req, res) => {
   res.sendFile(path.resolve("public/views/commands.html"));
 });
 
-app.get("/structures", (req, res) => {
-  res.sendFile(path.resolve("public/views/structures.html"));
+app.get("/setups", (req, res) => {
+  res.sendFile(path.resolve("public/views/setups.html"));
 });
 
 app.get("/dates", (req, res) => {
@@ -63,14 +63,6 @@ app.get("/css", (req, res) => {
 
 app.get("/tools", (req, res) => {
   res.sendFile(path.resolve("public/views/tools.html"));
-});
-
-app.get("/packages", (req, res) => {
-  res.sendFile(path.resolve("public/views/packages.html"));
-});
-
-app.get("/environments", (req, res) => {
-  res.sendFile(path.resolve("public/views/environments.html"));
 });
 
 const PORT = process.env.PORT ?? 8080;
