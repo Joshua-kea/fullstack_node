@@ -1,20 +1,69 @@
     <h1>Introduction to learning HTML</h1>
 
-    <h3>Creating your first HTML file</h3>
-    <p>The very first thing you want to do is create a new file. Let's name it index. <br>
-        You want to make it a html file by calling it index.html. <br>
+    <p>HTML is the language the browser understands.</p>
 
-        You now have a blank page, and a smart way to start your html page is by simply writing html and recieve a dropdown of options. 
-        pick html:5, and you will recieve a boilerplate html page.
+    <h2>Creating your first HTML file</h2>
+
+    <p>The very first thing you want to do is create a new file. Let's name it index.
+        You want to make it an HTML file by calling it index.html.</p>
+
+    <p>
+        You now have a blank page, and a smart way to start your HTML page is by simply writing HTML and receive a dropdown of options. 
+        pick HTML:5, and you will receive a boilerplate HTML page.
     </p>
 
-    <h3>XSS (Cross-Site Scripting)</h3>
-    <h2>What is XSS?</h2>
-    <p>XSS is when a person from the outside can add script to the website by for example putting their name as a script <br>
+    <h2>Tags, IDs, and classes</h2>
+
+    <p>Tags are inside of angle brackets &lt;&gt;, that could for example be a header in &lt;h1&gt;.</p>
+
+<pre><code class="language-html">&lt;h1&gt;Flags&lt;/h1&gt;</code></pre>
+
+    <p>IDs are inside the tag, to make it possible to access that specific element with either JavaScript or CSS.
+        An ID is unique, and only 1 element should have that exact ID.
+    </p>
+
+<pre><code class="language-html">&lt;h1 id="firstHeaderID"&gt;Flags&lt;/h1&gt;</code></pre>
+
+    <p>Classes are inside the tag, to make it possible to access that specific element with either JavaScript or CSS.
+        A class can be used on several elements, as a way to group them together.
+    </p>
+
+<pre><code class="language-html">&lt;h1 class="firstHeaderClass"&gt;Flags&lt;/h1&gt;</code></pre>
+
+    <h2>Structure of an HTML file</h2>
+
+<pre><code class="language-html">&lt;!doctype html&gt; &lt;!-- the document type is HTML --&gt;
+&lt;html lang="en"&gt; &lt;!-- the HTML language is English --&gt;
+  &lt;head&gt; &lt;!-- the &lt;head&gt; tag --&gt;
+    &lt;meta charset="UTF-8" /&gt; &lt;!-- the set of characters the page uses --&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="icon" href="/assets/images/favicon.png"&gt; &lt;!-- the favicon, aka the logo in the tab --&gt;
+    &lt;link rel="stylesheet" href="/assets/css/index.css" /&gt; &lt;!-- link to the css file, for styling --&gt;
+
+    &lt;title&gt;Flags&lt;/title&gt; &lt;!-- Tab title --&gt;
+
+&lt;!-- closing tags --&gt;
+&lt;/head&gt; 
+&lt;/html&gt;</code></pre>
+
+    <p>The &lt;head&gt; tag contains data that is not shown on the page.</p>
+
+    <h2>XSS (Cross-Site Scripting)</h2>
+    <p>XSS is when a person from the outside can add script to the website by for example putting their name as a script.
     This can be done with malicious intentions and cause major security issues.</p>
 
-    <h2>How to avoid XSS</h2>
-    <p>To avoid XSS it is recommended to not use innerHTML, and instead make use of innerText. <br>
-        innerText will make everything in to a String and therefor any potential malicious script, will have no affect. <br>
-        If you need to use innerHTML, you can download [insert thing] that [does thing]
+    <p>To avoid XSS it is recommended to not use innerHTML, and instead make use of innerText.
+        innerText will read everything as text and therefore any potential malicious script, will have no effect, as it won't run.
+        If you need to use innerHTML, you can also create an escape HTML function.
     </p>
+
+<pre><code>function escapeHTML(string) {
+    return string
+        .replaceAll('&amp;', '&amp;amp;')
+        .replaceAll('&lt;', '&amp;lt;')
+        .replaceAll('&gt;', '&amp;gt;')
+        .replaceAll('&quot;', '&amp;quot;')
+        .replaceAll('&#39;', '&amp;#39;')
+        .replaceAll('&#x60;', '&amp;#x60;')
+        .replaceAll('&#x2F;', '&amp;#x2F;')
+}</code></pre>
