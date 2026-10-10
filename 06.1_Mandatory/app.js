@@ -1,68 +1,85 @@
 import express from "express";
-import path from "path";
 
 const app = express();
 
 app.use(express.static("public"));
 
+import { 
+  frontpagePage, 
+  commandsPage, 
+  cssPage, 
+  datesPage, 
+  errorsPage, 
+  functionsPage, 
+  fundamentalsPage, 
+  htmlPage, 
+  loopsPage, 
+  modulesPage, 
+  objectsPage, 
+  serversPage, 
+  setupsPage, 
+  ssrPage, 
+  toolsPage } 
+  from './templatingEngine/pages.js';
+
 app.get("/", (req, res) => {
-  res.sendFile(path.resolve("public/frontpage/frontpage.html"));
+  res.send(frontpagePage);
 });
 
 app.get("/fundamentals", (req, res) => {
-  res.sendFile(path.resolve("public/views/fundamentals.html"));
+  res.send(fundamentalsPage);
 });
 
 app.get("/functions", (req, res) => {
-  res.sendFile(path.resolve("public/views/functions.html"));
+  res.send(functionsPage);
 });
 
 app.get("/loops", (req, res) => {
-  res.sendFile(path.resolve("public/views/loops.html"));
+  res.send(loopsPage);
 });
 
 app.get("/objects", (req, res) => {
-  res.sendFile(path.resolve("public/views/objects.html"));
+  res.send(objectsPage);
 });
 
 app.get("/modules", (req, res) => {
-  res.sendFile(path.resolve("public/views/modules.html"));
+  res.send(modulesPage);
 });
 
 app.get("/errors", (req, res) => {
-  res.sendFile(path.resolve("public/views/errors.html"));
+  res.send(errorsPage);
 });
 
 app.get("/servers", (req, res) => {
-  res.sendFile(path.resolve("public/views/servers.html"));
+  res.send(serversPage);
 });
 
 app.get("/ssr", (req, res) => {
-  res.sendFile(path.resolve("public/views/ssr.html"));
+  res.send(ssrPage);
 });
 
 app.get("/commands", (req, res) => {
-  res.sendFile(path.resolve("public/views/commands.html"));
+  res.send(commandsPage);
 });
 
 app.get("/setups", (req, res) => {
-  res.sendFile(path.resolve("public/views/setups.html"));
+  res.send(setupsPage);
 });
 
 app.get("/dates", (req, res) => {
-  res.sendFile(path.resolve("public/views/dates.html"));
+  res.send(datesPage);
 });
 
 app.get("/html", (req, res) => {
-  res.sendFile(path.resolve("public/views/html.html"));
+  res.send(htmlPage);
 });
 
 app.get("/css", (req, res) => {
-  res.sendFile(path.resolve("public/views/css.html"));
+  res.send(cssPage);
 });
 
 app.get("/tools", (req, res) => {
-  res.sendFile(path.resolve("public/views/tools.html"));
+  res.send(toolsPage);
 });
 
 const PORT = process.env.PORT ?? 8080;
