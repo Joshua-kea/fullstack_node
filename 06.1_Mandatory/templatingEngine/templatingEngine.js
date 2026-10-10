@@ -7,13 +7,18 @@ export function constructPage(page, options = {}) {
     const nav = readPage('public/components/navigation/nav.html');
     const footer = readPage('public/components/footer/footer.html');
 
+    const activeNav = nav.replace(
+        `href="/${options.activeNav}"`,
+        `href="/${options.activeNav}" class="active"`
+    )
+
     return header
     .replace('{{CSS_LINKS}}', options.cssLink || "")
     .replace('{{JS_LINKS}}', options.jsLink || "")
     .replace('{{SCRIPT}}', options.script || "")
     .replace('{{TAB_TITLE}}', options.tabTitle || "Full-Stack")
      
-    + nav 
+    + activeNav 
     + page 
     + footer;
 }
