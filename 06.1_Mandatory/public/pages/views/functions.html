@@ -9,13 +9,15 @@
         sometimes ; needs to be after }, so it becomes };. 
         This is only for statements. Function declarations and blocks don't have ; after }</p>
 
+      <h2>Ways to write a function</h2>
+
       <p>If you have a function like this:</p>
 
 <pre><code class="language-javascript">function showFlag(country, formatter) {
   return formatter(country);
 }</code></pre>
 
-      <p>This function takes a country and a formatter, and then returns the formatter function with the country as parameter.</p>
+      <p>This function takes a country and a formatter, calls the formatter with the country as parameter, and returns the result.</p>
 
       <p>There are many ways to write a function. Below are three examples.</p>
 
@@ -33,37 +35,55 @@ const redFlag = (country) => {
 console.log(showFlag("Tonga", redFlag));
 // output is: Tonga has the color red in its flag
 
-console.log(showFlag("Equatorial Guinea", (country) => `${country} is in Africa`));  // an example of an inline function
+console.log(showFlag("Equatorial Guinea", (country) => `${country} is in Africa`));
+// an example of an inline function
 // output is: Equatorial Guinea is in Africa</code></pre>
 
-<h2>Anonymous functions</h2>
+      <h2>Anonymous functions</h2>
 
-<pre><code>const getRandomIntAnonymousFunction = function (min, max) {
+      <p>
+        An anonymous function doesn't have a name on its own, like a function declaration does. Instead it is stored in a variable.
+      </p>
+
+<pre><code class="language-javascript">const getRandomIntAnonymousFunction = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
-};
+}; // Anonymous function
 
 const getRandomIntArrowFunction = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
-};</code></pre>
+}; // Arrow function
 
-      <p>
-        En Anonymous function doesn't have a name. Neither does an arrow
-        function.
-      </p>
+// Both functions return a random int between min value and max value</code></pre>
 
       <h2>Callback functions</h2>
 
+      <p>A callback function is a function that is passed as an argument to another function.</p>
+
       <p>
-        Callback can be compared to when you call customer service, and they
+        Callback functions can be compared to when you call customer service, and they
         offer an option to press 1 and they'll call you back when it's your
-        turn, instead of you waiting on the line. That way you can do other
-        things, while waiting for customer service to call you. With a callback
-        function, JavaScript can do other things, while waiting on a response,
-        instead of stopping the program while waiting. Callback is a function
-        reference that can be called as an argument. A callback *can* be called,
-        but it can also for example be an error handling or an if/else
-        statement, where it may never be called, or only is called in specific
-        scenarios.
+        turn, instead of you waiting on the line. 
+        That way you can do other things, while waiting for customer service to call you. </p>
+      
+      <p>
+        With a callback function, JavaScript can do other things, while waiting on a response,
+        instead of stopping the program while waiting. A callback <em>can</em> be called,
+        but it can also for example be an error handling where it may never be called, or only is called in specific scenarios. 
+        In the example below, the callback function is only ever called if someone accesses /flags.
       </p>
 
+<pre><code>                 // this is the callback function
+app.get('/flags', (req, res) => {
+  res.send("Flags")
+});</code></pre>
+
       <h2>Hoisting</h2>
+
+      <p>It is not strictly necessary to write JavaScript functions chronologically, meaning if you have function A 
+        that makes use of function B, then function B doesn't have to be declared first, it can be declared much later 
+        and the code will still work. This is because of hoisting. 
+      </p>
+
+      <p>This is only true for function declarations. Arrow functions, anonymous functions or variables need to be declared 
+        before they are used.
+      </p>
