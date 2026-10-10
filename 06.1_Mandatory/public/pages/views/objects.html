@@ -1,34 +1,32 @@
         <h1>Objects</h1>
 
-              <h2>Spread operator</h2>
-      <pre><code>
-        const labrador = {
-          color: "brown",
-          color: "white",
-          color: "multi"
-          energyLevel: 9.4
-        };
-      </code></pre>
+      <h2>Spread operator</h2>
+
+<pre><code>const labrador = {
+  color: "brown",
+  color: "white",
+  color: "multi"
+  energyLevel: 9.4
+};</code></pre>
+
       <p>
         In this example the color is multi, since it is overwritten and the
         first two colors are ignored.
       </p>
 
-      <pre><code>
-        const labrador = {
-          color: "brown",
-          color: "white",
-          color: "multi"
-          energyLevel: 9.4
-        };
+<pre><code>const labrador = {
+  color: "brown",
+  color: "white",
+  color: "multi"
+  energyLevel: 9.4
+};
 
-        const chihuahua = {
-          energyLevel: 10.0,
-          isScaredOfAnything: false
-        };
+const chihuahua = {
+  energyLevel: 10.0,
+  isScaredOfAnything: false
+};
 
-        console.log({...labrador, ...chihuahua});
-      </code></pre>
+console.log({...labrador, ...chihuahua});</code></pre>
 
       <p>
         By using the spread operator, it becomes one object. Therefor the color

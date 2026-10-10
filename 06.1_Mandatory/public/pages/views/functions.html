@@ -1,53 +1,57 @@
         <h1>Functions</h1>
 
+        <p>Functions are reusable code. In JavaScript you can pass a function as a parameter in a different function.</p>
+
       <p>
         Using ';' is not needed for JavaScript, but I choose to use it both
         because I am used to it from Java, but also because I feel like the code
         looks nicer and more readable when using ;. It is worth noting that
-        sometimes ; needs to be after }, so it becomes };. But this is only the
-        case for statements and not if it is a function.
-        <br />
-        Below there are 3 different examples of how to solve the same problem.
-      </p>
+        sometimes ; needs to be after }, so it becomes };. 
+        This is only for statements. Function declarations and blocks don't have ; after }</p>
 
-      <pre><code>
-      function genericActionPerformer(name, action) {
-        return action(name);
-      }
+      <p>If you have a function like this:</p>
 
-      function playingGuitarAction(name) {
-        return `${name} likes to play guitar`;
-      }
+<pre><code class="language-javascript">function showFlag(country, formatter) {
+  return formatter(country);
+}</code></pre>
 
-      console.log(genericActionPerformer("Elias", playingGuitarAction));
+      <p>This function takes a country and a formatter, and then returns the formatter function with the country as parameter.</p>
 
-      const watchingMoviesAction(name) => {
-        return `${name} likes to watch movies`
-      };
+      <p>There are many ways to write a function. Below are three examples.</p>
 
-      console.log(genericActionPerformer("Magnus", watchingMoviesAction));
+<pre><code class="language-javascript">function formatAsText(country) {
+  return `This is the flag of ${country}`;
+} // an example of a function declaration
 
-      console.log(genericActionPerformer("Jacob", (name) => `${name} likes sailing`));
-    </code></pre>
+console.log(showFlag("Togo", formatAsText));
+// output is: This is the flag of Togo
 
-      <p>The last console.log is an example of a callback function.</p>
+const redFlag = (country) => {
+  return `${country} has the color red in its flag`;
+}; // an example of an arrow function
 
-      <pre><code>
-      const getRandomIntAnonymousFunction = function (min, max) {
-        return Math.floor(Math.random() * (max - min + 1) + min);
-      };
+console.log(showFlag("Tonga", redFlag));
+// output is: Tonga has the color red in its flag
 
-      cont getRandomIntArrowFunction = (min, max) => {
-        return Math.floor(Math.random() * (max - min + 1) + min);
-      };
-    </code></pre>
+console.log(showFlag("Equatorial Guinea", (country) => `${country} is in Africa`));  // an example of an inline function
+// output is: Equatorial Guinea is in Africa</code></pre>
+
+<h2>Anonymous functions</h2>
+
+<pre><code>const getRandomIntAnonymousFunction = function (min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+const getRandomIntArrowFunction = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};</code></pre>
 
       <p>
         En Anonymous function doesn't have a name. Neither does an arrow
         function.
       </p>
 
-            <h2>Callback functions</h2>
+      <h2>Callback functions</h2>
 
       <p>
         Callback can be compared to when you call customer service, and they

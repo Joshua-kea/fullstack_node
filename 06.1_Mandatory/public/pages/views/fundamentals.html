@@ -13,28 +13,24 @@
 
       <h2>Side effects</h2>
 
-      <pre><code>
-        for (var i = 0; i <= 5; i++) {
-            setTimeout(() => {
-                console.log(i)
-            }, 1000);
-        }
-    </code></pre>
+<pre><code>for (var i = 0; i <= 5; i++) {
+  setTimeout(() => {
+    console.log(i)
+  }, 1000);
+}</code></pre>
+
       <p>
         This code snippet uses var in a for-loop. var bleeds out into the
-        console.log(i) and therefor the result <br />
+        console.log(i) and therefor the result
         is unexpected. this specific piece of code will print 6 six times.
-        <br />
         This is because var is global.
       </p>
 
-      <pre><code>
-        for (let i = 0; i <= 5; i++) {
-            setTimeout(() => {
-                console.log(i)
-            }, 1000);
-        }
-    </code></pre>
+<pre><code>for (let i = 0; i <= 5; i++) {
+  setTimeout(() => {
+    console.log(i)
+  }, 1000);
+}</code></pre>
 
       <p>
         The solution is as above: to use let instead of var. Here we will see
@@ -43,15 +39,13 @@
         in the block.
       </p>
 
-      <pre><code>
-      {
-        var someValue = 123;
-        {
-          var someValue = 456;
-        }
-        console.log(someValue)
-      }
-    </code></pre>
+<pre><code>{
+  var someValue = 123;
+    {
+      var someValue = 456;
+    }
+  console.log(someValue)
+}</code></pre>
 
       <p>
         Here we use var again. As we just saw in the previous example, var is
@@ -59,15 +53,13 @@
         changed from 123 to 456.
       </p>
 
-      <pre><code>
-      {
-        let someOtherValue = true;
-        {
-          let someOtherValue = false;
-        }
-        console.log(someOtherValue)
-      }
-    </code></pre>
+<pre><code>{
+  let someOtherValue = true;
+    {
+      let someOtherValue = false;
+    }
+  console.log(someOtherValue)
+}</code></pre>
 
       <p>
         In this example where we use let, the nested object is outside of the
@@ -75,6 +67,7 @@
       </p>
 
       <h2>Use strict</h2>
+
       <p>
         With use strict, it is possible to catch errors that otherwise wouldn't
         be caught, such as undefined variables.
@@ -90,15 +83,13 @@
         For example:
       </p>
 
-      <pre><code>
-      const countries = [
-      { name: "Lesotho", gdp: 2.57 },
-      { name: "Papua New Guinea", gdp: 34.40 },
-      { name: "Saint Vincent and the Grenadines", gdp: 1.26 }
-      ]
+<pre><code>const countries = [
+{ name: "Lesotho", gdp: 2.57 },
+{ name: "Papua New Guinea", gdp: 34.40 },
+{ name: "Saint Vincent and the Grenadines", gdp: 1.26 }
+]
 
-      const countriesWithGDPUpdated = ...
-    </code></pre>
+const countriesWithGDPUpdated = ...</code></pre>
 
       <p>
         Here the second const has countries as the first part of the name so it
@@ -114,13 +105,11 @@
       <h2>Math()</h2>
       <p>Math.floor runder op, så en float bliver til en int.</p>
 
-      <pre><code>
-      getRandomInt(5, 10);
+<pre><code>getRandomInt(5, 10);
 
-      function getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min + 1) + min);
-      }
-    </code></pre>
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}</code></pre>
 
       <p>
         To get a random int between 5 and 10, it is possible to use
@@ -130,13 +119,10 @@
 
       <h2>The difference between ++value and value++</h2>
 
-      <pre><code>
-        Let 1;
-
-        Value++;
-        value;
-        Value++;
-      </code></pre>
+<pre><code>Let 1;
+Value++;
+value;
+Value++;</code></pre>
 
       <p>
         This will give 1, 1, 2 because the ++ is added after. So it goes 1, then
@@ -144,20 +130,12 @@
         2 because it added the value earlier.
       </p>
 
-      <pre><code>
-        Let 1;
-
-        ++Value;
-        value;
-        ++Value;
-      </code></pre>
+<pre><code>Let 1;
+++Value;
+value;
+++Value;</code></pre>
 
       <p>
         This will give 2, 2, 3. It adds the ++ first. So 2, then it read the
         value: 2 again. Then it adds the ++ again which becomes 3.
       </p>
-    </main>
-    </div>
-    <footer><a href="https://github.com/Joshua-kea"><img src="/assets/images/github.png"></a></footer>
-  </body>
-</html>

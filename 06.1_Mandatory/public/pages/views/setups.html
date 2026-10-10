@@ -3,32 +3,32 @@
     <p>main folder, public, frontpage, util. Keep it clean and readable.</p>
 
     <h2>package.json</h2>
+
     <p>”Package-name”: ”version”</p>
-    <pre><code>
-        {
-            "dependencies": {
-                "express": "5.2.1"
-            }
-        }
-    </code></pre>
+
+<pre><code>{
+    "dependencies": {
+        express": "5.2.1"
+    }
+}</code></pre>
 
     <h2>app.js</h2>
+
     <p>
       The server should always be called app.js. <br />
       Here is an example using CommonJS
     </p>
-    <pre><code>
-        const express = require('express');
-        const app = express();
 
-        const PORT = 8080;
-        app.listen(PORT, (error) => {
-            if (error) {
-                console.log("There was an error starting the server", error);
-            }
-            console.log("Server is running on port", PORT);
-        });
-    </code></pre>
+<pre><code>const express = require('express');
+const app = express();
+
+const PORT = 8080;
+app.listen(PORT, (error) => {
+    if (error) {
+        console.log("There was an error starting the server", error);
+    }
+    console.log("Server is running on port", PORT);
+});</code></pre>
 
     <p>
       Import express with require(), initiate express and save it in a variable.
@@ -36,18 +36,16 @@
       When using ES Modules, it is done slightly differently, as shown below:
     </p>
 
-    <pre><code>
-        import express from "express";
-        const app = express();
+<pre><code>import express from "express";
+const app = express();
 
-        const PORT = 8080;
-        app.listen(PORT, (error) => {
-            if (error) {
-                console.log("There was an error starting the server", error);
-            }
-            console.log("Server is running on port", PORT);
-        });
-    </code></pre>
+const PORT = 8080;
+app.listen(PORT, (error) => {
+    if (error) {
+        console.log("There was an error starting the server", error);
+    }
+    console.log("Server is running on port", PORT);
+});</code></pre>
 
     <h2>folder structure</h2>
 
