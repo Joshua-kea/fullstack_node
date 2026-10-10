@@ -1,55 +1,53 @@
       <h1>Date()</h1>
 
-      <p>
-        New Date() returns a Date object for the current time and date. 
-        Date.now() returns the milliseconds since the Unix Epoch Time AKA the milliseconds since jan 1st 1970.
-        The standard format for date and time is ISO 8601.
+      <p>The Date object makes it possible to code with dates.</p>
+
+      <h2>Current date and time</h2>
+
+<pre><code>Date()
+// output will be a String such as "Sat Oct 10 2026 11:54:54 GMT+0200 (Central European Summer Time)"
+  
+Date.now()
+// output will be something like: 1790940898647</code></pre>
+
+      
+      <p>Date() gives you a String with the current time and timezone for where the code is running.</p>
+      <p>Date.now() will give you the current time in Unix Epoch Time. The epoch started on January 1st 1970 at midnight UTC.</p>
+
+      <h2>new Date()</h2>
+
+      <p>When using new Date() without any parameters it will give the current local time.</p>
+      <p>While Date() and Date.now() return a String and a Number, new Date() returns an object, so you can call methods on it.</p>
+
+<pre><code>new Date();
+// output will be an object, shown as "Sat Oct 10 2026 11:54:54 GMT+0200 (Central European Summer Time)"
+
+new Date(2026, 0, 1);
+// output will be an object, shown as "Thu Jan 01 2026 00:00:00 GMT+0100 (Central European Standard Time)"</code></pre>
+
+      <p>You might notice the 2 different timezones, which is due to the first example being in summer time, while the second
+        example is in winter time.
+      </p>
+      <p>Another thing to pick up on, is the date in the second example. Here the 0 represents January.
+        This is because it is indexed at 0.
       </p>
 
-      <h2>Static methods</h2>
+      <h2>Date.parse()</h2>
 
-      <pre><code>
-      Date.now()
-
-      // output will be something like: 1790940898647
-    </code></pre>
-
-      <p>
-        This will give you the current time in Unix Epoch Time (milliseconds since
-        January 1st 1970).
+      <p>The standard format for date and time is ISO 8601. That would be YYYY-MM-DD for dates and HH:mm:ss for time. 
+        Or the combined YYYY-MM-DDTHH:mm:ss, where date and time is separated with a T.
       </p>
 
-      <pre><code>
-      Date.parse("1970-01-01");
+<pre><code>Date.parse("1970-01-01");
+// This exact example gives 0 as output
 
-      // This exact example gives 0 as output
-
-      Date.parse("2026-01-01");
-
-      // Gives 1767225600000 as output
-
-    </code></pre>
+Date.parse("2026-01-01");
+// Gives 1767225600000 as output</code></pre>
 
       <p>
-        This will take a date string and give you the number of milliseconds
-        since the Unix Epoch time
-      </p>
-
-      <pre><code>
-      new Date(1970, 0, 1);
-
-      // This exact example gives 0 as output
-
-      new Date(2026, 0, 1);
-
-      // Gives 1767225600000 as output
-
-    </code></pre>
-
-      <p>
-        This method takes numbers as parameters and gives you the number of
-        milliseconds since the Unix Epoch time. <br />
-        Note that January is indexed at 0, not at 1.
+        Date.parse() takes a date String and gives you the number of milliseconds
+        since the Unix Epoch time. Since the epoch started on January 1st 1970, the first example equals 0. 
+        The second example gives a much higher number - 56 years in milliseconds.
       </p>
 
       <h2>Instance methods</h2>
@@ -59,44 +57,55 @@
         popular ones are:
       </p>
 
-      <pre><code>
-      const birthday = new Date("October 2 2026")
+<pre><code>const birthday = new Date("2026-10-02");
 
-      const date = birthday.getDate();
+birthday.getDate();
+// output is 2, getDate() gives the date.
 
-      // output is 2, getDate() gives the date.
+birthday.getDay();
+// output is 5 (Friday)
+// Sunday -> Saturday is indexed 0 - 6
 
-      birthday.getDay();
+birthday.getFullYear();
+// output is 2026</code></pre>
 
-      // Sunday -> Saturday is indexed 0 - 6
+      <h2>Formatting dates</h2>
 
-      // output is 5
+<pre><code>birthday.toLocaleDateString();
+// output is 2.10.2026 if located in Denmark.
 
-      birthday.getFullYear();
+birthday.toLocaleDateString("en-uk");
+// output is 2/10/2026. en-uk is the British standard. The Danish standard is da-dk.
 
-      // output is 2026
+const options = {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+};
 
-    </code></pre>
+birthday.toLocaleDateString("en-uk", options);
+// output is Friday, 2 October 2026</code></pre>
 
-      <p>There are a lot more examples of .get and .set methods</p>
+      <h2>Understanding timezones</h2>
 
-      <pre><code>
-        birthday.toLocaleDateString();
+      <p>It is important to understand the timezones for the Date object, as it can cause major bugs without proper understanding.</p>
 
-        // output is 2.10.2026
+<pre><code>Date.parse("1970-01-01");
+// The output here would be 0
 
-        birthday.toLocaleDateString("en-uk");
+new Date(1970, 0, 1).getTime();
+// The output here would be -3600000 in my local timezone</code></pre>
 
-        // output is 2/10/2026. en-uk is the british standard. The Danish standard is da-dk.
+      <p>This can seem confusing, since it's the exact same date.
+        This is because a Date String like "1970-01-01" is read in UTC, while the numbered date is read in local time.
+      </p>
 
-        const options = {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        };
+      <p>Since the new Date(1970, 0, 1) example is read in local time, and my local time is UTC+1 in winter and UTC+2 in summer,
+        it is giving us the milliseconds from the epoch to January 1st 1970 at 00:00 in my local timezone, which equals 
+        -3600000, as it was December 31st 1969 at 23:00, 1 hour before the epoch.
+      </p>
 
-        birthday.toLocaleDateString("en-uk", options)
-
-        // output is Friday, 2 October 2026
-      </code></pre>
+      <p><small>
+        I have also created a website using the Date object, which can be visited <a href="https://time-is-money-three.vercel.app/">here</a>.
+      </small></p>
