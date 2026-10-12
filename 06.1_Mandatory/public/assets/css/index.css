@@ -50,6 +50,10 @@ nav a.active {
   border-left: 0.1rem solid black;
 }
 
+h2 {
+  font-size: large;
+}
+
 pre {
   padding: 1.5rem;
   max-width: 60rem;
@@ -65,13 +69,21 @@ li code {
   padding: 0.2rem;
 }
 
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 0.5vw;
+}
+
+table, th, td {
+  border: 0.2vh solid black;
+}
+
 img {
   width: 1.5vw;
   height: 1.5vw;
-}
-
-h2 {
-  font-size: large;
 }
 
 footer {

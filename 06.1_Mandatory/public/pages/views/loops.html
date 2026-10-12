@@ -1,6 +1,7 @@
         <h1>Arrays & Loops</h1>
 
-      <p><strong>The three rules of Loops:</strong></p>
+      <h2>The three rules of loops</h2>
+
       <ul>
         <li>Use loop methods in JavaScript.</li>
         <li>Don't use for-loops, unless you're finger counting.</li>
@@ -10,55 +11,245 @@
         </li>
       </ul>
       <p>
-        Avoid using .forEach. Avoid side effects, as we do not wish to affect
-        old data. <br />
-        There are several different loop methods:
-      </p>
+        Avoid side effects, as we do not wish to affect old data. You can read more about side effects 
+        on the <a href="/fundamentals">fundamentals</a> page. </p>
+
+      <h2>Loop methods</h2>
 
       <table>
+        <thead>
         <tr>
           <th>Loop method</th>
           <th>Description</th>
         </tr>
+        </thead>
+      <tbody>
         <tr>
           <td>.forEach</td>
-          <td>For every x, do x.</td>
+          <td>For every x, do y. It doesn't return anything.</td>
         </tr>
         <tr>
           <td>.map</td>
-          <td>returns a new list of the same size. It is 1:1.</td>
+          <td>Returns a new list of the same size. It is 1:1.</td>
         </tr>
         <tr>
           <td>.filter</td>
           <td>
             Works like a sieve. True goes through, false gets filtered away.
-            <br />
-            It is possible to change the values with .filter
-          </td>
-        </tr>
-        <tr>
-          <td>.reduce</td>
-          <td>
-            Takes two values (accumulator and current) and turns it into one
-            value. <br />
-            Can also be described as folding.
           </td>
         </tr>
         <tr>
           <td>.find</td>
           <td>
-            Finds the first element that matches. Returns -1 if it doesn't find
-            anything.
+            Finds the first element that matches. 
           </td>
         </tr>
         <tr>
           <td>.findIndex</td>
-          <td>Finds out which index the element is on.</td>
+          <td>Finds the index of the first matching element. Returns -1 if it doesn't find
+            anything.</td>
         </tr>
         <tr>
           <td>.indexOf</td>
           <td>
-            Finds the element, even though you don't know the exact index.
+            Finds the index of a specific value. Returns -1 if it doesn't find
+            anything.
           </td>
         </tr>
+        <tr>
+          <td>.reduce</td>
+          <td>
+            Takes two values (accumulator and current) and combines the current value with the accumulator.<br />
+            Can also be described as folding.
+          </td>
+        </tr>
+        </tbody>
       </table>
+
+      <h2>Examples of usage</h2>
+
+      <p>Example of .forEach() method</p>
+
+<pre><code class="language-javascript">const flags = [
+  { country: "Benin", colors: ["green", "yellow", "red"] },
+  { country: "Nauru", colors: ["blue", "yellow", "white"] },
+  { country: "Comoros", colors: ["green", "white", "red", "yellow", "blue"] },
+  { country: "Suriname", colors: ["green", "white", "red", "yellow"] },
+];
+
+function logCountry(flag) {
+  console.log(`The flag of ${flag.country}`);
+}
+
+flags.forEach(logCountry);
+
+// output would be:
+// The flag of Benin
+// The flag of Nauru
+// The flag of Comoros
+// The flag of Suriname</code></pre>
+
+      <p>Example of .map() method</p>
+
+<pre><code class="language-javascript">function amountOfFlagColors(flag) {
+  return `${flag.country} has ${flag.colors.length} colors`;
+}
+
+const flagColorSummaries = flags.map(amountOfFlagColors);
+
+console.log(flagColorSummaries);
+
+// output would be:
+// ["Benin has 3 colors", "Nauru has 3 colors", "Comoros has 5 colors", "Suriname has 4 colors"]</code></pre>
+
+      <p>Example of .filter() method</p>
+
+<pre><code class="language-javascript">function hasRed(flag) {
+  return flag.colors.includes("red");
+}
+
+const flagsWithRed = flags.filter(hasRed);
+
+console.log(flagsWithRed)
+
+// output would be:
+// [
+//  { country: "Benin", colors: ["green", "yellow", "red"] },
+//  { country: "Comoros", colors: ["green", "white", "red", "yellow", "blue"] },
+//  { country: "Suriname", colors: ["green", "white", "red", "yellow"] },
+// ]</code></pre>
+
+
+      <p>Example of .find(). The difference between .find() and .filter(), is that .find() stops at the first element that 
+        matches the criteria, whereas .filter() returns a list of all that match the criteria.
+      </p>
+
+<pre><code class="language-javascript">const flagWithRed = flags.find(hasRed);
+
+console.log(flagWithRed);
+
+// output would be: 
+// { country: "Benin", colors: ["green", "yellow", "red"] }</code></pre>
+
+      <p>Example of .findIndex(). Similar to .find(), .findIndex() only returns the index of the first element that matches the criteria.</p>
+
+<pre><code class="language-javascript">const redFlagIndex = flags.findIndex(hasRed);
+
+console.log(redFlagIndex);
+// output would be: 
+// 0 
+// Benin is the first match, and is indexed at 0.</code></pre>
+
+      <p>Example of .indexOf()</p>
+
+<pre><code class="language-javascript">const surinameColors = flags[3].colors;
+
+console.log(surinameColors.indexOf("red"));
+// output would be:
+// 2
+// The Suriname object is: 
+// { country: "Suriname", colors: ["green", "white", "red", "yellow"] }
+// so the color red is indexed at 2
+
+console.log(surinameColors.indexOf("blue"));
+// output would be:
+// -1
+</code></pre>
+
+      <p>The .reduce() method can be a bit confusing, so I've tried to break it down a bit more clearly. 
+        Let's imagine you have a webshop with a cart. You have 4 items in your cart, and you wish to calculate the full price of the cart.
+      </p>
+
+<pre><code class="language-javascript">const cart = [20, 15, 30, 10]; // prices of the individual items in your cart
+
+// total is the accumulator
+function calculateCartTotal(total, itemPrice) {
+  return total + itemPrice;
+}
+
+const cartTotal = cart.reduce(calculateCartTotal, 0);
+
+// it goes through every item one at a time
+// total starts out being 0, the first itemPrice is 20, so the total is now 20
+// now the total is 20, the next itemPrice is 15, so the total becomes 35
+// now the total is 35, the next itemPrice is 30, so the total becomes 65
+// now the total is 65, the next itemPrice is 10, so the total becomes 75
+
+console.log(cartTotal);
+// output would be:
+// 75</code></pre>
+
+      <h2>Array methods</h2>
+
+      <table>
+        <thead>
+          <tr>
+          <th>Array method</th>
+          <th>Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>.push()</td>
+            <td>Adds an element to the end of the array</td>
+          </tr>
+          <tr>
+            <td>.pop()</td>
+            <td>Removes the last element of the array</td>
+          </tr>
+          <tr>
+            <td>.unshift()</td>
+            <td>Adds an element to the front of the array</td>
+          </tr>
+          <tr>
+            <td>.shift()</td>
+            <td>Removes the first element of the array</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Examples of usage</h2>
+
+      <p>Example of .push()</p>
+
+<pre><code class="language-javascript">const colors = ["red", "blue", "green"];
+
+console.log(colors);
+// output would be:
+// ["red", "blue", "green"]
+
+colors.push("yellow");
+
+console.log(colors)
+// output would be:
+// ["red", "blue", "green", "yellow"]</code></pre>
+
+      <p>Example of .pop()</p>
+
+<pre><code class="language-javascript">const colors = ["red", "blue", "green"];
+
+colors.pop();
+
+console.log(colors);
+// output would be:
+// ["red", "blue"]</code></pre>
+
+      <p>Example of .unshift()</p>
+
+<pre><code class="language-javascript">const colors = ["red", "blue", "green"];
+
+colors.unshift("yellow");
+
+console.log(colors);
+// output would be:
+// ["yellow", "red", "blue", "green"]</code></pre>
+
+      <p>Example of .shift()</p>
+
+<pre><code class="language-javascript">const colors = ["red", "blue", "green"];
+
+colors.shift();
+
+console.log(colors);
+// output would be:
+// ["blue", "green"]</code></pre>
