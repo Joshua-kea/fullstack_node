@@ -4,23 +4,23 @@ const app = express();
 
 app.use(express.static("public"));
 
-import { 
-  frontpagePage, 
-  commandsPage, 
-  cssPage, 
-  datesPage, 
-  errorsPage, 
-  functionsPage, 
-  fundamentalsPage, 
-  htmlPage, 
-  loopsPage, 
-  modulesPage, 
-  objectsPage, 
-  serversPage, 
-  setupsPage, 
-  ssrPage, 
-  toolsPage } 
-  from './templatingEngine/pages.js';
+import {
+  frontpagePage,
+  commandsPage,
+  cssPage,
+  datesPage,
+  errorsPage,
+  functionsPage,
+  fundamentalsPage,
+  htmlPage,
+  loopsPage,
+  modulesPage,
+  objectsPage,
+  serversPage,
+  setupsPage,
+  ssrPage,
+  toolsPage,
+} from "./templatingEngine/pages.js";
 
 app.get("/", (req, res) => {
   res.send(frontpagePage);

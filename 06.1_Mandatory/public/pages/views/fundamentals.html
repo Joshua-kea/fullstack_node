@@ -1,17 +1,20 @@
-      <h1>Introduction to learning the fundamentals of Node.js</h1>
+<h1>Introduction to learning the fundamentals of Node.js</h1>
 
-      <h2>var, let, and const</h2>
-      <p>
-        It is never recommended to use var, as it is function-scoped instead of block-scoped and can cause major
-        bugs. </p>
+<h2>var, let, and const</h2>
+<p>
+  It is never recommended to use var, as it is function-scoped instead of
+  block-scoped and can cause major bugs.
+</p>
 
-        <p>let can be used if you're creating a variable with a changing value.</p>
+<p>let can be used if you're creating a variable with a changing value.</p>
 
-        <p>The most commonly used way to declare a variable is with const. const
-        stands for constant, and, as the name suggests it is a variable that is not later reassigned.
-      </p>
+<p>
+  The most commonly used way to declare a variable is with const. const stands
+  for constant, and, as the name suggests it is a variable that is not later
+  reassigned.
+</p>
 
-      <h2>Side effects</h2>
+<h2>Side effects</h2>
 
 <pre><code>for (var i = 0; i &lt;= 5; i++) {
   setTimeout(() =&gt; {
@@ -19,12 +22,13 @@
   }, 1000);
 }</code></pre>
 
-      <p>
-        This code snippet uses var in a for-loop. var ignores blocks. var is function-scoped, whereas let and const are block-scoped. 
-        There is only one i, and all 6 callbacks share it. The loop finishes before the first setTimeout runs, 
-        so i is already 6 when the callbacks log it. 
-        That means the log becomes 6 printed six times.
-      </p>
+<p>
+  This code snippet uses var in a for-loop. var ignores blocks. var is
+  function-scoped, whereas let and const are block-scoped. There is only one i,
+  and all 6 callbacks share it. The loop finishes before the first setTimeout
+  runs, so i is already 6 when the callbacks log it. That means the log becomes
+  6 printed six times.
+</p>
 
 <pre><code>for (let i = 0; i &lt;= 5; i++) {
   setTimeout(() =&gt; {
@@ -32,13 +36,12 @@
   }, 1000);
 }</code></pre>
 
-      <p>
-        The solution is as above: to use let instead of var. Here we will see
-        the expected result of 0, 1, 2, 3, 4, 5.
-        This is because let (and const) is block-scoped, meaning it is contained
-        in the block.
-        That means that every loop gets its own i, so each callback is able to remember its own value.
-      </p>
+<p>
+  The solution is as above: to use let instead of var. Here we will see the
+  expected result of 0, 1, 2, 3, 4, 5. This is because let (and const) is
+  block-scoped, meaning it is contained in the block. That means that every loop
+  gets its own i, so each callback is able to remember its own value.
+</p>
 
 <pre><code>{
   var someValue = 123;
@@ -48,11 +51,11 @@
   console.log(someValue)
 }</code></pre>
 
-      <p>
-        Here we use var again. As we just saw in the previous example, var is
-        function-scoped. Because of that, this example will be 456. The value is simply
-        changed from 123 to 456.
-      </p>
+<p>
+  Here we use var again. As we just saw in the previous example, var is
+  function-scoped. Because of that, this example will be 456. The value is
+  simply changed from 123 to 456.
+</p>
 
 <pre><code>{
   let someOtherValue = true;
@@ -62,28 +65,27 @@
   console.log(someOtherValue)
 }</code></pre>
 
-      <p>
-        In this example where we use let, the nested block is a different block-scope, where the value is its own, 
-        even if they share the same name.
-      </p>
+<p>
+  In this example where we use let, the nested block is a different block-scope,
+  where the value is its own, even if they share the same name.
+</p>
 
-      <h2>Use strict</h2>
+<h2>Use strict</h2>
 
-      <p>
-        With use strict, it is possible to catch errors that otherwise wouldn't
-        be caught, such as undefined variables. 
-        It is used by declaring "use strict"; to the beginning of a script or a function.
-      </p>
+<p>
+  With use strict, it is possible to catch errors that otherwise wouldn't be
+  caught, such as undefined variables. It is used by declaring "use strict"; to
+  the beginning of a script or a function.
+</p>
 
-      <h2>Naming conventions</h2>
+<h2>Naming conventions</h2>
 
-      <p>
-        Make sure functions and variables have readable and clear names. It is
-        not recommended to use numbers in variable names.
-        It is good practice to use the variable name first in a function or new
-        variable that is about the first variable.
-        For example:
-      </p>
+<p>
+  Make sure functions and variables have readable and clear names. It is not
+  recommended to use numbers in variable names. It is good practice to use the
+  variable name first in a function or new variable that is about the first
+  variable. For example:
+</p>
 
 <pre><code>const countries = [
 { name: "Lesotho", gdp: 2.57 },
@@ -93,13 +95,13 @@
 
 const countriesWithGDPUpdated = ...</code></pre>
 
-      <p>
-        Here the second const has countries as the first part of the name so it
-        is quickly clear, that we're updating countries (the first const).
-      </p>
+<p>
+  Here the second const has countries as the first part of the name so it is
+  quickly clear, that we're updating countries (the first const).
+</p>
 
-      <h2>Math()</h2>
-      <p>Math.floor rounds down, so the float becomes an int.</p>
+<h2>Math()</h2>
+<p>Math.floor rounds down, so the float becomes an int.</p>
 
 <pre><code>getRandomInt(5, 10);
 
@@ -107,32 +109,32 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 } // returns a random int between min value and max value</code></pre>
 
-      <p>
-        To get a random int between 5 and 10, it is possible to use
-        Math.random() and * it with max - min + 1 and then + min. It is possible
-        to call the function before it has been declared, because of hoisting.
-      </p>
+<p>
+  To get a random int between 5 and 10, it is possible to use Math.random() and
+  * it with max - min + 1 and then + min. It is possible to call the function
+  before it has been declared, because of hoisting.
+</p>
 
-      <h2>The difference between ++value and value++</h2>
+<h2>The difference between ++value and value++</h2>
 
 <pre><code>let value = 1;
 value++; // 1: returns the value, and then adds 1
 value; // 2: returns the value
 value++; // 2: returns the value and then adds 1</code></pre>
 
-      <p>
-        This will give 1, 2, 2. It reads the value, then adds 1. 
-        Then it reads the value, which is now 2. 
-        Then it reads the value, which is still 2, before it adds 1.
-      </p>
+<p>
+  This will give 1, 2, 2. It reads the value, then adds 1. Then it reads the
+  value, which is now 2. Then it reads the value, which is still 2, before it
+  adds 1.
+</p>
 
 <pre><code>let value = 1;
 ++value; // 2: adds 1, then returns the value
 value; // 2: returns the value
 ++value; // 3: adds 1, then returns the value</code></pre>
 
-      <p>
-        This will give 2, 2, 3. It adds the 1 and then reads it, so it becomes 2. 
-        Then it reads the value, which is 2. 
-        Then it adds 1, and reads the value which is now 3.
-      </p>
+<p>
+  This will give 2, 2, 3. It adds the 1 and then reads it, so it becomes 2. Then
+  it reads the value, which is 2. Then it adds 1, and reads the value which is
+  now 3.
+</p>

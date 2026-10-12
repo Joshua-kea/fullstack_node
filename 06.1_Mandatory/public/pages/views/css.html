@@ -1,45 +1,65 @@
-        <h1>Introduction to learning CSS</h1>
+<h1>Introduction to learning CSS</h1>
 
-        <p>CSS is how we style our website and stands for Cascading Style Sheets.</p>
+<p>CSS is how we style our website and stands for Cascading Style Sheets.</p>
 
-        <h2>Inline CSS</h2>
+<h2>Inline CSS</h2>
 
-        <p>Inline CSS is when the styling is done directly in the HTML file, on the specific element.</p>
+<p>
+  Inline CSS is when the styling is done directly in the HTML file, on the
+  specific element.
+</p>
 
 <pre><code>&lt;p style="background-color: lightblue; color: red;"&gt;A website about flags&lt;/p&gt;
 </code></pre>
 
-        <p>This will give you the following output:</p>
-        <p style="background-color: lightblue; color: red;">A website about flags</p>
+<p>This will give you the following output:</p>
+<p style="background-color: lightblue; color: red">A website about flags</p>
 
-        <p>For inline styling, you can easily style a specific element, but you can't easily re-use that styling.
-          If several elements have the same styling, you'll have to rewrite it for each element.
-        </p>
+<p>
+  For inline styling, you can easily style a specific element, but you can't
+  easily re-use that styling. If several elements have the same styling, you'll
+  have to rewrite it for each element.
+</p>
 
-        <h2>External CSS</h2>
+<h2>External CSS</h2>
 
-        <p>For external CSS you create a .css file, and keep the styling contained there.</p>
+<p>
+  For external CSS you create a .css file, and keep the styling contained there.
+</p>
 
-        <p>External CSS is useful for several reasons. First of all, it makes the code re-usable. 
-          You can have your styling defined in one CSS file, and link it to several HTML files, instead of repeating the code.
-          It also makes the code more readable, as you won't have styling on every element in your HTML file.
-        </p>
+<p>
+  External CSS is useful for several reasons. First of all, it makes the code
+  re-usable. You can have your styling defined in one CSS file, and link it to
+  several HTML files, instead of repeating the code. It also makes the code more
+  readable, as you won't have styling on every element in your HTML file.
+</p>
 
-        <p>To connect the CSS file and the HTML file, you'll simply add a &lt;link&gt; element in the HTML file.</p>
+<p>
+  To connect the CSS file and the HTML file, you'll simply add a &lt;link&gt;
+  element in the HTML file.
+</p>
 
 <pre><code>&lt;link rel="stylesheet" href="index.css"&gt;</code></pre>
 
-        <p>Add the &lt;link&gt; element inside of the &lt;head&gt; element. You can name your CSS file as you wish. In this example I named it index. 
-          Remember to link to the correct path. If it is placed inside a CSS folder, remember to add that to the href path.
-        </p>
+<p>
+  Add the &lt;link&gt; element inside of the &lt;head&gt; element. You can name
+  your CSS file as you wish. In this example I named it index. Remember to link
+  to the correct path. If it is placed inside a CSS folder, remember to add that
+  to the href path.
+</p>
 
-        <p>To access an element with external CSS there are several ways to go about it.</p>
-        <p>HTML tags are easy to access:</p>
+<p>
+  To access an element with external CSS there are several ways to go about it.
+</p>
+<p>HTML tags are easy to access:</p>
 <pre><code>body {
   /* styling would go here */
 }</code></pre>
 
-        <p>CSS selectors define which elements the styling applies to. There are many selectors to choose from.</p>
+<p>
+  CSS selectors define which elements the styling applies to. There are many
+  selectors to choose from.
+</p>
 
 <pre><code class="language-css">#flag {
   /* this is how to style an element with the id="flag" */
@@ -58,13 +78,19 @@ ul li {
 }
 </code></pre>
 
-        <h2>CSS example</h2>
+<h2>CSS example</h2>
 
-        <p>CSS offers a lot of options and possibilities for styling, but one example is how to create a proper footer.</p>
+<p>
+  CSS offers a lot of options and possibilities for styling, but one example is
+  how to create a proper footer.
+</p>
 
-        <p>If you use the HTML tag &lt;footer&gt; you might think it automatically behaves as a footer, 
-          and sits at the bottom of the page. However, this is not the case. It works like any HTML tag, and will 
-        simply sit where you place it. To make it look as we expect, the following CSS is needed:</p>
+<p>
+  If you use the HTML tag &lt;footer&gt; you might think it automatically
+  behaves as a footer, and sits at the bottom of the page. However, this is not
+  the case. It works like any HTML tag, and will simply sit where you place it.
+  To make it look as we expect, the following CSS is needed:
+</p>
 
 <pre><code>body {
     min-height: 95vh;
@@ -76,37 +102,48 @@ main {
     flex: 1;
 }</code></pre>
 
-<p>The min-height is the minimum height of the body. Here it is set to 95vh. (vh is viewport height.) 
-100vh is the full height of the viewport. To make space for the margin, we use 95vh. </p>
-
-<p>The display needs to be set to flex to make sure flex-direction works as intended.
-flex-direction is set to column, meaning the children are vertical. The opposite would be row, which is horizontal.
-Row is also the default.</p>
-
-<p>A &lt;main&gt; tag is needed, to define the main content of the page. There should only ever be one per page.
-  It needs flex: 1. This means that &lt;main&gt; takes up all the leftover space. So if there isn't enough content 
-  to fill the space, &lt;main&gt; will still stretch out to fill up the page, with empty content below.
+<p>
+  The min-height is the minimum height of the body. Here it is set to 95vh. (vh
+  is viewport height.) 100vh is the full height of the viewport. To make space
+  for the margin, we use 95vh.
 </p>
 
-        <h2>CSS websites</h2>
+<p>
+  The display needs to be set to flex to make sure flex-direction works as
+  intended. flex-direction is set to column, meaning the children are vertical.
+  The opposite would be row, which is horizontal. Row is also the default.
+</p>
 
-        <p>A fun way to learn CSS is with the different websites listed below:</p>
+<p>
+  A &lt;main&gt; tag is needed, to define the main content of the page. There
+  should only ever be one per page. It needs flex: 1. This means that
+  &lt;main&gt; takes up all the leftover space. So if there isn't enough content
+  to fill the space, &lt;main&gt; will still stretch out to fill up the page,
+  with empty content below.
+</p>
 
-        <ul>
-          <li><a href="https://cssgridgarden.com/">CSS Grid Garden</a></li>
-          <li><a href="https://flexboxfroggy.com/">Flexbox Froggy</a></li>
-          <li>
-            <a href="https://codingfantasy.com/games/flexboxadventure"
-             >Coding Fantasy (Flexbox adventure)</a
-            >
-          </li>
-          <li>
-            <a href="https://codingfantasy.com/games/css-grid-attack"
-              >Coding Fantasy (CSS Grid Attack)</a
-            >
-          </li>
-          <li><a href="https://flukeout.github.io/">CSS Diner</a></li>
-          <li><a href="https://codepip.com/games/">codepip</a></li>
-        </ul>
+<h2>CSS websites</h2>
 
-        <p>I also use <a href="https://www.w3schools.com/css/default.asp">W3Schools</a> a lot for CSS</p>
+<p>A fun way to learn CSS is with the different websites listed below:</p>
+
+<ul>
+  <li><a href="https://cssgridgarden.com/">CSS Grid Garden</a></li>
+  <li><a href="https://flexboxfroggy.com/">Flexbox Froggy</a></li>
+  <li>
+    <a href="https://codingfantasy.com/games/flexboxadventure"
+      >Coding Fantasy (Flexbox adventure)</a
+    >
+  </li>
+  <li>
+    <a href="https://codingfantasy.com/games/css-grid-attack"
+      >Coding Fantasy (CSS Grid Attack)</a
+    >
+  </li>
+  <li><a href="https://flukeout.github.io/">CSS Diner</a></li>
+  <li><a href="https://codepip.com/games/">codepip</a></li>
+</ul>
+
+<p>
+  I also use <a href="https://www.w3schools.com/css/default.asp">W3Schools</a> a
+  lot for CSS
+</p>

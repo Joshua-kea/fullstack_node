@@ -1,56 +1,72 @@
-      <h1>Errors & Debugging</h1>
+<h1>Errors & Debugging</h1>
 
-      <p>Getting errors and spending time debugging is a major part of programming.</p>
+<p>
+  Getting errors and spending time debugging is a major part of programming.
+</p>
 
-      <h2>Client-side errors</h2>
+<h2>Client-side errors</h2>
 
-      <p>Client-side errors are shown in the browser console.</p>
+<p>Client-side errors are shown in the browser console.</p>
 
-      <p>To see the client-side errors you need to use DevTools. 
-            You can also write directly in the browser console.</p>
+<p>
+  To see the client-side errors you need to use DevTools. You can also write
+  directly in the browser console.
+</p>
 
 <pre><code class="language-javascript">let flag;
 flag.color;</code></pre>
 
-      <p>Writing the above code in the browser console, will give an error, since flag is undefined.</p>
+<p>
+  Writing the above code in the browser console, will give an error, since flag
+  is undefined.
+</p>
 
 <pre><code>Uncaught TypeError: can't access property "color", flag is undefined
     &lt;anonymous&gt; debugger eval code:1</code></pre>
 
-      <p>The error description depends on which browser is being used. 
-            In this example, I am using Firefox, and here the error description is pretty clear: 
-            color can't be accessed since flag is undefined.</p>
+<p>
+  The error description depends on which browser is being used. In this example,
+  I am using Firefox, and here the error description is pretty clear: color
+  can't be accessed since flag is undefined.
+</p>
 
-      <p>The debugger-keyword can be a helpful tool for client-side errors.</p>
+<p>The debugger-keyword can be a helpful tool for client-side errors.</p>
 
 <pre><code class="language-javascript">let flag;
 debugger;
 flag.color;</code></pre>
 
-      <p>When using Firefox, open the Debugger window in DevTools. You will be able to see, that the code pauses 
-            where the debugger keyword is.
-      </p>
+<p>
+  When using Firefox, open the Debugger window in DevTools. You will be able to
+  see, that the code pauses where the debugger keyword is.
+</p>
 
 <pre><code>let flag; // flag: undefined
 debugger; // the code stops here
 flag.color;</code></pre>
 
-      <p>You can see that flag is undefined. At the top of the viewport, there is a pop-up that says "Debugger paused" and 
-            shows the option to either run the code or step-over. Step-over will run one line of code, and pause at the next one.
-            This can be helpful if the error message isn't clear to you. It lets you see the values of the variable step-by-step before 
-            the error occurs. It gives a clear look into how the code is working and what is happening.
-      </p>
+<p>
+  You can see that flag is undefined. At the top of the viewport, there is a
+  pop-up that says "Debugger paused" and shows the option to either run the code
+  or step-over. Step-over will run one line of code, and pause at the next one.
+  This can be helpful if the error message isn't clear to you. It lets you see
+  the values of the variable step-by-step before the error occurs. It gives a
+  clear look into how the code is working and what is happening.
+</p>
 
-      <h2>Server-side errors</h2>
+<h2>Server-side errors</h2>
 
-      <p>Server-side errors are shown in the terminal.</p>
+<p>Server-side errors are shown in the terminal.</p>
 
-      <p>If you wrote code like this:</p>
+<p>If you wrote code like this:</p>
 
 <pre><code class="language-javascript">let flag;
 flag.color;</code></pre>
 
-      <p>You would get a server-side error, since the flag is undefined and it isn't possible to find the color on an undefined flag.</p>
+<p>
+  You would get a server-side error, since the flag is undefined and it isn't
+  possible to find the color on an undefined flag.
+</p>
 
 <pre><code class="language-python">&lt;ABSOLUTE_PATH&gt;/app.js:2 # name of the file is app.js, and the error happened on line 2
 flag.color; # the error occurred at this specific char
@@ -67,54 +83,62 @@ TypeError: Cannot read properties of undefined (reading 'color') # error descrip
     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
     at node:internal/main/run_main_module:33:47</code></pre>
 
-    <p>The stack trace is the first place to look, when trying to figure out why an error happened. 
-      Here, you can find the name of the file, the line number, the chars from the left margin, and the error description. 
-      It will also give you a small arrow ^ pointing at the exact char where the error happened. 
-      All of this makes it easy to find the exact error, and determine the reason behind it.
-    </p>
+<p>
+  The stack trace is the first place to look, when trying to figure out why an
+  error happened. Here, you can find the name of the file, the line number, the
+  chars from the left margin, and the error description. It will also give you a
+  small arrow ^ pointing at the exact char where the error happened. All of this
+  makes it easy to find the exact error, and determine the reason behind it.
+</p>
 
-    <p>If the error is not clear, or it's a hidden bug, then you can isolate the code by commenting out a code-section 
-      and uncomment it line by line until the problematic part is revealed.
-    </p>
+<p>
+  If the error is not clear, or it's a hidden bug, then you can isolate the code
+  by commenting out a code-section and uncomment it line by line until the
+  problematic part is revealed.
+</p>
 
-    <p>If you get an error such as:</p>
+<p>If you get an error such as:</p>
 
 <pre><code>Error: ENOENT: no such file or directory, stat 'C:\Users\[user]\fullstack_node\02_First_Serverindex.html'</code></pre>
 
-      <p>The error is quite clear: no such file or directory, at that specific path. ENOENT stands for 
-            <strong>E</strong>rror <strong>No Ent</strong>ry
-      </p>
+<p>
+  The error is quite clear: no such file or directory, at that specific path.
+  ENOENT stands for <strong>E</strong>rror <strong>No Ent</strong>ry
+</p>
 
-      <p>You can write the following in the terminal:</p>
+<p>You can write the following in the terminal:</p>
 
 <pre><code>C:\Users\[user]\fullstack_node\02_First_Serverindex.html</code></pre>
 
-      <p>
-        And see if you get an error. If you do, then the file doesn't exist on that path. 
-        Maybe it's the wrong filename or path. 
-        In this example, the path won't work because of a missing "\". The correct path would be:
-      </p>
+<p>
+  And see if you get an error. If you do, then the file doesn't exist on that
+  path. Maybe it's the wrong filename or path. In this example, the path won't
+  work because of a missing "\". The correct path would be:
+</p>
 
-      <pre><code>C:\Users\[user]\fullstack_node\02_First_Server\index.html</code></pre>
+<pre><code>C:\Users\[user]\fullstack_node\02_First_Server\index.html</code></pre>
 
-      <h2>Error-handling</h2>
+<h2>Error-handling</h2>
 
-      <p>Using console.log() can be a good way to check if you're getting the expected results, 
-            or to see if there is a connection.
-      </p>
+<p>
+  Using console.log() can be a good way to check if you're getting the expected
+  results, or to see if there is a connection.
+</p>
 
 <pre><code class="language-javascript">console.log()
 // logs to the terminal on server-side and in the browser console on client-side</code></pre>
 
-      <p>In the same way, it's a good idea to make a visible change when adding a CSS file, such as a 
-            red background. Just to make sure, that the connection is correct.
-      </p>
+<p>
+  In the same way, it's a good idea to make a visible change when adding a CSS
+  file, such as a red background. Just to make sure, that the connection is
+  correct.
+</p>
 
-      <p>
-        Error is undefined, if it isn't set. Meaning, it is a false-value as standard. A
-        statement can not run if it is falsy, it can only run if the statement is true. 
-        That is how a case like this works:
-      </p>
+<p>
+  Error is undefined, if it isn't set. Meaning, it is a false-value as standard.
+  A statement can not run if it is falsy, it can only run if the statement is
+  true. That is how a case like this works:
+</p>
 
 <pre><code>if (error) {
   console.log("There was an error", error);
@@ -123,24 +147,29 @@ TypeError: Cannot read properties of undefined (reading 'color') # error descrip
 
 console.log("Everything worked out as hoped.");</code></pre>
 
+<h2>Rubber duck debugging</h2>
 
-      <h2>Rubber duck debugging</h2>
+<p>
+  Rubber duck debugging, also known as rubberducking, is a simple idea: talk to
+  someone.
+</p>
 
-      <p>Rubber duck debugging, also known as rubberducking, is a simple idea: talk to someone.</p>
+<p>
+  In rubberducking there isn't a need for feedback or help from the other
+  person. The important part is explaining the code out loud, step by step.
+  Since the other person doesn't need to participate an inanimate object such as
+  a rubber duck or a teddy bear can be put in place of a person.
+</p>
 
-      <p>In rubberducking there isn't a need for feedback or help from the other person. 
-            The important part is explaining the code out loud, step by step. 
-            Since the other person doesn't need to participate an inanimate object such as a rubber duck 
-            or a teddy bear can be put in place of a person.</p>
+<p>
+  It can be helpful to step away from finding a solution, and instead focusing
+  on the purpose of the code. Some helpful questions to answer are:
+</p>
 
-      <p>It can be helpful to step away from finding a solution, and instead focusing on the purpose of the code. 
-            Some helpful questions to answer are:
-      </p>
-
-      <ul>
-            <li>What is your expected outcome from the code?</li>
-            <li>How does the actual outcome differ from your expectations?</li>
-            <li>Step through the code and identify discrepancies</li>
-            <li>Analyze the observed behavior. Why might the output be as it is?</li>
-            <li>Explore potential adjustments to the code and apply them</li>
-      </ul>
+<ul>
+  <li>What is your expected outcome from the code?</li>
+  <li>How does the actual outcome differ from your expectations?</li>
+  <li>Step through the code and identify discrepancies</li>
+  <li>Analyze the observed behavior. Why might the output be as it is?</li>
+  <li>Explore potential adjustments to the code and apply them</li>
+</ul>

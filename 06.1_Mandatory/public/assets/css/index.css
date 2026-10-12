@@ -3,7 +3,7 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #f4f4f4;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.5;
 }
 
@@ -73,11 +73,14 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding: 0.5vw;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 0.2vh solid black;
 }
 
