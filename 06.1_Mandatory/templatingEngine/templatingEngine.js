@@ -15,10 +15,10 @@ export function constructPage(page, options = {}) {
       .replace("{{CSS_LINKS}}", options.cssLink || "")
       .replace("{{JS_LINKS}}", options.jsLink || "")
       .replace("{{SCRIPT}}", options.script || "")
-      .replace("{{TAB_TITLE}}", options.tabTitle || "Full-Stack") +
-    activeNav +
-    page +
-    footer
+      .replace("{{TAB_TITLE}}", options.tabTitle || "Full-Stack")
+    + activeNav
+    + page
+    + footer
   );
 }
 

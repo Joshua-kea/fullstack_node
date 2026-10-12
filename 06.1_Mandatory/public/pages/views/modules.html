@@ -2,7 +2,7 @@
 
 <p>
   With modules you can split your JavaScript files up into several files, and
-  use import and export to access functionality between them
+  use import and export to access functionality between them.
 </p>
 
 <table>
@@ -18,22 +18,23 @@
       <th>CommonJS</th>
       <td>
         Use require().<br />
-        <code class="language-javascript">const file = require('./file');</code>
+        <code>const file = require('./file');</code>
       </td>
       <td>
         Use module.exports<br />
-        <code class="language-javascript">module.exports = file;</code>
+        <code>module.exports = file;</code>
       </td>
     </tr>
     <tr>
       <th>ES Modules</th>
       <td>
         Use import<br />
-        <code class="language-javascript">import file from './file.js';</code>
+        <code>import file from './file.js';</code>
       </td>
       <td>
         Use export or export default<br />
-        <code class="language-javascript">export default file;</code>
+        <code>export default file;</code><br />
+        <code>export const file;</code>
       </td>
     </tr>
   </tbody>
@@ -42,11 +43,13 @@
 <h2>CommonJS</h2>
 
 <p>
-  CommonJS is the standard module system, if it isn't actively changed to
-  something else.
+  CommonJS is the default module system for Node.js, if it isn't actively
+  changed to something else.
 </p>
 
 <p>It is possible to import .json files using require().</p>
+
+<pre><code class="language-javascript">const data = require('./data.json');</code></pre>
 
 <h2>ES Modules</h2>
 

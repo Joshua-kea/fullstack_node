@@ -1,1 +1,132 @@
 <h1>SSR</h1>
+
+<p>**Explain the advantages of SSR**</p>
+
+<h2>Splitting up the HTML page</h2>
+
+<p>DRY (<strong>D</strong>on't <strong>R</strong>epeat <strong>Y</strong>ourself) code is a general guideline when it comes to 
+    programming. The less your code repeats itself, the more reusable it is, and the less you'll have to fix everytime you 
+    make a change.</p>
+
+<p>When it comes to SSR (<strong>S</strong>erver <strong>S</strong>ide <strong>R</strong>endering) you will split up your HTML 
+files, into sections that are repetitive. This will often be the header and the footer, but it can be other things such as 
+a navigation bar.</p>
+
+<p>You simply create a header.html and a footer.html, to put the content that all your HTML pages need, in those files.</p>
+
+<p>Your header.html might look something like this:</p>
+
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="stylesheet" href="/assets/css/index.css" /&gt;
+
+    &lt;title&gt;Document&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;main&gt;
+</code></pre>
+
+<p>And your footer.html might look something like this:</p>
+
+<pre><code>&lt;/main&gt;
+
+    &lt;footer&gt;&copy 2026&lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<h2>Templating Engine</h2>
+
+<p>While it is possible to install templating engines, it is nice to create your own so you have full control of the content.</p>
+
+<p>The first thing you'll want to do, is create a function that can read your HTML files.</p>
+
+<pre><code class="language-javascript">import fs from "fs";
+    export function readPage(path) {
+  return fs.readFileSync(path, "utf-8");
+}</code></pre>
+
+<p>We have an import from 'fs', which is a a part of the node library. It stands for File System, and is needed to 
+    read files.
+</p>
+
+<p>The function above, simply reads a HTML file. It takes a path and utf-8 as an argument. You could also make it:</p>
+
+<pre><code class="language-javascript">return fs.readFileSync(path).toString();</code></pre>
+
+<p>And it would be the same outcome.</p>
+
+<p>The next step would be to create a function that can construct the page with header, content and footer.</p>
+
+<pre><code>export function constructPage() {
+  const header = readPage("public/components/header/header.html");
+  const footer = readPage("public/components/footer/footer.html");
+
+return header + page + footer;
+}</code></pre>
+
+<p>**Explain the function**</p>
+
+<p>**Explain why we export i guess**</p>
+
+<p>**Then later it can turn into something like:**</p>
+
+<pre><code>export function constructPage(page, options = {}) {
+  const header = readPage("public/components/header/header.html");
+  const footer = readPage("public/components/footer/footer.html");
+
+  return (
+    header
+      .replace("{{CSS_LINKS}}", options.cssLink || "")
+      .replace("{{TAB_TITLE}}", options.tabTitle || "Flags")
+    + page
+    + footer
+  );
+}</code></pre>
+
+<p>**Explain options = {}**</p>
+
+<p>**Explain how it works in the HTML file**</p>
+
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="stylesheet" href="/assets/css/index.css" /&gt;
+
+    &lt;title&gt;{{TAB_TITLE}}&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;main&gt;
+</code></pre>
+
+<h2>**A title for page.js**</h2>
+
+<pre><code class="language-javascript">import { readPage, constructPage } from "./templatingEngine.js";
+
+const frontpage = readPage("public/pages/frontpage/frontpage.html");
+
+export const frontpagePage = constructPage(frontpage)
+
+export const aboutPage = constructPage(about, {
+  tabTitle: "Flags | About"
+});</code></pre>
+
+<p>**Explain this code**</p>
+
+<h2>**A title for app.js**</h2>
+
+<pre><code class="language-javascript">import { frontpagePage, aboutPage } from "./templatingEngine/pages.js";
+
+app.get("/", (req, res) => {
+  res.send(frontpagePage);
+});
+
+app.get("/about", (req, res) => {
+  res.send(aboutPage);
+});</code></pre>
+
+<p>**Explain this code**</p>
