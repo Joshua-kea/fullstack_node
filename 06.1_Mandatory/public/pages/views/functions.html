@@ -63,6 +63,8 @@ const getRandomIntArrowFunction = (min, max) => {
 
 // Both functions return a random int between min value and max value</code></pre>
 
+<p>Arrow functions are a type of anonymous function.</p>
+
 <h2>Callback functions</h2>
 
 <p>
@@ -91,6 +93,20 @@ app.get('/flags', (req, res) => {
   res.send("Flags")
 });</code></pre>
 
+<p>You can write an arrow function in different ways.</p>
+
+<pre><code class="language-javascript">// a standard arrow function 
+const redFlag = (country) => {
+  return `${country} has the color red in its flag`;
+};
+
+// shorter, with no {} or return
+const redFlag = (country) => `${country} has the color red in its flag`;
+
+// if it is returning an object, it needs (), 
+// otherwise the {} will be seen as the function body
+const makeFlag = (country) => ({ country: country, colors: [] });</code></pre>
+
 <h2>Hoisting</h2>
 
 <p>
@@ -103,4 +119,92 @@ app.get('/flags', (req, res) => {
 <p>
   This is only true for function declarations. Arrow functions, anonymous
   functions or variables need to be declared before they are used.
+</p>
+
+<pre><code class="language-javascript">console.log(showFlag("Togo", formatAsText));
+// output would be:
+// This is the flag of Togo
+
+function showFlag(country, formatter) {
+  return formatter(country)
+}
+
+function formatAsText(country) {
+  return `This is the flag of ${country}`
+}</code></pre>
+
+<p>
+  Both the showFlag() and the formatAsText() functions are called before they're
+  declared, but the code still works, because of hoisting.
+</p>
+
+<pre><code class="language-javascript">function showFlag(country, formatter) {
+  return formatter(country)
+}
+
+console.log(showFlag("Togo", redFlag));
+// This would throw an error because it is an arrow function
+
+const redFlag = (country) => {
+  return `${country} has the color red in its flag`;
+};</code></pre>
+
+<p>
+  In this example hoisting doesn't work, because redFlag isn't a function
+  declaration, and in this case the order matters. Const needs to be declared
+  before it is used.
+</p>
+
+<h2>Default values</h2>
+
+<p>
+  The short circuit OR operator (||) finds the first true statement. If it is a
+  falsy value, it will continue until it finds a true value.
+</p>
+
+<pre><code class="language-javascript">const flagColor = "" || undefined || "red" || "blue";
+
+console.log(flagColor);
+// the output would be "red"
+// it is the first true statement</code></pre>
+
+<p>Nullish coalescing (??) is specifically used for null or undefined.</p>
+
+<pre><code class="language-javascript">const flagColor = null ?? "red";
+
+console.log(flagColor);
+// the output would be "red";</code></pre>
+
+<p>
+  Optional chaining (?.) returns undefined if the value is null or undefined.
+  This way it doesn't throw an error for null or undefined values.
+</p>
+
+<pre><code class="language-javascript">const bhutan = { country: "Bhutan", details: { symbol: "Dragon" } };
+const nepal = { country: "Nepal" };
+
+function getSymbol(details) {
+  return details?.symbol;
+}
+
+console.log(getSymbol(bhutan.details));
+// the output would be Dragon
+
+console.log(getSymbol(nepal.details));
+// the output would be undefined</code></pre>
+
+<p>The same issue could also be solved with the default parameter (= {}).</p>
+
+<pre><code class="language-javascript">function getSymbol(details = {}) {
+  return details.symbol;
+}
+
+console.log(getSymbol(bhutan.details));
+// the output would be Dragon
+
+console.log(getSymbol(nepal.details));
+// the output would be undefined</code></pre>
+
+<p>
+  The default parameter is usually the preferred solution, due to readability.
 </p>

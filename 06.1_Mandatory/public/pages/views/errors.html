@@ -73,7 +73,8 @@ flag.color; # the error occurred at this specific char
      ^
 
 TypeError: Cannot read properties of undefined (reading 'color') # error description
-    at Object.&lt;anonymous&gt; (&lt;ABSOLUTE_PATH&gt;/app.js:2:6) # name of file and line number again. The 6 is the chars from the left margin.
+    at Object.&lt;anonymous&gt; (&lt;ABSOLUTE_PATH&gt;/app.js:2:6) 
+    # name of file and line number again. The 6 is the chars from the left margin.
     at Module._compile (node:internal/modules/cjs/loader:1761:14)
     at Object..js (node:internal/modules/cjs/loader:1893:10)
     at Module.load (node:internal/modules/cjs/loader:1481:32)
@@ -99,7 +100,7 @@ TypeError: Cannot read properties of undefined (reading 'color') # error descrip
 
 <p>If you get an error such as:</p>
 
-<pre><code>Error: ENOENT: no such file or directory, stat 'C:\Users\[user]\fullstack_node\02_First_Serverindex.html'</code></pre>
+<pre><code>Error: ENOENT: no such file or directory, stat '&lt;ABSOLUTE_PATH&gt;index.html'</code></pre>
 
 <p>
   The error is quite clear: no such file or directory, at that specific path.
@@ -108,7 +109,7 @@ TypeError: Cannot read properties of undefined (reading 'color') # error descrip
 
 <p>You can write the following in the terminal:</p>
 
-<pre><code>C:\Users\[user]\fullstack_node\02_First_Serverindex.html</code></pre>
+<pre><code>&lt;ABSOLUTE_PATH&gt;index.html</code></pre>
 
 <p>
   And see if you get an error. If you do, then the file doesn't exist on that
@@ -116,7 +117,7 @@ TypeError: Cannot read properties of undefined (reading 'color') # error descrip
   work because of a missing "\". The correct path would be:
 </p>
 
-<pre><code>C:\Users\[user]\fullstack_node\02_First_Server\index.html</code></pre>
+<pre><code>&lt;ABSOLUTE_PATH&gt;\index.html</code></pre>
 
 <h2>Error-handling</h2>
 
