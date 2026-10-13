@@ -6,10 +6,12 @@ app.use(express.static("public"));
 
 import {
   frontpagePage,
+  apisPage,
   commandsPage,
   cssPage,
   datesPage,
   errorsPage,
+  fetchesPage,
   functionsPage,
   fundamentalsPage,
   htmlPage,
@@ -24,6 +26,10 @@ import {
 
 app.get("/", (req, res) => {
   res.send(frontpagePage);
+});
+
+app.get("/apis", (req, res) => {
+  res.send(apisPage);
 });
 
 app.get("/fundamentals", (req, res) => {
@@ -48,6 +54,10 @@ app.get("/modules", (req, res) => {
 
 app.get("/errors", (req, res) => {
   res.send(errorsPage);
+});
+
+app.get("/fetches", (req, res) => {
+  res.send(fetchesPage);
 });
 
 app.get("/servers", (req, res) => {

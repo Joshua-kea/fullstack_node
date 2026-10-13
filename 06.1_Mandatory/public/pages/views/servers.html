@@ -1,102 +1,5 @@
 <h1>Introduction to starting a server</h1>
 
-<h2>Rest API conventions</h2>
-
-<p>
-  First thing first, we'll need to understand the three HTTP conventions. The
-  conventions are as follows:
-</p>
-
-<ul>
-  <li>Using the correct HTTP verb (GET, POST, PUT, PATCH, DELETE)</li>
-  <li>Using the correct order, as shown in the table below.</li>
-  <li>
-    Using the correct naming conventions. It has to be a noun and it has to be
-    in plural.
-  </li>
-</ul>
-
-<p>Let's create an example for a website with flags.</p>
-
-<table>
-  <tr>
-    <th>HTTP Method</th>
-    <th>Endpoint</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td><strong>GET</strong></td>
-    <td>/flags</td>
-    <td>Retrieves all flags</td>
-  </tr>
-  <tr>
-    <td><strong>GET</strong></td>
-    <td>/flags/:id</td>
-    <td>Retrieves a specific flag by id</td>
-  </tr>
-  <tr>
-    <td><strong>POST</strong></td>
-    <td>/flags</td>
-    <td>Creates a flag resource</td>
-  </tr>
-  <tr>
-    <td><strong>PUT</strong></td>
-    <td>/flags/:id</td>
-    <td>Replaces an entire flag resource</td>
-  </tr>
-  <tr>
-    <td><strong>PATCH</strong></td>
-    <td>/flags/:id</td>
-    <td>Replaces parts of the flag resource</td>
-  </tr>
-  <tr>
-    <td><strong>DELETE</strong></td>
-    <td>/flags/:id</td>
-    <td>Deletes a flag resource.</td>
-  </tr>
-</table>
-
-<p>
-  Let's look at the order of it. We'll start with a GET, this makes a lot of
-  sense, since we'll start out with retrieving information, often some kind of
-  frontpage which retrieves a html file.
-</p>
-
-<p>
-  The next method is also GET, once again we're retrieving information, this
-  time from a specific id.
-</p>
-
-<p>
-  We then have POST, which makes sense to have after the GET methods, as we'll
-  need to retrieve something before we can add our own addition, such as adding
-  a new flag to a list.
-</p>
-
-<p>
-  PUT and PATCH are the next 2 methods. It is worth noting that the PUT method,
-  is rarely used, as it is rarely necessary to edit an entire resource.
-</p>
-
-<p>
-  Keep in mind that PUT also gives the resource a new ID. without simply
-  deleting and creating a new resource. If editing a resource it makes more
-  sense to use PATCH. Again, however, it makes sense to have these methods after
-  POST, as you'll need a resource to edit.
-</p>
-
-<p>
-  And last, but not least, we have DELETE which makes perfect sense to be the
-  very last method, as this is the one to remove the resource.
-</p>
-
-<p>
-  Note that every endpoint uses flags in plural instead of flag in singular.
-  This is part of the naming convention, as mentioned earlier. Notice how in
-  Node.js we use /:id. In Java I am used to using /{id}, but the pathvariable is
-  a slightly different syntax in Node.js
-</p>
-
 <h2>Express</h2>
 
 <h2>Client/Server and app.js</h2>
@@ -107,7 +10,7 @@
   generic data-type to send data.
 </p>
 
-<pre><code>app.get('/', (req, res) => {
+<pre><code class="language-javascript">app.get('/', (req, res) => {
   res.send({ data: "Hello, how are you?" });
 });</code></pre>
 
@@ -120,178 +23,14 @@
   express. Without res.send(), the browser will load forever.
 </p>
 
-<h2>Status codes</h2>
-
-<table>
-  <tr>
-    <th>Status Code</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>2xx</td>
-    <td>OK</td>
-  </tr>
-  <tr>
-    <td>3xx</td>
-    <td>Redirect</td>
-  </tr>
-  <tr>
-    <td>4xx</td>
-    <td>Client-side error</td>
-  </tr>
-  <tr>
-    <td>5xx</td>
-    <td>Server-side error</td>
-  </tr>
-</table>
-
-<pre><code>if (!foundFlag) {
-  return res.status(404).send({ data: `No flag found by id ${providedId}` });
-}
-  res.send({ data: foundFlag });</code></pre>
-
-<h2>app.js</h2>
-
-<p>Delete method example:</p>
-
-<pre><code>app.delete("/flags/:id", (req, res) => {
-const providedId = Number(req.params.id);
-const foundFlagIndex = flags.findIndex(
-  (flag) => flag.id === providedId,
-);
-
-if (foundFlagIndex === -1) {
-  return res.status(404).send({ errorMessage: `No flag found by id ${providedId}` });
-}
-        
-flags.splice(foundFlagIndex, 1);        
-  res.status(204).send();
-})</code></pre>
-
-<p>Patch method example:</p>
-
-<pre><code>app.patch('/flags/:id', (req, res) => {
-  const providedId = Number(req.params.id);
-  const foundFlagIndex = flags.findIndex(
-    (flag) => flag.id === providedId,
-  );
-
-  if (foundFlagIndex === -1) {
-    return res.status(404).send({ errorMessage: `No flag found by id ${providedId}`});
-  }
-        
-  const providedFlag = req.body;
-  const foundFlag = flags[foundFlagIndex];
-
-  const flagToCreate = {...foundFlag, ...providedFlag, id: providedId };
-
-  flags[foundFlagIndex] = flagToCreate;
-
-  res.send({ data: flagToCreate });
-});</code></pre>
-
-<p>
-  In a patch method it is important to put id: providedId at the end, to make
-  sure the id isn't lost in the process. If you put it as the first thing, it
-  might not stay the same id.
-</p>
-
-<p>Post method example:</p>
-
-<pre><code>app.post('/flags', (req, res) => {
-  const providedFlag = req.body;
-
-  providedFlag.id = nextId++;
-
-  flags.push(providedFlag);
-
-  res.send({ data: providedFlag });
-});</code></pre>
-
-<p>app.listen() must always be at the bottom of the app.js file.</p>
-
-<pre><code>const PORT = 8080;
-  app.listen(PORT, (error) => {
-    if (error) {
-      console.log("There was an error starting the server", error);
-    }
-  console.log("Server is running on port", PORT);
-});</code></pre>
-
-<h2>Fetch</h2>
-
-<pre><code class="language-javascript">app.get("/proxy", (req, res) => {
-  fetch("https://www.google.com")
-    .then((response) => response.text())
-    .then((result) => res.send(result));  
-});</code></pre>
-
-<p>
-  In this example we're fetching Google.com, to create a proxy of Google.com.
-  Google is text HTML, which is why we use .text() instead of .json(). The
-  result is the HTML page.
-</p>
-
-<p>
-  If your browser settings is in a language with non-English symbols, you might
-  get a weird looking website. A way to solve that, is by using arrayBuffer()
-  and TextDecoder().
-</p>
-
-<pre><code class="language-javascript">app.get("/proxy", (req, res) => {
-  fetch("https://www.google.com")
-    .then((response) => response.arrayBuffer())
-    .then((buffer) => {
-      const decoder = new TextDecoder("ISO-8859-1");
-      const text = decoder.decoder(buffer);
-      res.send();
-    })
-});</code></pre>
-
-<p>
-  This example is set to the Danish standard, so the website can show Danish
-  symbols.
-</p>
-
-<h2>Server side redirect</h2>
-
-<h2>API and CORS</h2>
-
-<h2>Parsing JSON with Express</h2>
-
-<p>To parse JSON, you must first enable the express JSON-parser like so:</p>
-
-<pre><code>app.use(express.json());</code></pre>
-
-<p>It has to be right under your imports at the top of the file.</p>
-
-<h2>Query String</h2>
-
-<pre><code>http://localhost:8080/bars/forgottenItems?wallet=200&keys=my_house&my_baby=Sam</code></pre>
-
-<p>
-  The end of the URL ('forgottenItems?wallet=200&keys=my_house&my_baby=Sam')
-  above is called the query string, which is a way to save information.
-</p>
-
-<h2>dirname</h2>
-<p>
-  To avoid putting your exact path name, with your personal folders, in the
-  program you should instead use __dirname.
-</p>
-
-<pre><code>app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-});</code></pre>
-
-<h2>Example of usage</h2>
+<h2>Running the server</h2>
 
 <p>
   If we say there is a folder called Flags_Project which has a file called
   app.js inside, we could do the following:
 </p>
 
-<pre><code>cd Flags_Project
+<pre><code class="language-bash">cd Flags_Project
 node app.js</code></pre>
 
 <p>
@@ -301,7 +40,7 @@ node app.js</code></pre>
 
 <p>Luckily there is a faster way to run the server.</p>
 
-<pre><code>cd Flags_Project
+<pre><code class="language-bash">cd Flags_Project
 nodemon app.js</code></pre>
 
 <p>
@@ -320,4 +59,44 @@ nodemon app.js</code></pre>
   <a href="https://www.npmjs.com/package/nodemon">Install nodemon from npm</a>
 </p>
 
-<pre><code>npm install -g nodemon</code></pre>
+<pre><code class="language-bash">npm install -g nodemon</code></pre>
+
+<h2>Server side redirect</h2>
+
+<pre><code class="language-javascript">app.get("/", (req, res) => {
+  res.send(frontpage);  
+});
+
+app.get("/frontpageRedirect", (req, res) => {
+  res.redirect("/");
+});</code></pre>
+
+<p>Here the "/frontpageRedirect" redirects to "/".</p>
+
+<h2>Parsing JSON with Express</h2>
+
+<p>To parse JSON, you must first enable the express JSON-parser like so:</p>
+
+<pre><code class="language-javascript">app.use(express.json());</code></pre>
+
+<p>It has to be right under your imports at the top of the file.</p>
+
+<h2>Query String</h2>
+
+<pre><code>http://localhost:8080/bars/forgottenItems?wallet=200&keys=my_house&my_baby=Sam</code></pre>
+
+<p>
+  The end of the URL ('forgottenItems?wallet=200&keys=my_house&my_baby=Sam')
+  above is called the query string, which is a way to save information.
+</p>
+
+<h2>dirname</h2>
+
+<p>
+  To avoid putting your exact path name, with your personal folders, in the
+  program you should instead use __dirname.
+</p>
+
+<pre><code class="language-javascript">app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});</code></pre>

@@ -1,10 +1,12 @@
 import { readPage, constructPage } from "./templatingEngine.js";
 
 const frontpage = readPage("public/pages/frontpage/frontpage.html");
+const apis = readPage("public/pages/views/apis.html");
 const commands = readPage("public/pages/views/commands.html");
 const css = readPage("public/pages/views/css.html");
 const dates = readPage("public/pages/views/dates.html");
 const errors = readPage("public/pages/views/errors.html");
+const fetches = readPage("public/pages/views/fetches.html");
 const functions = readPage("public/pages/views/functions.html");
 const fundamentals = readPage("public/pages/views/fundamentals.html");
 const html = readPage("public/pages/views/html.html");
@@ -18,6 +20,14 @@ const tools = readPage("public/pages/views/tools.html");
 
 export const frontpagePage = constructPage(frontpage, {
   activeNav: "",
+});
+
+export const apisPage = constructPage(apis, {
+  tabTitle: "Full-Stack | API",
+  cssLink: `<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/styles/stackoverflow-light.min.css">`,
+  jsLink: `<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/highlight.min.js"></script>`,
+  script: `<script>hljs.highlightAll();</script>`,
+  activeNav: "apis",
 });
 
 export const commandsPage = constructPage(commands, {
@@ -47,6 +57,14 @@ export const errorsPage = constructPage(errors, {
   jsLink: `<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/highlight.min.js"></script>`,
   script: `<script>hljs.highlightAll();</script>`,
   activeNav: "errors",
+});
+
+export const fetchesPage = constructPage(fetches, {
+  tabTitle: "Full-Stack | Fetch",
+  cssLink: `<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/styles/stackoverflow-light.min.css">`,
+  jsLink: `<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/highlight.min.js"></script>`,
+  script: `<script>hljs.highlightAll();</script>`,
+  activeNav: "fetches",
 });
 
 export const functionsPage = constructPage(functions, {
