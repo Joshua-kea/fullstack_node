@@ -184,13 +184,3 @@ flags.splice(foundFlagIndex, 1);
 
   res.send({ data: providedFlag });
 });</code></pre>
-
-<p>app.listen() must always be at the bottom of the app.js file.</p>
-
-<pre><code>const PORT = 8080;
-  app.listen(PORT, (error) => {
-    if (error) {
-      console.log("There was an error starting the server", error);
-    }
-  console.log("Server is running on port", PORT);
-});</code></pre>
