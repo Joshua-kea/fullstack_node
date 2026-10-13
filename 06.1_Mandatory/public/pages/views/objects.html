@@ -1,12 +1,30 @@
 <h1>Objects</h1>
 
+<p>An object is written with {}. It has key-value pairs.</p>
+
+<pre><code class="language-javascript">const flag = {
+  country: "Cyprus",
+  color: "White",
+  symbol: "Map of Cyprus"
+};</code></pre>
+
+<p>
+  Here the object is "flag". The country, color, and symbol are all keys.
+  "Cyprus", "White", and "Map of Cyprus" are all values. You can dot your way
+  into a specific value.
+</p>
+
+<pre><code class="language-javascript">console.log(flag.country);
+// output is "Cyprus"</code></pre>
+
 <h2>Spread operator</h2>
 
-<pre><code>const labrador = {
-  color: "brown",
-  color: "white",
-  color: "multi"
-  energyLevel: 9.4
+<pre><code class="language-javascript">const flagOfPapuaNewGuinea = {
+  country: "Papua New Guinea",
+  color: "Red",
+  color: "Black",
+  color: "Multi",
+  symbol: "Bird of paradise"
 };</code></pre>
 
 <p>
@@ -14,22 +32,25 @@
   colors are ignored.
 </p>
 
-<pre><code>const labrador = {
-  color: "brown",
-  color: "white",
-  color: "multi",
-  energyLevel: 9.4
+<pre><code class="language-javascript">const flagOfPapuaNewGuinea = {
+  country: "Papua New Guinea",
+  color: "Multi",
+  symbol: "Bird of paradise"
 };
 
-const chihuahua = {
-  energyLevel: 10.0,
-  isScaredOfAnything: false
+const flagOfSeychelles = {
+  country: "Seychelles",
+  continent: "Africa",
+  yearOfNationalFlag: 1996
 };
 
-console.log({...labrador, ...chihuahua});</code></pre>
+console.log({...flagOfPapuaNewGuinea, ...flagOfSeychelles});
+// output would be:
+// { country: 'Seychelles', color: 'Multi', symbol: 'Bird of Paradise',
+// continent: 'Africa', yearOfNationalFlag: 1996 }</code></pre>
 
 <p>
-  By using the spread operator, it becomes one object. Therefore the color is
-  multi, but the energyLevel would now be 10, as it overwrites the labrador's
-  energyLevel.
+  By using the spread operator, it becomes one object. Therefore the keys that
+  the 2 objects share, are overwritten by the last object, and the keys they
+  don't share don't have their values overwritten.
 </p>
