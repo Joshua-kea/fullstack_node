@@ -1,52 +1,119 @@
 <h1>Project setup</h1>
 
-<p>main folder, public, frontpage, util. Keep it clean and readable.</p>
-
 <h2>package.json</h2>
 
-<p>”Package-name”: ”version”</p>
+<p>
+  The project's packages need to be written in a package.json file as
+  "package-name": "version".
+</p>
 
-<pre><code>{
+<pre><code class="language-json">{
     "dependencies": {
-        express": "5.2.1"
+        "express": "5.2.1"
     }
 }</code></pre>
 
-<h2>app.js</h2>
-
 <p>
-  The server should always be called app.js. <br />
-  Here is an example using CommonJS
+  Using the <code>npm init</code> command, will create the package.json for you.
 </p>
 
-<pre><code>const express = require('express');
-const app = express();
-
-const PORT = 8080;
-app.listen(PORT, (error) => {
-    if (error) {
-        console.log("There was an error starting the server", error);
-    }
-    console.log("Server is running on port", PORT);
-});</code></pre>
+<h2>Scripts</h2>
 
 <p>
-  Import express with require(), initiate express and save it in a variable.
-  Make it listen to a port. <br />
-  When using ES Modules, it is done slightly differently, as shown below:
+  The command <code>npm run &lt;script-name&gt;</code> runs the scripts defined
+  in package.json. Scripts are written like shell commands and work like shell
+  commands.
 </p>
 
-<pre><code>import express from "express";
-const app = express();
+<p>It is very common to make a "start" and "start-dev" script.</p>
 
-const PORT = 8080;
-app.listen(PORT, (error) => {
-    if (error) {
-        console.log("There was an error starting the server", error);
-    }
-    console.log("Server is running on port", PORT);
-});</code></pre>
+<pre><code class="language-json">"scripts": {
+    "start": "cross-env PORT=8080 node app.js",
+    "start-dev": "cross-env PORT=8080 nodemon app.js"
+}</code></pre>
 
-<h2>folder structure</h2>
+<p>
+  cross-env is a script, and the rest are arguments. It is also called a
+  wrapper. nodemon is also a wrapper for node, so start-dev has a wrapper around
+  a wrapper.
+</p>
 
-<h2>environment variables</h2>
+<p>
+  cross-env makes it possible to set environment variables no matter if you are
+  on Mac, Windows or Linux.
+</p>
+
+<h2>Environment variables</h2>
+
+<p>
+  process has a lot of information about things. process.env is an object with
+  the environment variables, which you can dot into, for example
+  process.env.PORT. Environment variables are written in all caps with
+  underscores.
+</p>
+
+<pre><code class="language-javascript">const PORT = process.env.PORT ?? 8080;</code></pre>
+
+<p>
+  If PORT is not set (it is null or undefined), the port will be 8080. ?? is
+  used in this example, because nullish coalescing is specifically for
+  null/undefined.
+</p>
+
+<h2>Folder structure</h2>
+
+<p>
+  It is important to think about the folder structure, and keep it easy to
+  navigate both for yourself and others.
+</p>
+
+<pre><code class="nohighlight">Project_Folder
+├── node_modules
+├── public
+│   ├── assets
+│   │   ├── css
+│   │   │   └── index.css
+│   │   └── images
+│   │       └── favicon.png
+│   ├── components
+│   │   ├── footer
+│   │   │   └── footer.html
+│   │   └── header
+│   │       └── header.html
+│   └── pages
+│       ├── frontpage
+│       │   ├── frontpage.html
+│       │   └── frontpage.js
+│       └── about
+│           └── about.html
+├── templatingEngine
+│   ├── pages.js
+│   └── templatingEngine.js
+├── util
+│   └── sharedFile.js
+├── app.js
+├── nodemon.json
+├── package-lock.json
+└── package.json</code></pre>
+
+<p>
+  The folder util, is used for the server. It holds any file that is shared
+  across multiple files.
+</p>
+
+<p>
+  The public folder is where all the publicly accessible files are. It is used
+  for the client. To make it public you have to let express know in app.js.
+</p>
+
+<pre><code class="language-javascript">app.use(express.static("public"));</code></pre>
+
+<p>
+  With express.static all the files in the public folder become public and can
+  be reached with for example /frontpage.css.
+</p>
+
+<p>
+  Static is a security feature, so Express doesn't just serve every file. You
+  have to tell it which ones may be served, so you can protect secret files.
+</p>
