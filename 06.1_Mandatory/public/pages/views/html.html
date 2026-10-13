@@ -58,6 +58,22 @@
 
 <p>The &lt;head&gt; tag contains data that is not shown on the page.</p>
 
+<p>
+  When adding JavaScript &lt;script&gt; tags, it is important to think about the
+  order in which they are loaded in. The HTML file is read from top to bottom,
+  so if, for instance, you have flag.js which uses a function that is defined in
+  country.js, then country.js needs to be loaded in HTML before flag.js is
+  loaded.
+</p>
+
+<pre><code class="language-html">&lt;script src="/country.js"&gt;&lt;/script&gt;
+&lt;script src="/flag.js"&gt;&lt;/script&gt;</code></pre>
+
+<p>
+  If flag.js is loaded before country.js, then flag.js will fail, because the
+  function from country.js doesn't exist yet.
+</p>
+
 <h2>XSS (Cross-Site Scripting)</h2>
 <p>
   XSS is when a person from the outside can add script to the website by for
