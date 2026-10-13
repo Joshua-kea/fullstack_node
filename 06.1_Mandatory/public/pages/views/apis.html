@@ -3,7 +3,7 @@
 <h2>Rest API conventions</h2>
 
 <p>
-  First thing first, we'll need to understand the three HTTP conventions. The
+  First things first, we'll need to understand the three HTTP conventions. The
   conventions are as follows:
 </p>
 
@@ -59,7 +59,7 @@
 <p>
   Let's look at the order of it. We'll start with a GET, this makes a lot of
   sense, since we'll start out with retrieving information, often some kind of
-  frontpage which retrieves a html file.
+  frontpage which retrieves an HTML file.
 </p>
 
 <p>
@@ -79,10 +79,9 @@
 </p>
 
 <p>
-  Keep in mind that PUT also gives the resource a new ID. without simply
-  deleting and creating a new resource. If editing a resource it makes more
-  sense to use PATCH. Again, however, it makes sense to have these methods after
-  POST, as you'll need a resource to edit.
+  Keep in mind that PUT replaces the whole resource, also giving it a new ID. If
+  editing a resource it makes more sense to use PATCH. Again, however, it makes
+  sense to have these methods after POST, as you'll need a resource to edit.
 </p>
 
 <p>
@@ -127,30 +126,26 @@
 }
   res.send({ data: foundFlag });</code></pre>
 
-<h2>app.js</h2>
+<h2>HTTP method examples</h2>
 
-<p>Delete method example:</p>
+<p>Post method example:</p>
 
-<pre><code class="language-javascript">app.delete("/flags/:id", (req, res) => {
-const providedId = Number(req.params.id);
-const foundFlagIndex = flags.findIndex(
-  (flag) => flag.id === providedId,
-);
+<pre><code class="language-javascript">app.post('/flags', (req, res) =&gt; {
+  const providedFlag = req.body;
 
-if (foundFlagIndex === -1) {
-  return res.status(404).send({ errorMessage: `No flag found by id ${providedId}` });
-}
-        
-flags.splice(foundFlagIndex, 1);        
-  res.status(204).send();
-})</code></pre>
+  providedFlag.id = nextId++;
+
+  flags.push(providedFlag);
+
+  res.send({ data: providedFlag });
+});</code></pre>
 
 <p>Patch method example:</p>
 
-<pre><code class="language-javascript">app.patch('/flags/:id', (req, res) => {
+<pre><code class="language-javascript">app.patch('/flags/:id', (req, res) =&gt; {
   const providedId = Number(req.params.id);
   const foundFlagIndex = flags.findIndex(
-    (flag) => flag.id === providedId,
+    (flag) =&gt; flag.id === providedId,
   );
 
   if (foundFlagIndex === -1) {
@@ -173,14 +168,18 @@ flags.splice(foundFlagIndex, 1);
   might not stay the same id.
 </p>
 
-<p>Post method example:</p>
+<p>Delete method example:</p>
 
-<pre><code class="language-javascript">app.post('/flags', (req, res) => {
-  const providedFlag = req.body;
+<pre><code class="language-javascript">app.delete("/flags/:id", (req, res) =&gt; {
+    const providedId = Number(req.params.id);
+    const foundFlagIndex = flags.findIndex(
+        (flag) =&gt; flag.id === providedId,
+    );
 
-  providedFlag.id = nextId++;
-
-  flags.push(providedFlag);
-
-  res.send({ data: providedFlag });
+    if (foundFlagIndex === -1) {
+        return res.status(404).send({ errorMessage: `No flag found by id ${providedId}` });
+    }
+        
+    flags.splice(foundFlagIndex, 1);        
+    res.status(204).send();
 });</code></pre>
