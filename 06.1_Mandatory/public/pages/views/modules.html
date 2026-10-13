@@ -29,16 +29,24 @@
       <th>ES Modules</th>
       <td>
         Use import<br />
-        <code>import file from './file.js';</code>
+        <code>import file from './file.js';</code> <br/>
+        <code>import { file } from './file.js';</code>
       </td>
       <td>
         Use export or export default<br />
         <code>export default file;</code><br />
-        <code>export const file;</code>
+        <code>export const file = "file";</code>
       </td>
     </tr>
   </tbody>
 </table>
+
+<p>Importing and exporting functionality between .js files, is the reason to use modules.</p>
+
+<p>It is important to be careful with circular dependencies, where file A imports from file B, and file B also imports 
+  from file A. That creates a circle, and in cases like that neither file can finish loading without the other, and it can 
+  cause bugs and crashes.
+</p>
 
 <h2>CommonJS</h2>
 
@@ -51,6 +59,10 @@
 
 <pre><code class="language-javascript">const data = require('./data.json');</code></pre>
 
+<p>Frontend imports are done with a &lt;script&gt; tag.</p>
+
+<pre><code class="language-html">&lt;script src="/file.js"&gt;&lt;/script&gt;</code></pre>
+
 <h2>ES Modules</h2>
 
 <p>To use ES Modules, you have to actively change the type in package.json</p>
@@ -59,7 +71,27 @@
         "type": "module"     
 }</code></pre>
 
+<p>ES Modules can't import .json files in the same way as CommonJS can. The solution is using the fs library.</p>
+
+<pre><code class="language-javascript">import fs from 'fs';
+const data = JSON.parse(fs.readFileSync('./data.json', 'utf-8'));</code></pre>
+
+<p>When using export default, the variable name doesn't matter when importing.</p>
+
+<pre><code class="language-javascript">// file: colors.js
+const colors = ["red", "blue", "yellow", "green", "orange"];
+export default colors;
+
+// file: flags.js
+import flagColors from './colors.js';
+// in colors.js it is called "colors", but in flags.js I called it "flagColors"
+// Any name would work. Without curly braces {}, you always import the default</code></pre>
+
+<p>Frontend imports with ES Modules, require the type set to module</p>
+
+<pre><code class="language-html">&lt;script type="module" src="/file.js"&gt;&lt;/script&gt;</code></pre>
+
 <p>
-  With modules it is possible to reuse code between backend and frontend, which
+  ES Modules make it possible to reuse code between backend and frontend, which
   can be relevant for validation, for example for a login system.
 </p>
