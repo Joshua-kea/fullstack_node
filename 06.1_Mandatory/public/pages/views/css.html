@@ -108,6 +108,14 @@ main {
   for the margin, we use 95vh.
 </p>
 
+<p>You can also use vw for viewport width and min-width to get the minimum width.</p>
+
+<p>It is not recommended to use px, as it is a fixed size. It usually is best to use relative sizes, since 
+  screen sizes differ. Relative sizes can be rem (relative to the root element) and em (relative to the element). This is also helpful 
+  in terms of accessibility, since it sizes up and down depending on the user's font size settings.
+  It is preferred to use rem, because it is more predictable.
+</p>
+
 <p>
   The display needs to be set to flex to make sure flex-direction works as
   intended. flex-direction is set to column, meaning the children are vertical.
