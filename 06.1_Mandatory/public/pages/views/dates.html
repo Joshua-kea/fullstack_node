@@ -4,7 +4,7 @@
 
 <h2>Current date and time</h2>
 
-<pre><code>Date()
+<pre><code class="language-javascript">Date()
 // output will be a String such as "Sat Oct 10 2026 11:54:54 GMT+0200 (Central European Summer Time)"
   
 Date.now()
@@ -30,7 +30,7 @@ Date.now()
   an object, so you can call methods on it.
 </p>
 
-<pre><code>new Date();
+<pre><code class="language-javascript">new Date();
 // output will be an object, shown as:
 //  "Sat Oct 10 2026 11:54:54 GMT+0200 (Central European Summer Time)"
 
@@ -55,7 +55,7 @@ new Date(2026, 0, 1);
   date and time is separated with a T.
 </p>
 
-<pre><code>Date.parse("1970-01-01");
+<pre><code class="language-javascript">Date.parse("1970-01-01");
 // This exact example gives 0 as output
 
 Date.parse("2026-01-01");
@@ -89,7 +89,7 @@ birthday.getFullYear();
 
 <h2>Formatting dates</h2>
 
-<pre><code>birthday.toLocaleDateString();
+<pre><code class="language-javascript">birthday.toLocaleDateString();
 // output is 2.10.2026 if located in Denmark.
 
 birthday.toLocaleDateString("en-uk");
@@ -112,7 +112,7 @@ birthday.toLocaleDateString("en-uk", options);
   cause major bugs without proper understanding.
 </p>
 
-<pre><code>Date.parse("1970-01-01");
+<pre><code class="language-javascript">Date.parse("1970-01-01");
 // The output here would be 0
 
 new Date(1970, 0, 1).getTime();

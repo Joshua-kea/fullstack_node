@@ -11,8 +11,8 @@
 
 <p>
   You now have a blank page, and a smart way to start your HTML page is by
-  simply writing HTML and receive a dropdown of options. pick HTML:5, and you
-  will receive a boilerplate HTML page.
+  simply writing "HTML" and a dropdown of options will show. Pick HTML:5, and
+  you will receive a boilerplate HTML page.
 </p>
 
 <h2>Tags, IDs, and classes</h2>
@@ -72,7 +72,7 @@
   innerHTML, you can also create an escape HTML function.
 </p>
 
-<pre><code>function escapeHTML(string) {
+<pre><code class="language-javascript">function escapeHTML(string) {
     return string
         .replaceAll('&amp;', '&amp;amp;')
         .replaceAll('&lt;', '&amp;lt;')
@@ -80,5 +80,38 @@
         .replaceAll('&quot;', '&amp;quot;')
         .replaceAll('&#39;', '&amp;#39;')
         .replaceAll('&#x60;', '&amp;#x60;')
-        .replaceAll('&#x2F;', '&amp;#x2F;')
+        .replaceAll('&#x2F;', '&amp;#x2F;');
 }</code></pre>
+
+<p>
+  It is possible to download the escape HTML function from a library, but it can
+  feel counterintuitive to trust another source for something that is supposed
+  to protect you from outside scripts. If using a library, it is important to
+  choose a well-maintained and widely trusted source. Libraries have the benefit
+  of having been tested against edge cases and making sure, that your function
+  doesn't accidentally have spelling errors or typos. It is a matter of
+  preference.
+</p>
+
+<h2>Datalist</h2>
+
+<p>
+  If you want an autocomplete dropdown for a searchbar, you can use the
+  &lt;datalist&gt; tag.
+</p>
+
+<pre><code class="language-html">&lt;!-- the search input --&gt;
+&lt;input list="flags-list"&gt;
+
+&lt;!-- the datalist --&gt;
+&lt;datalist id="flags-list"&gt;
+  &lt;option&gt;Andorra&lt;/option&gt;
+  &lt;option&gt;Mozambique&lt;/option&gt;
+  &lt;option&gt;Dominican Republic&lt;/option&gt;
+&lt;/datalist&gt;</code></pre>
+
+<p>
+  Now if you search for "A" it will give a dropdown for all 3 countries, as they
+  all have A in it. If you search "And" it will shorten the autocomplete to only
+  have "Andorra".
+</p>

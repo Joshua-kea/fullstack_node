@@ -16,7 +16,7 @@
 
 <h2>Side effects</h2>
 
-<pre><code>for (var i = 0; i &lt;= 5; i++) {
+<pre><code class="language-javascript">for (var i = 0; i &lt;= 5; i++) {
   setTimeout(() =&gt; {
     console.log(i)
   }, 1000);
@@ -30,7 +30,7 @@
   6 printed six times.
 </p>
 
-<pre><code>for (let i = 0; i &lt;= 5; i++) {
+<pre><code class="language-javascript">for (let i = 0; i &lt;= 5; i++) {
   setTimeout(() =&gt; {
     console.log(i)
   }, 1000);
@@ -43,7 +43,7 @@
   gets its own i, so each callback is able to remember its own value.
 </p>
 
-<pre><code>{
+<pre><code class="language-javascript">{
   var someValue = 123;
     {
       var someValue = 456;
@@ -57,7 +57,7 @@
   simply changed from 123 to 456.
 </p>
 
-<pre><code>{
+<pre><code class="language-javascript">{
   let someOtherValue = true;
     {
       let someOtherValue = false;
@@ -87,7 +87,7 @@
   variable. For example:
 </p>
 
-<pre><code>const countries = [
+<pre><code class="language-javascript">const countries = [
 { name: "Lesotho", gdp: 2.57 },
 { name: "Papua New Guinea", gdp: 34.40 },
 { name: "Saint Vincent and the Grenadines", gdp: 1.26 }
@@ -103,7 +103,7 @@ const countriesWithGDPUpdated = ...</code></pre>
 <h2>Math()</h2>
 <p>Math.floor rounds down, so the float becomes an int.</p>
 
-<pre><code>getRandomInt(5, 10);
+<pre><code class="language-javascript">getRandomInt(5, 10);
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -117,7 +117,7 @@ function getRandomInt(min, max) {
 
 <h2>The difference between ++value and value++</h2>
 
-<pre><code>let value = 1;
+<pre><code class="language-javascript">let value = 1;
 value++; // 1: returns the value, and then adds 1
 value; // 2: returns the value
 value++; // 2: returns the value and then adds 1</code></pre>
@@ -128,7 +128,7 @@ value++; // 2: returns the value and then adds 1</code></pre>
   adds 1.
 </p>
 
-<pre><code>let value = 1;
+<pre><code class="language-javascript">let value = 1;
 ++value; // 2: adds 1, then returns the value
 value; // 2: returns the value
 ++value; // 3: adds 1, then returns the value</code></pre>

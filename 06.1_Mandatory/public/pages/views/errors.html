@@ -32,16 +32,12 @@ flag.color;</code></pre>
 
 <p>The debugger-keyword can be a helpful tool for client-side errors.</p>
 
-<pre><code class="language-javascript">let flag;
-debugger;
-flag.color;</code></pre>
-
 <p>
   When using Firefox, open the Debugger window in DevTools. You will be able to
   see, that the code pauses where the debugger keyword is.
 </p>
 
-<pre><code>let flag; // flag: undefined
+<pre><code class="language-javascript">let flag; // flag: undefined
 debugger; // the code stops here
 flag.color;</code></pre>
 
@@ -68,7 +64,7 @@ flag.color;</code></pre>
   possible to find the color on an undefined flag.
 </p>
 
-<pre><code class="language-python">&lt;ABSOLUTE_PATH&gt;/app.js:2 # name of the file is app.js, and the error happened on line 2
+<pre><code>&lt;ABSOLUTE_PATH&gt;/app.js:2 # name of the file is app.js, and the error happened on line 2
 flag.color; # the error occurred at this specific char
      ^
 
@@ -141,7 +137,7 @@ TypeError: Cannot read properties of undefined (reading 'color') # error descrip
   true. That is how a case like this works:
 </p>
 
-<pre><code>if (error) {
+<pre><code class="language-javascript">if (error) {
   console.log("There was an error", error);
   return;
 }
