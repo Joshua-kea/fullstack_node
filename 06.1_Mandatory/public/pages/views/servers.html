@@ -52,28 +52,49 @@
   <tr>
     <td><strong>DELETE</strong></td>
     <td>/flags/:id</td>
-    <td>Deletes a flag ressource.</td>
+    <td>Deletes a flag resource.</td>
   </tr>
 </table>
 
 <p>
   Let's look at the order of it. We'll start with a GET, this makes a lot of
   sense, since we'll start out with retrieving information, often some kind of
-  frontpage which retrieves a html file. The next method is also GET, once again
-  we're retrieving information, this time from a specific id. We then have POST,
-  which makes sense to have after the GET methods, as we'll need to retrieve
-  something before we can add our own addition, such as adding a new flag to a
-  list. PUT and PATCH are the next 2 methods. It is worth noting that the PUT
-  method, is rarely used, as it is rarely necessary to edit an entire resource.
+  frontpage which retrieves a html file.
+</p>
+
+<p>
+  The next method is also GET, once again we're retrieving information, this
+  time from a specific id.
+</p>
+
+<p>
+  We then have POST, which makes sense to have after the GET methods, as we'll
+  need to retrieve something before we can add our own addition, such as adding
+  a new flag to a list.
+</p>
+
+<p>
+  PUT and PATCH are the next 2 methods. It is worth noting that the PUT method,
+  is rarely used, as it is rarely necessary to edit an entire resource.
+</p>
+
+<p>
   Keep in mind that PUT also gives the resource a new ID. without simply
   deleting and creating a new resource. If editing a resource it makes more
   sense to use PATCH. Again, however, it makes sense to have these methods after
-  POST, as you'll need a resource to edit. And last, but not least, we have
-  DELETE which makes perfect sense to be the very last method, as this is the
-  one to remove the resource. Note that every endpoint uses flags in plural
-  instead of flag in singular. This is part of the naming convention, as
-  mentioned earlier. Notice how in Node.js we use /:id. In Java I am used to
-  using /{id}, but the pathvariable is a slightly different syntax in Node.js
+  POST, as you'll need a resource to edit.
+</p>
+
+<p>
+  And last, but not least, we have DELETE which makes perfect sense to be the
+  very last method, as this is the one to remove the resource.
+</p>
+
+<p>
+  Note that every endpoint uses flags in plural instead of flag in singular.
+  This is part of the naming convention, as mentioned earlier. Notice how in
+  Node.js we use /:id. In Java I am used to using /{id}, but the pathvariable is
+  a slightly different syntax in Node.js
 </p>
 
 <h2>Express</h2>
@@ -94,7 +115,7 @@
   The example above is called a route. '/' is the endpoint, it could also have
   been '/flags' for example. (req, res) => {} is a an example of a callback
   function.
-  <a href="/fundamentals">Learn more about callback functions here</a>
+  <a href="/functions">Learn more about callback functions here</a>
   res.send() sends a JavaScript object, which is parsed into json by the help of
   express. Without res.send(), the browser will load forever.
 </p>
@@ -124,8 +145,8 @@
   </tr>
 </table>
 
-<pre><code>if (!foundFlags) {
-  return res.status(404).send({ data: `No flag found by id ${providedID}` });
+<pre><code>if (!foundFlag) {
+  return res.status(404).send({ data: `No flag found by id ${providedId}` });
 }
   res.send({ data: foundFlag });</code></pre>
 
@@ -143,7 +164,7 @@ if (foundFlagIndex === -1) {
   return res.status(404).send({ errorMessage: `No flag found by id ${providedId}` });
 }
         
-flags.splice(foundAnimalIndex, 1);        
+flags.splice(foundFlagIndex, 1);        
   res.status(204).send();
 })</code></pre>
 
@@ -162,9 +183,9 @@ flags.splice(foundAnimalIndex, 1);
   const providedFlag = req.body;
   const foundFlag = flags[foundFlagIndex];
 
-  const flagToCreate = {...providedFlag, ...foundFlag, id: providedId };
+  const flagToCreate = {...foundFlag, ...providedFlag, id: providedId };
 
-  flags[foundFlagsIndex] = flagToCreate;
+  flags[foundFlagIndex] = flagToCreate;
 
   res.send({ data: flagToCreate });
 });</code></pre>
@@ -197,19 +218,60 @@ flags.splice(foundAnimalIndex, 1);
   console.log("Server is running on port", PORT);
 });</code></pre>
 
-<h2>Misc</h2>
+<h2>Fetch</h2>
+
+<pre><code class="language-javascript">app.get("/proxy", (req, res) => {
+  fetch("https://www.google.com")
+    .then((response) => response.text())
+    .then((result) => res.send(result));  
+});</code></pre>
+
+<p>
+  In this example we're fetching Google.com, to create a proxy of Google.com.
+  Google is text HTML, which is why we use .text() instead of .json(). The
+  result is the HTML page.
+</p>
+
+<p>
+  If your browser settings is in a language with non-English symbols, you might
+  get a weird looking website. A way to solve that, is by using arrayBuffer()
+  and TextDecoder().
+</p>
+
+<pre><code class="language-javascript">app.get("/proxy", (req, res) => {
+  fetch("https://www.google.com")
+    .then((response) => response.arrayBuffer())
+    .then((buffer) => {
+      const decoder = new TextDecoder("ISO-8859-1");
+      const text = decoder.decoder(buffer);
+      res.send();
+    })
+});</code></pre>
+
+<p>
+  This example is set to the Danish standard, so the website can show Danish
+  symbols.
+</p>
+
+<h2>Server side redirect</h2>
+
+<h2>API and CORS</h2>
+
+<h2>Parsing JSON with Express</h2>
 
 <p>To parse JSON, you must first enable the express JSON-parser like so:</p>
 
 <pre><code>app.use(express.json());</code></pre>
+
+<p>It has to be right under your imports at the top of the file.</p>
 
 <h2>Query String</h2>
 
 <pre><code>http://localhost:8080/bars/forgottenItems?wallet=200&keys=my_house&my_baby=Sam</code></pre>
 
 <p>
-  The end of the URL above is called the query string, which is a way to save
-  information.
+  The end of the URL ('forgottenItems?wallet=200&keys=my_house&my_baby=Sam')
+  above is called the query string, which is a way to save information.
 </p>
 
 <h2>dirname</h2>

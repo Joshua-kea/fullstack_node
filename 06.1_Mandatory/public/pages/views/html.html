@@ -60,9 +60,9 @@
 
 <p>
   When adding JavaScript &lt;script&gt; tags, it is important to think about the
-  order in which they are loaded in. The HTML file is read from top to bottom,
+  order in which they are loaded. The HTML file is read from top to bottom,
   so if, for instance, you have flag.js which uses a function that is defined in
-  country.js, then country.js needs to be loaded in HTML before flag.js is
+  country.js, then country.js needs to be loaded before flag.js is
   loaded.
 </p>
 
@@ -108,6 +108,36 @@
   doesn't accidentally have spelling errors or typos. It is a matter of
   preference.
 </p>
+
+<h2>Redirection</h2>
+
+<p>
+  Here is an example of how you can create a dynamic redirection. This example
+  redirects to the frontpage after 3 seconds.
+</p>
+
+<pre><code class="language-html">&lt;script&gt;
+  setTimeout(() =&gt; {
+    location.href = "/";
+  }, 3000);
+&lt;/script&gt;</code></pre>
+
+<p>
+  You can also redirect by using .replace, but it replaces the history of the
+  page. That means if you go back to the previous page, it might behave in
+  unexpected ways, as the page you were redirected from is no longer saved in
+  your history.
+</p>
+
+<pre><code class="language-html">&lt;script&gt;
+  setTimeout(() =&gt; {
+    location.replace('/');
+  }, 3000);
+&lt;/script&gt;</code></pre>
+
+<p>It is also possible to redirect via the meta-tag.</p>
+
+<pre><code class="language-html">&lt;meta http-equiv="refresh" content="3;/"/&gt;</code></pre>
 
 <h2>Datalist</h2>
 
