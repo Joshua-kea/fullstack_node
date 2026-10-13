@@ -1,18 +1,25 @@
 <h1>SSR</h1>
 
-<p>**Explain the advantages of SSR**</p>
+<p>
+  DRY (<strong>D</strong>on't <strong>R</strong>epeat <strong>Y</strong>ourself)
+  code is a general guideline when it comes to programming. The less your code
+  repeats itself, the more reusable it is, and the less you'll have to fix every
+  time you make a change.
+</p>
+
+<p>
+  When it comes to SSR (<strong>S</strong>erver <strong>S</strong>ide
+  <strong>R</strong>endering) you will split up your HTML files, into sections
+  that are repetitive. This will often be the header and the footer, but it can
+  be other things such as a navigation bar.
+</p>
 
 <h2>Splitting up the HTML page</h2>
 
-<p>DRY (<strong>D</strong>on't <strong>R</strong>epeat <strong>Y</strong>ourself) code is a general guideline when it comes to 
-    programming. The less your code repeats itself, the more reusable it is, and the less you'll have to fix everytime you 
-    make a change.</p>
-
-<p>When it comes to SSR (<strong>S</strong>erver <strong>S</strong>ide <strong>R</strong>endering) you will split up your HTML 
-files, into sections that are repetitive. This will often be the header and the footer, but it can be other things such as 
-a navigation bar.</p>
-
-<p>You simply create a header.html and a footer.html, to put the content that all your HTML pages need, in those files.</p>
+<p>
+  You simply create a header.html and a footer.html, to put the content that all
+  your HTML pages need, in those files.
+</p>
 
 <p>Your header.html might look something like this:</p>
 
@@ -31,7 +38,7 @@ a navigation bar.</p>
 
 <p>And your footer.html might look something like this:</p>
 
-<pre><code>&lt;/main&gt;
+<pre><code class="language-html">&lt;/main&gt;
 
     &lt;footer&gt;&copy 2026&lt;/footer&gt;
   &lt;/body&gt;
@@ -39,41 +46,65 @@ a navigation bar.</p>
 
 <h2>Templating Engine</h2>
 
-<p>While it is possible to install templating engines, it is nice to create your own so you have full control of the content.</p>
+<p>
+  While it is possible to install templating engines, it is nice to create your
+  own so you have full control of the content.
+</p>
 
-<p>The first thing you'll want to do, is create a function that can read your HTML files.</p>
+<p>
+  The first thing you'll want to do, is create a function that can read your
+  HTML files.
+</p>
 
 <pre><code class="language-javascript">import fs from "fs";
-    export function readPage(path) {
+  
+export function readPage(path) {
   return fs.readFileSync(path, "utf-8");
 }</code></pre>
 
-<p>We have an import from 'fs', which is a a part of the node library. It stands for File System, and is needed to 
-    read files.
+<p>
+  We have an import from 'fs', which is a part of the node library. It stands
+  for File System, and is needed to read files.
 </p>
 
-<p>The function above, simply reads a HTML file. It takes a path and utf-8 as an argument. You could also make it:</p>
+<p>
+  The function above, simply reads a HTML file. It takes a path and utf-8 as an
+  argument. You could also make it:
+</p>
 
 <pre><code class="language-javascript">return fs.readFileSync(path).toString();</code></pre>
 
 <p>And it would be the same outcome.</p>
 
-<p>The next step would be to create a function that can construct the page with header, content and footer.</p>
+<p>
+  The next step would be to create a function that can construct the page with
+  header, content and footer.
+</p>
 
-<pre><code>export function constructPage() {
+<pre><code class="language-javascript">export function constructPage(page) {
   const header = readPage("public/components/header/header.html");
   const footer = readPage("public/components/footer/footer.html");
 
 return header + page + footer;
 }</code></pre>
 
-<p>**Explain the function**</p>
+<p>
+  The function takes a page as a parameter. It saves header.html and footer.html
+  in a variable, and then constructs the page by returning the header + page +
+  footer, resulting in a full HTML page.
+</p>
 
-<p>**Explain why we export i guess**</p>
+<p>
+  It is needed to export the function, because we use it in another .js file.
+</p>
 
-<p>**Then later it can turn into something like:**</p>
+<p>
+  Right now, every page gets the same tab title, and dosn't have the ability for
+  unique styling or other unique features. This can be solved, by expanding the
+  function.
+</p>
 
-<pre><code>export function constructPage(page, options = {}) {
+<pre><code class="language-javascript">export function constructPage(page, options = {}) {
   const header = readPage("public/components/header/header.html");
   const footer = readPage("public/components/footer/footer.html");
 
@@ -86,9 +117,13 @@ return header + page + footer;
   );
 }</code></pre>
 
-<p>**Explain options = {}**</p>
+<p>
+  The function is using a default parameter, so each page can have unique
+  features, such as a unique css link or tab title. The .replace method replaces
+  the placeholder with the value.
+</p>
 
-<p>**Explain how it works in the HTML file**</p>
+<p>In the HTML file, it might look like this for example in the header.html:</p>
 
 <pre><code class="language-html">&lt;!doctype html&gt;
 &lt;html lang="en"&gt;
@@ -96,6 +131,7 @@ return header + page + footer;
     &lt;meta charset="UTF-8" /&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
     &lt;link rel="stylesheet" href="/assets/css/index.css" /&gt;
+    {{CSS_LINKS}}
 
     &lt;title&gt;{{TAB_TITLE}}&lt;/title&gt;
   &lt;/head&gt;
@@ -103,11 +139,12 @@ return header + page + footer;
   &lt;main&gt;
 </code></pre>
 
-<h2>**A title for page.js**</h2>
+<h2>pages.js</h2>
 
 <pre><code class="language-javascript">import { readPage, constructPage } from "./templatingEngine.js";
 
 const frontpage = readPage("public/pages/frontpage/frontpage.html");
+const about = readPage("public/pages/about/about.html");
 
 export const frontpagePage = constructPage(frontpage)
 
@@ -115,18 +152,24 @@ export const aboutPage = constructPage(about, {
   tabTitle: "Flags | About"
 });</code></pre>
 
-<p>**Explain this code**</p>
+<p>
+  We import the readPage and constructPage functions that we created earlier. We
+  save each HTML file in a variable, and export them with their unique features.
+</p>
 
-<h2>**A title for app.js**</h2>
+<h2>app.js</h2>
 
 <pre><code class="language-javascript">import { frontpagePage, aboutPage } from "./templatingEngine/pages.js";
 
-app.get("/", (req, res) => {
+app.get("/", (req, res) =&gt; {
   res.send(frontpagePage);
 });
 
-app.get("/about", (req, res) => {
+app.get("/about", (req, res) =&gt; {
   res.send(aboutPage);
 });</code></pre>
 
-<p>**Explain this code**</p>
+<p>
+  The finished pages are imported from pages.js, and each route sends the
+  finished page to the browser.
+</p>
