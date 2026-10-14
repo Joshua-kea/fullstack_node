@@ -7,14 +7,14 @@
   time you make a change.
 </p>
 
+<h2>Splitting up the HTML page</h2>
+
 <p>
   When it comes to SSR (<strong>S</strong>erver <strong>S</strong>ide
   <strong>R</strong>endering) you will split up your HTML files, into sections
   that are repetitive. This will often be the header and the footer, but it can
   be other things such as a navigation bar.
 </p>
-
-<h2>Splitting up the HTML page</h2>
 
 <p>
   You simply create a header.html and a footer.html, to put the content that all
@@ -99,7 +99,7 @@ return header + page + footer;
 </p>
 
 <p>
-  Right now, every page gets the same tab title, and dosn't have the ability for
+  Right now, every page gets the same tab title, and doesn't have the ability for
   unique styling or other unique features. This can be solved, by expanding the
   function.
 </p>
@@ -172,4 +172,27 @@ app.get("/about", (req, res) =&gt; {
 <p>
   The finished pages are imported from pages.js, and each route sends the
   finished page to the browser.
+</p>
+
+<h2>nodemon.json</h2>
+
+<p>
+  If you're using nodemon to run your application, you'll run into an issue,
+  where it doesn't update when you edit your HTML or CSS files. This is because
+  nodemon only listens to .js and .json files.
+</p>
+
+<p>
+  You need to manually change this, by creating a nodemon.json file in the root
+  of your project. Add the files you want nodemon to listen to.
+</p>
+
+<pre><code class="language-json">{
+  "ext": "js,mjs,cjs,json,css,html"
+}</code></pre>
+
+<p>
+  Now that .css and .html files have been added, you will see that nodemon
+  restarts the applications every time you make a change in those files, as well
+  as in .js and .json files.
 </p>
