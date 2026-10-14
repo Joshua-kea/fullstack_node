@@ -51,6 +51,29 @@ main {
   border-left: 0.1rem solid black;
 }
 
+main > nav {
+  background-color: white;
+}
+
+main > nav ul {
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  gap: 2rem;
+}
+
+main > nav a {
+  text-decoration: none;
+  color: black;
+  white-space: nowrap;
+}
+
+main > nav a:hover {
+  border-bottom: 0.1rem solid black;
+  transition: background-color 0.2s;
+}
+
 h2 {
   font-size: large;
 }
