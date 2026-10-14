@@ -1,6 +1,18 @@
+<nav>
+  <ul>
+    <li><a href="#express">Express and app.js</a></li>
+    <li><a href="#clientServer">Client/Server and routes</a></li>
+    <li><a href="#running">Running the server</a></li>
+    <li><a href="#redirect">Server side redirect</a></li>
+    <li><a href="#json">Parsin JSON with Express</a></li>
+    <li><a href="#query">Query String</a></li>
+    <li><a href="#dirname">dirname</a></li>
+  </ul>
+</nav>
+'
 <h1>Express & Servers</h1>
 
-<h2>Express and app.js</h2>
+<h2 id="express">Express and app.js</h2>
 
 <p>The library Express needs to be imported to build a server in Node.js.</p>
 
@@ -22,7 +34,7 @@ app.listen(PORT, (error) =&gt; {
   console.log("Server is running on port", PORT);
 });</code></pre>
 
-<h2>Client/Server and routes</h2>
+<h2 id="clientServer">Client/Server and routes</h2>
 
 <p>
   Client sends a request (shortened to req), server sends a response (shortened
@@ -46,7 +58,7 @@ app.listen(PORT, (error) =&gt; {
   express. Without res.send(), the browser will load forever.
 </p>
 
-<h2>Running the server</h2>
+<h2 id="running">Running the server</h2>
 
 <p>
   If we say there is a folder called Flags_Project which has a file called
@@ -84,7 +96,7 @@ nodemon app.js</code></pre>
 
 <pre><code class="language-bash">npm install -g nodemon</code></pre>
 
-<h2>Server side redirect</h2>
+<h2 id="redirect">Server side redirect</h2>
 
 <pre><code class="language-javascript">app.get("/", (req, res) =&gt; {
   res.send({ data: "Frontpage" });  
@@ -96,7 +108,7 @@ app.get("/frontpageRedirect", (req, res) =&gt; {
 
 <p>Here the "/frontpageRedirect" redirects to "/".</p>
 
-<h2>Parsing JSON with Express</h2>
+<h2 id="json">Parsing JSON with Express</h2>
 
 <p>To parse JSON, you must first enable the express JSON-parser like so:</p>
 
@@ -104,7 +116,7 @@ app.get("/frontpageRedirect", (req, res) =&gt; {
 
 <p>It has to be right under your imports at the top of the file.</p>
 
-<h2>Query String</h2>
+<h2 id="query">Query String</h2>
 
 <p>To read the query string, use req.query.</p>
 
@@ -124,7 +136,7 @@ app.get("/frontpageRedirect", (req, res) =&gt; {
   the server, which reads it with req.query.
 </p>
 
-<h2>dirname</h2>
+<h2 id="dirname">dirname</h2>
 
 <p>
   To avoid putting your exact path name, with your personal folders, in the

@@ -1,8 +1,19 @@
+<nav>
+  <ul>
+    <li><a href="#firstHTML">Creating your first HTML file</a></li>
+    <li><a href="#tagsIDClass">Tags, IDs, and classes</a></li>
+    <li><a href="#structure">Structure of an HTML file</a></li>
+    <li><a href="#xss">XSS (Cross-Site Scripting)</a></li>
+    <li><a href="#redirection">Redirection</a></li>
+    <li><a href="#datalist">Datalist</a></li>
+  </ul>
+</nav>
+
 <h1>Introduction to learning HTML</h1>
 
 <p>HTML is the language the browser understands.</p>
 
-<h2>Creating your first HTML file</h2>
+<h2 id="firstHTML">Creating your first HTML file</h2>
 
 <p>
   The very first thing you want to do is create a new file. Let's name it index.
@@ -15,7 +26,7 @@
   you will receive a boilerplate HTML page.
 </p>
 
-<h2>Tags, IDs, and classes</h2>
+<h2 id="tagsIDClass">Tags, IDs, and classes</h2>
 
 <p>
   Tags are inside of angle brackets &lt;&gt;, that could for example be a header
@@ -40,7 +51,7 @@
 
 <pre><code class="language-html">&lt;h1 class="firstHeaderClass"&gt;Flags&lt;/h1&gt;</code></pre>
 
-<h2>Structure of an HTML file</h2>
+<h2 id="structure">Structure of an HTML file</h2>
 
 <pre><code class="language-html">&lt;!doctype html&gt; &lt;!-- the document type is HTML --&gt;
 &lt;html lang="en"&gt; &lt;!-- the HTML language is English --&gt;
@@ -60,10 +71,9 @@
 
 <p>
   When adding JavaScript &lt;script&gt; tags, it is important to think about the
-  order in which they are loaded. The HTML file is read from top to bottom,
-  so if, for instance, you have flag.js which uses a function that is defined in
-  country.js, then country.js needs to be loaded before flag.js is
-  loaded.
+  order in which they are loaded. The HTML file is read from top to bottom, so
+  if, for instance, you have flag.js which uses a function that is defined in
+  country.js, then country.js needs to be loaded before flag.js is loaded.
 </p>
 
 <pre><code class="language-html">&lt;script src="/country.js"&gt;&lt;/script&gt;
@@ -74,7 +84,7 @@
   function from country.js doesn't exist yet.
 </p>
 
-<h2>XSS (Cross-Site Scripting)</h2>
+<h2 id="xss">XSS (Cross-Site Scripting)</h2>
 <p>
   XSS is when a person from the outside can add script to the website by for
   example putting their name as a script. This can be done with malicious
@@ -109,7 +119,7 @@
   preference.
 </p>
 
-<h2>Redirection</h2>
+<h2 id="redirection">Redirection</h2>
 
 <p>
   Here is an example of how you can create a dynamic redirection. This example
@@ -139,7 +149,7 @@
 
 <pre><code class="language-html">&lt;meta http-equiv="refresh" content="3;/"/&gt;</code></pre>
 
-<h2>Datalist</h2>
+<h2 id="datalist">Datalist</h2>
 
 <p>
   If you want an autocomplete dropdown for a searchbar, you can use the

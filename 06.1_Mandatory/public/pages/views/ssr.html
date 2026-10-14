@@ -1,3 +1,13 @@
+<nav>
+  <ul>
+    <li><a href="#splitting">Splitting up the HTML page</a></li>
+    <li><a href="#templating">Templating Engine</a></li>
+    <li><a href="#pages">pages.js</a></li>
+    <li><a href="#app">app.js</a></li>
+    <li><a href="#nodemon">nodemon.json</a></li>
+  </ul>
+</nav>
+
 <h1>SSR</h1>
 
 <p>
@@ -7,7 +17,7 @@
   time you make a change.
 </p>
 
-<h2>Splitting up the HTML page</h2>
+<h2 id="splitting">Splitting up the HTML page</h2>
 
 <p>
   When it comes to SSR (<strong>S</strong>erver <strong>S</strong>ide
@@ -44,7 +54,7 @@
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 
-<h2>Templating Engine</h2>
+<h2 id="templating">Templating Engine</h2>
 
 <p>
   While it is possible to install templating engines, it is nice to create your
@@ -139,7 +149,7 @@ return header + page + footer;
   &lt;main&gt;
 </code></pre>
 
-<h2>pages.js</h2>
+<h2 id="pages">pages.js</h2>
 
 <pre><code class="language-javascript">import { readPage, constructPage } from "./templatingEngine.js";
 
@@ -157,7 +167,7 @@ export const aboutPage = constructPage(about, {
   save each HTML file in a variable, and export them with their unique features.
 </p>
 
-<h2>app.js</h2>
+<h2 id="app">app.js</h2>
 
 <pre><code class="language-javascript">import { frontpagePage, aboutPage } from "./templatingEngine/pages.js";
 
@@ -174,7 +184,7 @@ app.get("/about", (req, res) =&gt; {
   finished page to the browser.
 </p>
 
-<h2>nodemon.json</h2>
+<h2 id="nodemon">nodemon.json</h2>
 
 <p>
   If you're using nodemon to run your application, you'll run into an issue,

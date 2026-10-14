@@ -1,6 +1,14 @@
+<nav>
+  <ul>
+    <li><a href="#proxy">Proxy</a></li>
+    <li><a href="#api">API and CORS</a></li>
+    <li><a href="#slug">Slug</a></li>
+  </ul>
+</nav>
+
 <h1>Fetch</h1>
 
-<h2>Proxy</h2>
+<h2 id="proxy">Proxy</h2>
 
 <pre><code class="language-javascript">app.get("/proxy", (req, res) =&gt; {
   fetch("https://www.google.com")
@@ -34,7 +42,7 @@
   symbols.
 </p>
 
-<h2>API and CORS</h2>
+<h2 id="api">API and CORS</h2>
 
 <p>
   CORS is a browser thing. If the browser fetches an API directly, the API has
@@ -72,7 +80,7 @@
   endpoint.
 </p>
 
-<h2>Slug</h2>
+<h2 id="slug">Slug</h2>
 
 <p>
   A slug is kind of the pathvariable for APIs. Slug is what is shown in the URL.

@@ -1,3 +1,13 @@
+<nav>
+  <ul>
+    <li><a href="#writeAFunction">Ways to write a function</a></li>
+    <li><a href="#anonFunctions">Anonymous functions</a></li>
+    <li><a href="#callback">Callback functions</a></li>
+    <li><a href="#hoisting">Hoisting</a></li>
+    <li><a href="#defaultValues">Default values</a></li>
+  </ul>
+</nav>
+
 <h1>Functions</h1>
 
 <p>
@@ -13,7 +23,7 @@
   and blocks don't have ; after }
 </p>
 
-<h2>Ways to write a function</h2>
+<h2 id="writeAFunction">Ways to write a function</h2>
 
 <p>If you have a function like this:</p>
 
@@ -46,7 +56,7 @@ console.log(showFlag("Equatorial Guinea", (country) => `${country} is in Africa`
 // an example of an inline function
 // output is: Equatorial Guinea is in Africa</code></pre>
 
-<h2>Anonymous functions</h2>
+<h2 id="anonFunctions">Anonymous functions</h2>
 
 <p>
   An anonymous function doesn't have a name on its own, like a function
@@ -65,7 +75,7 @@ const getRandomIntArrowFunction = (min, max) => {
 
 <p>Arrow functions are a type of anonymous function.</p>
 
-<h2>Callback functions</h2>
+<h2 id="callback">Callback functions</h2>
 
 <p>
   A callback function is a function that is passed as an argument to another
@@ -107,7 +117,7 @@ const redFlag = (country) => `${country} has the color red in its flag`;
 // otherwise the {} will be seen as the function body
 const makeFlag = (country) => ({ country: country, colors: [] });</code></pre>
 
-<h2>Hoisting</h2>
+<h2 id="hoisting">Hoisting</h2>
 
 <p>
   It is not strictly necessary to write JavaScript functions chronologically,
@@ -155,7 +165,7 @@ const redFlag = (country) => {
   before it is used.
 </p>
 
-<h2>Default values</h2>
+<h2 id="defaultValues">Default values</h2>
 
 <p>
   The short circuit OR operator (||) finds the first true statement. If it is a

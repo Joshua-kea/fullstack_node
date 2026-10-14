@@ -1,3 +1,10 @@
+<nav>
+  <ul>
+    <li><a href="#commonJS">CommonJS</a></li>
+    <li><a href="#esModules">ES Modules</a></li>
+  </ul>
+</nav>
+
 <h1>Modules</h1>
 
 <p>
@@ -29,7 +36,7 @@
       <th>ES Modules</th>
       <td>
         Use import<br />
-        <code>import file from './file.js';</code> <br/>
+        <code>import file from './file.js';</code> <br />
         <code>import { file } from './file.js';</code>
       </td>
       <td>
@@ -41,14 +48,19 @@
   </tbody>
 </table>
 
-<p>Importing and exporting functionality between .js files, is the reason to use modules.</p>
-
-<p>It is important to be careful with circular dependencies, where file A imports from file B, and file B also imports 
-  from file A. That creates a circle, and in cases like that neither file can finish loading without the other, and it can 
-  cause bugs and crashes.
+<p>
+  Importing and exporting functionality between .js files, is the reason to use
+  modules.
 </p>
 
-<h2>CommonJS</h2>
+<p>
+  It is important to be careful with circular dependencies, where file A imports
+  from file B, and file B also imports from file A. That creates a circle, and
+  in cases like that neither file can finish loading without the other, and it
+  can cause bugs and crashes.
+</p>
+
+<h2 id="commonJS">CommonJS</h2>
 
 <p>
   CommonJS is the default module system for Node.js, if it isn't actively
@@ -63,7 +75,7 @@
 
 <pre><code class="language-html">&lt;script src="/file.js"&gt;&lt;/script&gt;</code></pre>
 
-<h2>ES Modules</h2>
+<h2 id="esModules">ES Modules</h2>
 
 <p>To use ES Modules, you have to actively change the type in package.json</p>
 
@@ -71,12 +83,17 @@
         "type": "module"     
 }</code></pre>
 
-<p>ES Modules can't import .json files in the same way as CommonJS can. The solution is using the fs library.</p>
+<p>
+  ES Modules can't import .json files in the same way as CommonJS can. The
+  solution is using the fs library.
+</p>
 
 <pre><code class="language-javascript">import fs from 'fs';
 const data = JSON.parse(fs.readFileSync('./data.json', 'utf-8'));</code></pre>
 
-<p>When using export default, the variable name doesn't matter when importing.</p>
+<p>
+  When using export default, the variable name doesn't matter when importing.
+</p>
 
 <pre><code class="language-javascript">// file: colors.js
 const colors = ["red", "blue", "yellow", "green", "orange"];

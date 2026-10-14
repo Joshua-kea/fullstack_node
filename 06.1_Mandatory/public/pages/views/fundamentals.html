@@ -1,6 +1,17 @@
-<h1>Introduction to learning the fundamentals of Node.js</h1>
+<nav>
+  <ul>
+    <li><a href="#varLetConst">var, let and const</a></li>
+    <li><a href="#sideEffects">Side effects</a></li>
+    <li><a href="#useStrict">Use strict</a></li>
+    <li><a href="#naming">Naming conventions</a></li>
+    <li><a href="#math">Math()</a></li>
+    <li><a href="#++">The difference between ++value and value++</a></li>
+  </ul>
+</nav>
 
-<h2>var, let, and const</h2>
+<h1>Learning the fundamentals of Node.js</h1>
+
+<h2 id="varLetConst">var, let, and const</h2>
 <p>
   It is never recommended to use var, as it is function-scoped instead of
   block-scoped and can cause major bugs.
@@ -14,7 +25,7 @@
   reassigned.
 </p>
 
-<h2>Side effects</h2>
+<h2 id="sideEffects">Side effects</h2>
 
 <p>
   Side effects is when code changes something unexpected, or something you
@@ -75,7 +86,7 @@
   where the value is its own, even if they share the same name.
 </p>
 
-<h2>Use strict</h2>
+<h2 id="useStrict">Use strict</h2>
 
 <p>
   With use strict, it is possible to catch errors that otherwise wouldn't be
@@ -83,7 +94,7 @@
   the beginning of a script or a function.
 </p>
 
-<h2>Naming conventions</h2>
+<h2 id="naming">Naming conventions</h2>
 
 <p>
   Make sure functions and variables have readable and clear names. It is not
@@ -105,7 +116,7 @@ const countriesWithGDPUpdated = ...</code></pre>
   quickly clear, that we're updating countries (the first const).
 </p>
 
-<h2>Math()</h2>
+<h2 id="math">Math()</h2>
 <p>Math.floor rounds down, so the float becomes an int.</p>
 
 <pre><code class="language-javascript">getRandomInt(5, 10);
@@ -120,7 +131,7 @@ function getRandomInt(min, max) {
   before it has been declared, because of hoisting.
 </p>
 
-<h2>The difference between ++value and value++</h2>
+<h2 id="++">The difference between ++value and value++</h2>
 
 <pre><code class="language-javascript">let value = 1;
 value++; // 1: returns the value, and then adds 1

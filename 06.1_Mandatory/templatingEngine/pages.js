@@ -1,7 +1,6 @@
 import { readPage, constructPage } from "./templatingEngine.js";
 
 const frontpage = readPage("public/pages/frontpage/frontpage.html");
-const apis = readPage("public/pages/views/apis.html");
 const commands = readPage("public/pages/views/commands.html");
 const css = readPage("public/pages/views/css.html");
 const dates = readPage("public/pages/views/dates.html");
@@ -15,19 +14,12 @@ const modules = readPage("public/pages/views/modules.html");
 const objects = readPage("public/pages/views/objects.html");
 const servers = readPage("public/pages/views/servers.html");
 const setups = readPage("public/pages/views/setups.html");
+const restApis = readPage("public/pages/views/rest-apis.html");
 const ssr = readPage("public/pages/views/ssr.html");
 const tools = readPage("public/pages/views/tools.html");
 
 export const frontpagePage = constructPage(frontpage, {
   activeNav: "",
-});
-
-export const apisPage = constructPage(apis, {
-  tabTitle: "Full-Stack | API",
-  cssLink: `<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/styles/stackoverflow-light.min.css">`,
-  jsLink: `<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/highlight.min.js"></script>`,
-  script: `<script>hljs.highlightAll();</script>`,
-  activeNav: "apis",
 });
 
 export const commandsPage = constructPage(commands, {
@@ -129,6 +121,14 @@ export const setupsPage = constructPage(setups, {
   jsLink: `<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/highlight.min.js"></script>`,
   script: `<script>hljs.highlightAll();</script>`,
   activeNav: "setups",
+});
+
+export const restApisPage = constructPage(restApis, {
+  tabTitle: "Full-Stack | Rest API",
+  cssLink: `<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/styles/stackoverflow-light.min.css">`,
+  jsLink: `<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/highlight.min.js"></script>`,
+  script: `<script>hljs.highlightAll();</script>`,
+  activeNav: "rest-apis",
 });
 
 export const ssrPage = constructPage(ssr, {

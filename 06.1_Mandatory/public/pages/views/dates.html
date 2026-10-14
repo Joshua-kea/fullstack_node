@@ -1,8 +1,19 @@
+<nav>
+  <ul>
+    <li><a href="#current">Current date and time</a></li>
+    <li><a href="#newDate">new Date()</a></li>
+    <li><a href="#parse">Date.parse()</a></li>
+    <li><a href="#instance">Instance methods</a></li>
+    <li><a href="#formatting">Formatting dates</a></li>
+    <li><a href="#timezones">Understanding timezones</a></li>
+  </ul>
+</nav>
+
 <h1>Date()</h1>
 
 <p>The Date object makes it possible to code with dates.</p>
 
-<h2>Current date and time</h2>
+<h2 id="current">Current date and time</h2>
 
 <pre><code class="language-javascript">Date()
 // output will be a String such as "Sat Oct 10 2026 11:54:54 GMT+0200 (Central European Summer Time)"
@@ -19,7 +30,7 @@ Date.now()
   started on January 1st 1970 at midnight UTC.
 </p>
 
-<h2>new Date()</h2>
+<h2 id="newDate">new Date()</h2>
 
 <p>
   When using new Date() without any parameters it will give the current local
@@ -47,7 +58,7 @@ new Date(2026, 0, 1);
   represents January. This is because it is indexed at 0.
 </p>
 
-<h2>Date.parse()</h2>
+<h2 id="parse">Date.parse()</h2>
 
 <p>
   The standard format for date and time is ISO 8601. That would be YYYY-MM-DD
@@ -68,7 +79,7 @@ Date.parse("2026-01-01");
   years in milliseconds.
 </p>
 
-<h2>Instance methods</h2>
+<h2 id="instance">Instance methods</h2>
 
 <p>
   The Date object has a lot of instance methods, but some of the more popular
@@ -87,7 +98,7 @@ birthday.getDay();
 birthday.getFullYear();
 // output is 2026</code></pre>
 
-<h2>Formatting dates</h2>
+<h2 id="formatting">Formatting dates</h2>
 
 <pre><code class="language-javascript">birthday.toLocaleDateString();
 // output is 2.10.2026 if located in Denmark.
@@ -105,7 +116,7 @@ const options = {
 birthday.toLocaleDateString("en-uk", options);
 // output is Friday, 2 October 2026</code></pre>
 
-<h2>Understanding timezones</h2>
+<h2 id="timezones">Understanding timezones</h2>
 
 <p>
   It is important to understand the timezones for the Date object, as it can

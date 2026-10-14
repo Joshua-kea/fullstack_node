@@ -6,7 +6,6 @@ app.use(express.static("public"));
 
 import {
   frontpagePage,
-  apisPage,
   commandsPage,
   cssPage,
   datesPage,
@@ -20,16 +19,13 @@ import {
   objectsPage,
   serversPage,
   setupsPage,
+  restApisPage,
   ssrPage,
   toolsPage,
 } from "./templatingEngine/pages.js";
 
 app.get("/", (req, res) => {
   res.send(frontpagePage);
-});
-
-app.get("/apis", (req, res) => {
-  res.send(apisPage);
 });
 
 app.get("/fundamentals", (req, res) => {
@@ -74,6 +70,10 @@ app.get("/commands", (req, res) => {
 
 app.get("/setups", (req, res) => {
   res.send(setupsPage);
+});
+
+app.get("/rest-apis", (req, res) => {
+  res.send(restApisPage);
 });
 
 app.get("/dates", (req, res) => {
