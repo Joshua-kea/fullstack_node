@@ -5,10 +5,11 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+export const projectRoot = path.resolve(__dirname, "..");
 
 export function addStaticRoute(
   app,
-  dir = path.resolve(__dirname, "..", "public"),
+  dir = path.join(projectRoot, "public"),
   baseUrl = "",
 ) {
   const files = fs.readdirSync(dir, { withFileTypes: true });

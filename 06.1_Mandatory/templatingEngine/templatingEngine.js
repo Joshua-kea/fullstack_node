@@ -1,4 +1,6 @@
 import fs from "fs";
+import path from "path";
+import { projectRoot } from "../util/staticRoutes.js";
 
 export function constructPage(page, options = {}) {
   const header = readPage("public/components/header/header.html");
@@ -15,13 +17,13 @@ export function constructPage(page, options = {}) {
       .replace("{{CSS_LINKS}}", options.cssLink || "")
       .replace("{{JS_LINKS}}", options.jsLink || "")
       .replace("{{SCRIPT}}", options.script || "")
-      .replace("{{TAB_TITLE}}", options.tabTitle || "Full-Stack")
-    + activeNav
-    + page
-    + footer
+      .replace("{{TAB_TITLE}}", options.tabTitle || "Full-Stack") +
+    activeNav +
+    page +
+    footer
   );
 }
 
-export function readPage(path) {
-  return fs.readFileSync(path, "utf-8");
+export function readPage(pagePath) {
+  return fs.readFileSync(path.join(projectRoot, pagePath), "utf-8");
 }
