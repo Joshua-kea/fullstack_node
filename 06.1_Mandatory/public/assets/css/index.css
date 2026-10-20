@@ -18,7 +18,7 @@ main {
   display: flex;
   flex-direction: column;
   padding: 3rem;
-  padding-right: 25rem;
+  padding-right: 20rem;
   border-left: 0.1rem solid black;
   min-width: 0;
 }
@@ -52,7 +52,7 @@ main {
 }
 
 main > nav {
-  background-color: white;
+  background-color: #e6e6e6;
 }
 
 main > nav ul {
