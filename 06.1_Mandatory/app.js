@@ -1,8 +1,7 @@
 import express from "express";
 
 const app = express();
-
-app.use(express.static("public"));
+import { addStaticRoute } from "./util/staticRoutes.js";
 
 import {
   frontpagePage,
@@ -23,6 +22,9 @@ import {
   ssrPage,
   toolsPage,
 } from "./templatingEngine/pages.js";
+
+addStaticRoute(app)
+
 
 app.get("/", (req, res) => {
   res.send(frontpagePage);
