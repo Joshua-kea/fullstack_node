@@ -25,6 +25,10 @@ app.get("/blablabla", (req, res) => {
 });
 // the whole thing = route
 
+app.get("/chatterrom", (req, res) => {
+  res.redirect('/blablabla');
+});
+
 // How can I send data in a GET request
 // path variable: /users/1
 // query parameters: ?userId=1&likesProgramming=true

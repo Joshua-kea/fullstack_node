@@ -18,7 +18,7 @@
   "main": "app.js",
   "scripts": {
     "start": "cross-env PORT=80 node app.js",
-    "start-dev": "cross-env PORT=9090 nodemon app.js"
+    "start-dev": "cross-env PORT=8080 nodemon app.js"
   },
   "dependencies": {
     "express": "^5.2.1"

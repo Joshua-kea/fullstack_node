@@ -1,16 +1,15 @@
 import express from "express";
 const app = express();
-import path from "path";
 
 app.use(express.static("public"));
 
-app.get("/", (req, res) => {
-  res.sendFile(path.resolve("public/frontpage/frontpage.html"));
-});
+import pagesRouter from './routers/pagesRouter.js';
 
-app.get("/about", (req, res) => {
-  res.sendFile(path.resolve("public/about/about.html"));
-});
+import plantsRouter from './routers/plantsRouter.js';
+
+app.use(pagesRouter);
+
+app.use(plantsRouter);
 
 const PORT = process.env.PORT ?? 8080;
 
