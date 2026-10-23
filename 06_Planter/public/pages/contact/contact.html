@@ -1,1 +1,21 @@
 <h1>Contact</h1>
+
+<p>Submit a message below if you have any questions or feedback.</p>
+
+<form action="/api/contact" method="POST">
+  <fieldset>
+    <label for="topic">Topic</label>
+    <input id="topic" name="topic" placeholder="topic..." value="I hate plants" />
+
+    <label for="name">Your full name</label>
+    <input id="name" name="name" placeholder="name..." value="Grumpy person" />
+
+    <label for="email">E-mail</label>
+    <input type="email" name="email" id="email" required placeholder="email..." value="grumps@ek.dk" />
+
+    <label for="message">Write your message</label>
+    <textarea id="message" name="message" placeholder="message..." rows="10" cols="80">I hate them</textarea>
+
+    <button>Submit</button>
+  </fieldset>
+</form>

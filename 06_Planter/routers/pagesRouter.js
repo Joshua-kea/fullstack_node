@@ -1,4 +1,8 @@
-import { frontpagePage, aboutPage, contactPage } from "../templatingEngine/pages.js";
+import {
+  frontpagePage,
+  aboutPage,
+  contactPage,
+} from "../templatingEngine/pages.js";
 
 import { Router } from "express";
 
@@ -12,7 +16,7 @@ router.get("/about", (req, res) => {
   res.send(aboutPage);
 });
 
-router.get('/contact', (req, res) => {
+router.get("/contact", (req, res) => {
   res.send(contactPage);
 });
 
