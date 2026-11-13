@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from "express";
 import helmet from "helmet";
 import middlewareRouter from "./routers/middlewareRouter.js";
@@ -8,11 +9,13 @@ import sessionRouter from "./routers/sessionRouter.js";
 
 const app = express();
 
+console.log(process.env.SESSION_KEY);
+
 app.use(
   session({
-    secret: "keyboard cat",
+    secret: process.env.SESSION_KEY,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: { secure: false },
   }),
 );
