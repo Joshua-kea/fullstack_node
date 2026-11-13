@@ -11,7 +11,7 @@ function isAdmin(req, res, next) {
   }
 }
 
-router.get("/dashboard", isAdmin, (req, res) => {
+router.get("/auth/dashboard", isAdmin, (req, res) => {
   res.send({ data: "Secret dashboard" });
 });
 
