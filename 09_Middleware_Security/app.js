@@ -3,8 +3,19 @@ import helmet from "helmet";
 import middlewareRouter from "./routers/middlewareRouter.js";
 import authRouter from "./routers/authRouter.js";
 import { rateLimit } from "express-rate-limit";
+import session from "express-session";
+import sessionRouter from "./routers/sessionRouter.js";
 
 const app = express();
+
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false },
+  }),
+);
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -31,6 +42,7 @@ app.use("/auth", authenticationLimiter);
 app.use(helmet());
 app.use(middlewareRouter);
 app.use(authRouter);
+app.use(sessionRouter);
 
 app.get("/{*splat}", (req, res) => {
   res.send(`
