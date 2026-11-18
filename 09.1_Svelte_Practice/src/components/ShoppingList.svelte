@@ -18,6 +18,7 @@ import ShoppingItem from "./ShoppingItem.svelte";
     newItem = "";
   }
 
+  /** @param {number} id */
   function handleRemove(id){
     items = items.filter((item) => {
         return id != item.id
