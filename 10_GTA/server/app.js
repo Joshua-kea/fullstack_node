@@ -1,11 +1,28 @@
+import "dotenv/config";
 import express from "express";
-import cors from 'cors';
+import cors from "cors";
+import session from "express-session";
 import citiesRouter from "./routers/citiesRouter.js";
+import crimesRouter from "./routers/crimesRouter.js";
 
 const app = express();
-app.use(cors({
-  origin: "http://localhost:5173"
-}));
+
+app.use(express.json());
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  }),
+);
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false },
+  }),
+);
 
 // app.use((req, res, next) => {
 //     res.header("Access-Control-Allow-Origin", req.headers.origin || "*");
@@ -15,6 +32,7 @@ app.use(cors({
 // });
 
 app.use(citiesRouter);
+app.use(crimesRouter);
 
 const PORT = 8080;
 
