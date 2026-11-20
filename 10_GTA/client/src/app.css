@@ -265,6 +265,10 @@ code {
   }
 }
 
+a:visited {
+  color: blue;
+}
+
 #spacer {
   height: 88px;
   border-top: 1px solid var(--border);
